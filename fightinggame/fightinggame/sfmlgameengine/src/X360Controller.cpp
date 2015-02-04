@@ -71,8 +71,7 @@ bool Joystick::isButtonPressed (t_joyNum joyNum, t_buttonNum buttonNum)
     ZeroMemory (&state, sizeof (XINPUT_STATE));
 
     XInputGetState (joyNum, &state);
-    return  (state.Gamepad.wButtons & buttonNum);
-
+    return (state.Gamepad.wButtons & buttonNum);
 }
 
 // This function returns nothing

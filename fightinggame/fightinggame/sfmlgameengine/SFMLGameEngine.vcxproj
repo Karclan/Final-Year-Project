@@ -17,6 +17,31 @@
     <None Include="shader\textShader.vert" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Block.h" />
+    <ClInclude Include="include\Camera.h" />
+    <ClInclude Include="include\Collidable.h" />
+    <ClInclude Include="include\CollisionManager.h" />
+    <ClInclude Include="include\Component.h" />
+    <ClInclude Include="include\ControllerInput.h" />
+    <ClInclude Include="include\FallingBlock.h" />
+    <ClInclude Include="include\Fighter.hpp" />
+    <ClInclude Include="include\FTInterface.h" />
+    <ClInclude Include="include\GameObject.h" />
+    <ClInclude Include="include\GameObjectManager.h" />
+    <ClInclude Include="include\GS.h" />
+    <ClInclude Include="include\HitBox.h" />
+    <ClInclude Include="include\Input.h" />
+    <ClInclude Include="include\Mesh.h" />
+    <ClInclude Include="include\Renderable.h" />
+    <ClInclude Include="include\Renderer.h" />
+    <ClInclude Include="include\Scene.h" />
+    <ClInclude Include="include\Shader.h" />
+    <ClInclude Include="include\ShaderHandler.h" />
+    <ClInclude Include="include\Timer.h" />
+    <ClInclude Include="include\Transfrom.h" />
+    <ClInclude Include="include\X360Controller.hpp" />
+  </ItemGroup>
+  <ItemGroup>
     <ClCompile Include="src\Block.cpp" />
     <ClCompile Include="src\Camera.cpp" />
     <ClCompile Include="src\Collidable.cpp" />
@@ -37,31 +62,6 @@
     <ClCompile Include="src\ShaderHandler.cpp" />
     <ClCompile Include="src\Timer.cpp" />
     <ClCompile Include="src\X360Controller.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="src\Block.h" />
-    <ClInclude Include="src\Camera.h" />
-    <ClInclude Include="src\Collidable.h" />
-    <ClInclude Include="src\CollisionManager.h" />
-    <ClInclude Include="src\Component.h" />
-    <ClInclude Include="src\ControllerInput.h" />
-    <ClInclude Include="src\Fighter.hpp" />
-    <ClInclude Include="src\FTInterface.h" />
-    <ClInclude Include="src\GameObject.h" />
-    <ClInclude Include="src\FallingBlock.h" />
-    <ClInclude Include="src\GameObjectManager.h" />
-    <ClInclude Include="src\GS.h" />
-    <ClInclude Include="src\HitBox.h" />
-    <ClInclude Include="src\Input.h" />
-    <ClInclude Include="src\Mesh.h" />
-    <ClInclude Include="src\Renderable.h" />
-    <ClInclude Include="src\Renderer.h" />
-    <ClInclude Include="src\Scene.h" />
-    <ClInclude Include="src\Shader.h" />
-    <ClInclude Include="src\ShaderHandler.h" />
-    <ClInclude Include="src\Timer.h" />
-    <ClInclude Include="src\Transfrom.h" />
-    <ClInclude Include="src\X360Controller.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{968FDCC8-FA1D-4767-8D7D-3F27C9FE8B6B}</ProjectGuid>
@@ -107,12 +107,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)src;$(SolutionDir)SFML-2.1\include;$(SolutionDir)dev\include\;$(SolutionDir)dev\include\freetype;$(SolutionDir)dev\include\freetype\freetype2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)include/;$(SolutionDir)dev\include\;$(SolutionDir)dev\include\freetype;$(SolutionDir)dev\include\freetype\freetype2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)SFML-2.1\lib;$(SolutionDir)dev\lib\glew;$(SolutionDir)dev\lib\freetype;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)src/;$(SolutionDir)dev\lib\sfml;$(SolutionDir)dev\lib\glew;$(SolutionDir)dev\lib\freetype;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>freetype.lib;XInput9_1_0.lib;sfml-window-d.lib;sfml-main-d.lib;sfml-system-d.lib;sfml-graphics-d.lib;sfml-audio.lib;opengl32.lib;glew32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -125,14 +125,14 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)src;$(SolutionDir)SFML-2.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)include/;$(SolutionDir)dev\include;$(SolutionDir)dev\include\freetype;$(SolutionDir)dev\include\freetype\freetype2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(SolutionDir)SFML-2.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)src/;$(SolutionDir)dev\lib\sfml;$(SolutionDir)dev\lib\glew;$(SolutionDir)dev\lib\freetype;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfml-window.lib;sfml-main.lib;sfml-system.lib;sfml-graphics.lib;sfml-audio.lib;opengl32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>

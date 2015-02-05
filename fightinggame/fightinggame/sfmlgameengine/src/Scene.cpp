@@ -44,6 +44,11 @@
 //design so all gameobjects need to be set up through a virtual init function
 //So dynamic casting can work properly
 
+//==Current Task==//
+//Reworking gameobjects to be component based
+//so that it is easier to make the game and have
+//elments modular and more OO
+
 void Scene::init()
 {
 	ActiveController=false;

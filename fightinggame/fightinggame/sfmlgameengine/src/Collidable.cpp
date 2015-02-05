@@ -2,112 +2,89 @@
 
 Collidable::Collidable()
 {
-	myTag=GS::componentTag::collision;
-	_myOwner=NULL;
-	_collisionTarget=nullptr;
-	_currentCollision = col::collisionTypes::noCollision;
+	m_Owner=NULL;
+	m_CollisionTarget=nullptr;
+	m_currentCollision = CollisionType::noCollision;
+}
+ComponentType::type Collidable::getType()
+{
+	return ComponentType::COLLIDABLE;
+}
+void Collidable::tearDown()
+{
+
 }
 Collidable::Collidable(float _size /*Size*/, sf::Vector2f _position /*Position*/, int _owner)
 {
-	myTag=GS::componentTag::collision;
-	_collisionTarget=nullptr;
-	_myOwner=_owner;
-	myPosition = _position;
-	size = _size;
+	m_CollisionTarget=nullptr;
+	m_Owner=_owner;
+	m_Transform->setPosition(glm::vec3(_position.x,_position.y,m_Transform->getPosition().z));
 
-	_currentCollision = col::collisionTypes::noCollision;
+	m_Size = _size;
+	m_currentCollision = CollisionType::noCollision;
 
-	upperPos = sf::Vector2f(_position.x+size/2, _position.y+size/2);
-	lowerPos = sf::Vector2f(_position.x-size/2, _position.y-size/2);
-	setUpDisp();
+	m_UpperPos =glm::vec2(_position.x+m_Size/2, _position.y+m_Size/2);
+	m_LowerPos =glm::vec2(_position.x-m_Size/2, _position.y-m_Size/2);
 }
-void Collidable::move(sf::Vector2f _newPos)
+void Collidable::move(glm::vec2 _newPos)
 {
-	myPosition = _newPos;
-	upperPos = sf::Vector2f(_newPos.x+size/2, _newPos.y+size/2);
-	lowerPos = sf::Vector2f(_newPos.x-size/2, _newPos.y-size/2);
-
-	hitBoxDisp.setPosition(myPosition);
-	upper.setPosition(upperPos);
-	lower.setPosition(lowerPos);
-	center.setPosition(myPosition);
+	m_Transform->setPosition(glm::vec3(_newPos.x,_newPos.y,m_Transform->getPosition().z));
+	m_UpperPos = glm::vec2(_newPos.x+m_Size/2, _newPos.y+m_Size/2);
+	m_LowerPos = glm::vec2(_newPos.x-m_Size/2, _newPos.y-m_Size/2);
 }
 bool Collidable::Interesects(Collidable* _other)
 {
-	if (upperPos.x< _other->lowerPos.x || lowerPos.x > _other->upperPos.x){_collisionTarget=nullptr; return false;}
-	if (upperPos.y< _other->lowerPos.y || lowerPos.y> _other->upperPos.y){_collisionTarget=nullptr; return false;}
+	if (m_UpperPos.x< _other->m_LowerPos.x || m_LowerPos.x > _other->upperPos.x){_collisionTarget=nullptr; return false;}
+	if (m_UpperPos.y< _other->m_LowerPos.y || m_LowerPos.y> _other->m_UpperPos.y){_collisionTarget=nullptr; return false;}
 	return true;
 
 };
 int Collidable::InteresectsDetailed(Collidable* _other)
 {
-	if (upperPos.x< _other->lowerPos.x || lowerPos.x > _other->upperPos.x)
+	if (m_UpperPos.x< _other->m_LowerPos.x || m_LowerPos.x > _other->m_UpperPos.x)
 	{
-		_currentCollision = col::collisionTypes::noCollision;
-		_collisionTarget=nullptr;
-		return col::collisionTypes::noCollision;
+		m_currentCollision = CollisionType::noCollision;
+		m_CollisionTarget=nullptr;
+		return CollisionType::noCollision;
 	}
-	if (upperPos.y< _other->lowerPos.y || lowerPos.y> _other->upperPos.y)
+	if (m_UpperPos.y< _other->m_LowerPos.y || m_LowerPos.y> _other->m_UpperPos.y)
 	{
-		_currentCollision = col::collisionTypes::noCollision;
-		_collisionTarget=nullptr;
-		return col::collisionTypes::noCollision;
+		m_currentCollision = CollisionType::noCollision;
+		m_CollisionTarget=nullptr;
+		return CollisionType::noCollision;
 	}
 
-	_collisionTarget=_other;
+	m_CollisionTarget=_other;
 
 	//difference in x and difference in y
-	float dif_x = _other->myPosition.x - myPosition.x;
-	float dif_y = _other->myPosition.y - myPosition.y;
+	float dif_x = _other->m_Transform->getPosition().x - m_Transform->getPosition().x;
+	float dif_y = _other->m_Transform->getPosition().y - m_Transform->getPosition().y;
 
 	if(abs(dif_x) > abs(dif_y))
 	{
 		if(dif_x>0)
 		{
-			_currentCollision =col::collisionTypes::left;
-			return col::collisionTypes::left;
+			m_currentCollision =CollisionType::left;
+			return CollisionType::left;
 		}
 		if(dif_x<0)
 		{
-			_currentCollision =col::collisionTypes::right;
-			return col::collisionTypes::right;
+			m_currentCollision =CollisionType::right;
+			return CollisionType::right;
 		}
 	}
 	else
 	{
 		if(dif_y>0)
 		{
-			_currentCollision =col::collisionTypes::top;
-			return col::collisionTypes::top;
+			m_currentCollision =CollisionType::top;
+			return CollisionType::top;
 		}
 		if(dif_y<0)
 		{
-			_currentCollision =col::collisionTypes::botton;
-			return col::collisionTypes::botton;
+			m_currentCollision =CollisionType::botton;
+			return CollisionType::botton;
 		}
 	}
-	return col::collisionTypes::basiccollision;
+	return CollisionType::basiccollision;
 };
-void Collidable::setUpDisp()
-{
-	hitBoxDisp.setSize(sf::Vector2f(upperPos.x - lowerPos.x,upperPos.y - lowerPos.y));
-	hitBoxDisp.setPosition(myPosition);
-	hitBoxDisp.setOrigin(hitBoxDisp.getSize().x/2,hitBoxDisp.getSize().x/2);
-	hitBoxDisp.setFillColor(sf::Color::Transparent);
-	hitBoxDisp.setOutlineColor(sf::Color::Red);
-	hitBoxDisp.setOutlineThickness(1.f);
-
-	upper.setPosition(upperPos);
-	upper.setRadius(2.f);
-	upper.setFillColor(sf::Color::Magenta);
-	upper.setOrigin(3.5f,3.5f);
-
-	lower.setPosition(lowerPos);
-	lower.setRadius(2.f);
-	lower.setFillColor(sf::Color::Green);
-
-	center.setPosition(myPosition);
-	center.setRadius(2.f);
-	center.setFillColor(sf::Color::Cyan);
-	center.setOrigin(2.f,2.f);
-}

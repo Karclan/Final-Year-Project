@@ -14,47 +14,56 @@
 #include <glm\gtx\transform.hpp>
 #include <glm\gtx\rotate_vector.hpp>
 
-#include "GameObject.h"
+#include "Component.h"
+#include "Transfrom.h"
 #include "Mesh.h"
 #include "Shader.h"
 
-class Camera
+class Camera : public Component
 {
 public:
+	Camera();
+	~Camera();
+
+	ComponentType::type getType();
+
+	void tearDown();
+
 	void init();
 	void update();
 
-	void setPostion(glm::vec3 _newPos);
-	void setTarget(glm::vec3 _newTarg);
+	void setPostion(glm::vec3 newPos);
+	void setTarget(glm::vec3 newTarg);
 
-	void pan(glm::vec3 _pan);
-	void zoom(float _zoomAmount);
-	void rotate(float _angleX, float _angleY, float _angleZ);
+	void pan(glm::vec3 pan);
+	void zoom(float zoomAmount);
+	void rotate(float angleX, float angleY, float angleZ);
 
-	glm::vec3 getRotation(){return glm::vec3(myYaw,myPitch,myRoll);}
-	glm::vec3 getPosition(){return myPosition;}
-	glm::vec3 getTarget(){return myTarget;}
+	glm::vec3 getRotation(){return glm::vec3(m_Yaw,m_Pitch,m_Roll);}
+	glm::vec3 getTarget(){return m_Target;}
 
-	glm::mat4 mProj;
-	glm::mat4 mView;
-
-	GLuint baseShaderID;
+	glm::mat4 getProjectionMatrix();
+	glm::mat4 getViewMatrix();
 
 	std::vector<GLuint *>* lstOfShaderIDs;
 
 private:
 
-	GLuint viewMatrixID,projectionMatrixID;
+	GLuint  m_viewMatrixID;
+	GLuint	m_projectionMatrixID;
 
-	float myYaw;
-	float myPitch;
-	float myRoll;
+	glm::mat4 m_mProj;
+	glm::mat4 m_mView;
 
-	glm::vec3 myPosition;
-	glm::vec3 myTarget;
-	glm::vec3 myUp;
-	glm::vec3 myRight;
-	glm::vec3 myForward;
+	float m_Yaw;
+	float m_Pitch;
+	float m_Roll;
 
+	glm::vec3 m_Target;
+	glm::vec3 m_Up;
+	glm::vec3 m_Right;
+	glm::vec3 m_Forward;
+
+	SPC_Transform m_Transform;
 };
 #endif

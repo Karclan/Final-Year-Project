@@ -19,20 +19,20 @@ public:
 	ComponentType::type getType();
 	void tearDown();
 
-	void setPosition(glm::vec3 newPosition){m_Transform=newPosition;}
-	void translate(glm::vec3 newTransform){m_Transform+=newTransform;}
+	void setPosition(glm::vec3 newPosition){m_Position=newPosition;}
+	void translate(glm::vec3 newTransform){m_Position+=newTransform;}
 	void rotate(glm::vec3 rot);
 	void scale(glm::vec3 newScale);
 	void setVelocity(glm::vec3 velocity){m_Velocity=velocity;}
 	void modVelocity(glm::vec3 velocity){m_Velocity+=velocity;}
 
-	glm::vec3 getTransform(){return m_Transform;}
+	glm::vec3 getPosition(){return m_Position;}
 	glm::vec3 getRotation(){return m_Rotation;}
 	glm::vec3 getScale(){return m_Scale;}
 	glm::vec3 getVelocity(){return m_Velocity;}
 
 private:
-	glm::vec3 m_Transform;
+	glm::vec3 m_Position;
 	glm::vec3 m_Rotation;
 	glm::vec3 m_Scale;
 	glm::vec3 m_Velocity;

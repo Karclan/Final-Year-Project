@@ -20,11 +20,12 @@ public:
 	Component();
 	~Component();
 
-	virtual ComponentType::type getType()=0;	
-	virtual void tearDown()=0; //! Function to set the state to teardown and let all objects that know about a component remove it so that is can be deleted
+	virtual	ComponentType::type getType()=0;
+	virtual void				tearDown()=0; //! Function to set the state to teardown
+
 	void setState(ComponentState::state state);
 
-	ComponentState::state getState(){return m_state;}
+	ComponentState::state getState();
 
 protected:
 

@@ -4,58 +4,59 @@
 #include <SFML/system.hpp>
 #include <SFML/graphics.hpp>
 
+#include <glm\gtx\transform.hpp>
+#include <glm\gtx\rotate_vector.hpp>
+
 #include <iostream>
 using namespace std;
 
 #include "Component.h"
-#include "GS.h"
+#include "Transfrom.h"
 
-namespace col
+namespace CollisionType
 {
-	enum collisionTypes{top,botton,left,right, basiccollision,noCollision};
+	enum type{top,botton,left,right, basiccollision,noCollision};
 }
 
 class Collidable : public Component
 {
-private:
-
-	sf::Vector2f myPosition, upperPos, lowerPos;
-	sf::CircleShape upper,lower, center;
-	sf::RectangleShape hitBoxDisp;
-	float size;
-
-	void setUpDisp();
-	int _myOwner;
-	
-
-	Collidable *_collisionTarget;
 
 public:
 
 	Collidable();
 	Collidable(float _size /*Size*/, sf::Vector2f _position /*Position*/, int _owner);
 
-	Collidable& operator= (Collidable& newC){
-		myPosition = newC.myPosition;
-		size = newC.size;
-		upperPos = sf::Vector2f(newC.myPosition.x+size/2, newC.myPosition.y+size/2);
-		lowerPos = sf::Vector2f(newC.myPosition.x-size/2, newC.myPosition.y-size/2);
-		setUpDisp();
-	
-		return *this;
-	};
+	ComponentType::type getType();
+	void tearDown();
 
-	void move(sf::Vector2f newPos);
+	void move(glm::vec2 newPos);
 	bool Interesects(Collidable* other);
 	int  InteresectsDetailed(Collidable* other);
-	int  getCurrentCollision(){return _currentCollision;}
-	int  getOwner(){return _myOwner;}
+	int  getCurrentCollision(){return m_currentCollision;}
+	int  getOwner(){return m_Owner;}
 
 
-	sf::Vector2f getPos(){return myPosition;}
-	float getSize(){return size;}
-	Collidable* getCollisionTatget(){return _collisionTarget;}
+	glm::vec2 getPos(){return glm::vec2(m_Transform->getPosition());}
+	float getSize(){return m_Size;}
+	Collidable* getCollisionTatget(){return m_CollisionTarget;}
 
-	int _currentCollision;
+	int m_currentCollision;
+
+	Collidable& operator= (Collidable& newC){
+		m_Transform->setPosition(newC.m_Transform->getPosition());
+		m_Size = newC.m_Size;
+		m_UpperPos = glm::vec2(newC.m_Transform->getPosition().x+m_Size/2, newC.m_Transform->getPosition().y+m_Size/2);
+		m_LowerPos = glm::vec2(newC.m_Transform->getPosition().x-m_Size/2, newC.m_Transform->getPosition().y-m_Size/2);
+		return *this;
+	};
+private:
+
+	glm::vec2 m_UpperPos, m_LowerPos;
+	float m_Size;
+	int m_Owner;
+	
+
+	Collidable *m_CollisionTarget;
+	SPC_Transform m_Transform;
 };
 #endif

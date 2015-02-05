@@ -2,12 +2,12 @@
 
 void Camera::init()
 {
-	myPosition = glm::vec3(0.0f,0.0f,2.5f);
-	myTarget = glm::vec3(0.0f,0.0f,0.0f);
-	myUp = glm::vec3(0.0f,1.0f,0.0f);
+	m_Transform->setPosition(glm::vec3(0.0f,0.0f,2.5f));
+	m_Target = glm::vec3(0.0f,0.0f,0.0f);
+	m_Up = glm::vec3(0.0f,1.0f,0.0f);
 
-	mView = glm::lookAt(myPosition,myPosition-myTarget,myUp);
-	mProj = glm::perspective(glm::radians(90.f), 1.0f, 0.0001f,100.0f);
+	m_mView = glm::lookAt(m_Transform->getPosition(),m_Transform->getPosition()-m_Target,m_Up);
+	m_mProj = glm::perspective(glm::radians(90.f), 1.0f, 0.0001f,100.0f);
 
 	//viewMatrixID = glGetUniformLocation(baseShaderID, "mView");
 	//projectionMatrixID = glGetUniformLocation(baseShaderID, "mProjection");
@@ -16,58 +16,58 @@ void Camera::init()
 }
 void Camera::setPostion(glm::vec3 _newPos)
 {
-	myPosition = _newPos;
+	m_Transform->setPosition(_newPos);
 }
 void Camera::setTarget(glm::vec3 _newTarg)
 {
-	myTarget = _newTarg;
+	m_Target = _newTarg;
 }
 void Camera::pan(glm::vec3 _pan)
 {
 	float speedX = 5.f, speedY = 5.f;
 
-	glm::vec3 forward = myTarget - myPosition;
+	glm::vec3 forward = m_Target - m_Transform->getPosition();
 	glm::vec3 relRight = glm::cross(forward,glm::vec3(0,1,0));
 	glm::vec3 relUp = glm::cross(forward,relRight);
 
-	myTarget += relRight * _pan.x * speedX;
-	myPosition += relRight * _pan.x * speedX;
-	myPosition += relUp * _pan.y * speedY;
-	myTarget += relUp * _pan.y* speedY;
+	m_Target += relRight * _pan.x * speedX;
+	m_Transform->translate(relRight * _pan.x * speedX);
+	m_Transform->translate(relUp * _pan.y * speedY);
+	m_Target += relUp * _pan.y* speedY;
 }
 
 void Camera::zoom(float _zoomAmount)
 {
 	float zoomSpeed = 5.f;
-	glm::vec3 forward = myTarget - myPosition;
-	myPosition -= forward * -_zoomAmount * zoomSpeed;
-	myTarget -= forward * -_zoomAmount * zoomSpeed;
+	glm::vec3 forward = m_Target - m_Transform->getPosition();
+	m_Transform->translate(forward * -_zoomAmount * zoomSpeed);
+	m_Target -= forward * -_zoomAmount * zoomSpeed;
 }
 void Camera::rotate(float _angleX,float _angleY, float _angleZ)
 {
-	myPitch += _angleY;
-	myYaw += _angleX;
-	myRoll += _angleZ;
+	m_Pitch += _angleY;
+	m_Yaw += _angleX;
+	m_Roll += _angleZ;
 
-	if ((myPitch>360) || (myPitch<-360)) myPitch=0;
-	if ((myYaw>360) || (myYaw<-360)) myYaw=0;
-	if ((myRoll>360) || (myRoll<-360)) myRoll=0;
+	if ((m_Pitch>360) || (m_Pitch<-360)) m_Pitch=0;
+	if ((m_Yaw>360) || (m_Yaw<-360)) m_Yaw=0;
+	if ((m_Roll>360) || (m_Roll<-360)) m_Roll=0;
 
-	myPosition = myPosition - myTarget;
+	m_Transform->setPosition(m_Transform->getPosition() - m_Target);
 
-	myPosition = glm::rotate(myPosition,_angleX,glm::vec3(1.f,0.f,0.f));
-	myPosition = glm::rotate(myPosition,_angleY,glm::vec3(0.f,1.f,0.f));
-	myPosition = glm::rotate(myPosition,_angleZ,glm::vec3(0.f,0.f,1.f));
+	m_Transform->setPosition(glm::rotate(m_Transform->getPosition(),_angleX,glm::vec3(1.f,0.f,0.f)));
+	m_Transform->setPosition(glm::rotate(m_Transform->getPosition(),_angleY,glm::vec3(0.f,1.f,0.f)));
+	m_Transform->setPosition(glm::rotate(m_Transform->getPosition(),_angleZ,glm::vec3(0.f,0.f,1.f)));
 
-	myPosition = myPosition + myTarget;
+	m_Transform->setPosition(m_Transform->getPosition() + m_Target);
 }
 void Camera::update()
 {
-	myForward = myTarget - myPosition;
+	m_Forward = m_Target - m_Transform->getPosition();
 
-	myRight = glm::cross(myUp,myForward);
-	glm::vec3 up = glm::normalize(glm::cross(myForward,myRight));		
-	mView= glm::lookAt(myPosition,myTarget,myUp);
+	m_Right = glm::cross(m_Up,m_Forward);
+	glm::vec3 up = glm::normalize(glm::cross(m_Forward,m_Right));		
+	m_mView= glm::lookAt(m_Transform->getPosition(),m_Target,m_Up);
 
 	//glUniformMatrix4fv(viewMatrixID, 1, GL_FALSE, &mView[0][0]);
 }

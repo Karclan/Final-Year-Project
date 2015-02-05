@@ -43,6 +43,9 @@
     <Filter Include="Header Files\Components">
       <UniqueIdentifier>{4d643dad-61da-43c2-b11d-0f0c7d61c325}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Components">
+      <UniqueIdentifier>{070387f1-2bbf-4a4f-b968-fac8bec63003}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="shader\basic.frag">
@@ -59,9 +62,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\Camera.h">
-      <Filter>Header Files\Rendering</Filter>
-    </ClInclude>
     <ClInclude Include="include\CollisionManager.h">
       <Filter>Header Files\Managers</Filter>
     </ClInclude>
@@ -90,9 +90,6 @@
       <Filter>Header Files\Rendering</Filter>
     </ClInclude>
     <ClInclude Include="include\ShaderHandler.h">
-      <Filter>Header Files\Rendering</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Renderable.h">
       <Filter>Header Files\Rendering</Filter>
     </ClInclude>
     <ClInclude Include="include\Renderer.h">
@@ -128,18 +125,18 @@
     <ClInclude Include="include\HitBox.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
+    <ClInclude Include="include\Camera.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Renderable.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Block.cpp">
-      <Filter>Source Files\GameObjStuff</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Camera.cpp">
-      <Filter>Source Files\Rendering</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Collidable.cpp">
       <Filter>Source Files\GameObjStuff</Filter>
     </ClCompile>
     <ClCompile Include="src\CollisionManager.cpp">
@@ -189,6 +186,21 @@
     </ClCompile>
     <ClCompile Include="src\X360Controller.cpp">
       <Filter>Outsourced Code</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Transform.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Component.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Collidable.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Camera.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderable.cpp">
+      <Filter>Source Files\Rendering</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

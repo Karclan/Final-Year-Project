@@ -9,6 +9,7 @@
 #include "FTInterface.h"
 #include "Mesh.h"
 #include "Collidable.h"
+#include "Component.h"
 #include "ShaderHandler.h"
 
 class GameObject
@@ -19,6 +20,7 @@ public:
 
 	virtual void update(float dt)=0;
 	void renderUpdate();
+	SPC_Component findComponent(ComponentType::type);//!< Tries to find a component that the gameObject owns
 
 	void setPosition(glm::vec3 _newPosition){myTransform=_newPosition;}
 	void translate(glm::vec3 _newTransform){myTransform+=_newTransform;}
@@ -61,6 +63,8 @@ public:
 	std::string collisionString;
 
 protected:
+
+	SPC_Transform m_Transform;
 
 	GLuint myShaderID;
 	GLuint modelMatrixID;

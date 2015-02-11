@@ -59,4 +59,7 @@ private:
 	Collidable *m_CollisionTarget;
 	SPC_Transform m_Transform;
 };
+
+typedef	std::shared_ptr<Collidable> SPC_Collidable;
+
 #endif

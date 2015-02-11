@@ -49,4 +49,7 @@ private:
 	Mesh *m_Mesh;
 	SPC_Transform m_Transform;
 };
+
+typedef std::shared_ptr<Renderable> SPC_Renderable;
+
 #endif

@@ -13,6 +13,9 @@
 #include "X360Controller.hpp"
 #include "Scene.h"
 
+
+#include "SceneTest.h"
+
 int initGlew()
 {
 	glewExperimental=GL_TRUE;
@@ -38,8 +41,8 @@ int main()
 
 	initGlew();
 	initFTLib();
-	Scene s;
-	s.init();
+	Scene *s = new SceneTest();
+	s->init();
 
 	glEnable(GL_DEPTH_TEST);
 	glClearDepth(1.0f);
@@ -49,7 +52,7 @@ int main()
 	while (window.isOpen())
 	{
 		Timer::update();
-		s.update(Timer::getTime());
+		s->update();
 
 		sf::Event event;
 
@@ -69,12 +72,12 @@ int main()
 						window.close();
 						break;
 					}
-					s.keyDown(event.key.code);
+					s->keyDown(event.key.code);
 					break;
 				}
 			case sf::Event::KeyReleased:
 				{
-					s.keyUp(event.key.code);
+					s->keyUp(event.key.code);
 					break;
 				}
 			case sf::Event::Resized:

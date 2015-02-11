@@ -1,25 +1,20 @@
 #include "Fighter.hpp"
 
-Fighter::Fighter(float _size,glm::vec3 _position, Mesh* _mesh)
+Fighter::Fighter(float _size,SPC_Transform t,SPC_Renderable r, SPC_Collidable c)
 {
-	myState=fsp::fighterStates::idle;
-
-	myCollidable=new Collidable(_size,sf::Vector2f(_position.x,_position.y),GS::gameObjType::Fighter);
+	myState=fighterStates::idle;
 
 	inAir=false;
 	faceLeft=false;
 	takingDamage=false;
-
-	init(_mesh,_mesh->getColour());
-	setPosition(_position);
 }
 void Fighter::update(float _dt)
 {
-	inCollision();
-	myTransform += myVelocity*_dt;
-	myCollidable->move(sf::Vector2f(getTransform().x,getTransform().y));
+	//inCollision();
+	//myTransform += myVelocity*_dt;
+	//myCollidable->move(sf::Vector2f(getTransform().x,getTransform().y));
 	
-	if(myTransform.y > GS::floor.y)
+	/*if(myTransform.y > GS::floor.y)
 	{
 		inAir=true;
 	}
@@ -61,81 +56,81 @@ void Fighter::update(float _dt)
 			idle();
 			break;
 		}
-	}
+	}*/
 }
 
 
 void Fighter::idle()
 {
-	myVelocity=glm::vec3(myVelocity.x-myVelocity.x*0.2,myVelocity.y,myVelocity.z);
+	//myVelocity=glm::vec3(myVelocity.x-myVelocity.x*0.2,myVelocity.y,myVelocity.z);
 }
 void Fighter::hit()
 {
 	takingDamage=true;
 
-	myState=fsp::idle;
+	//myState=fsp::idle;
 }
 void Fighter::jump()
 {
-	if(inAir==false)
+	/*if(inAir==false)
 	{
 		setVelocity(glm::vec3(getVelocity().x,GS::jumpSpeed,getVelocity().z));
 		inAir=true;
-	}
-	myState=fsp::idle;
+	}*/
+	myState=fighterStates::idle;
 }
 void Fighter::run()
 {
-	if(faceLeft==true)
+	/*if(faceLeft==true)
 	{
 		setVelocity(glm::vec3(-GS::runSpeed,getVelocity().y,getVelocity().z));
 	}
 	else
 	{
 		setVelocity(glm::vec3(GS::runSpeed,getVelocity().y,getVelocity().z));
-	}
-	myState=fsp::idle;
+	}*/
+	myState=fighterStates::idle;
 }
 void Fighter::walk()
 {
-	if(faceLeft==true)
+	/*if(faceLeft==true)
 	{
 		setVelocity(glm::vec3(-GS::walkSpeed,getVelocity().y,getVelocity().z));
 	}
 	else
 	{
 		setVelocity(glm::vec3(GS::walkSpeed,getVelocity().y,getVelocity().z));
-	}
-	myState=fsp::idle;
+	}*/
+	myState=fighterStates::idle;
 }
 void Fighter::attack()
 {
 
-	myState=fsp::idle;
+	myState=fighterStates::idle;
 }
 void Fighter::fighterCollision()
 {
-	switch(myCollidable->getCurrentCollision())
-	{
-	case col::top:
-		myVelocity.y =0.f;
-		//myTransform.y=myCollidable->getCollisionTatget()->getPos().y - myCollidable->getCollisionTatget()->getSize();
-		break;
-	case col::botton:
-		myVelocity.y =0.f;
-		myTransform.y=myCollidable->getCollisionTatget()->getPos().y + myCollidable->getCollisionTatget()->getSize();
-		break;
-	case col::left:
-		myTransform.x=myCollidable->getCollisionTatget()->getPos().x - myCollidable->getCollisionTatget()->getSize();
-		break;
-	case col::right:
-		myTransform.x=myCollidable->getCollisionTatget()->getPos().x + myCollidable->getCollisionTatget()->getSize();
-		break;
-	}
+	//switch(myCollidable->getCurrentCollision())
+	//{
+	//case col::top:
+	//	myVelocity.y =0.f;
+	//	//myTransform.y=myCollidable->getCollisionTatget()->getPos().y - myCollidable->getCollisionTatget()->getSize();
+	//	break;
+	//case col::botton:
+	//	myVelocity.y =0.f;
+	//	myTransform.y=myCollidable->getCollisionTatget()->getPos().y + myCollidable->getCollisionTatget()->getSize();
+	//	break;
+	//case col::left:
+	//	myTransform.x=myCollidable->getCollisionTatget()->getPos().x - myCollidable->getCollisionTatget()->getSize();
+	//	break;
+	//case col::right:
+	//	myTransform.x=myCollidable->getCollisionTatget()->getPos().x + myCollidable->getCollisionTatget()->getSize();
+	//	break;
+	//}
 }
 void Fighter::blockCollision()
 {
-	switch(myCollidable->getCurrentCollision())
+	/*switch(myCollidable->getCurrentCollision())
 	{
 	case col::top:
 		myVelocity.y=0.f;
@@ -153,11 +148,11 @@ void Fighter::blockCollision()
 		myVelocity.x=0.f;
 		myTransform.x=myCollidable->getCollisionTatget()->getPos().x + myCollidable->getCollisionTatget()->getSize();
 		break;
-	}
+	}*/
 }
 void Fighter::hitboxCollision()
 {
-	switch(myCollidable->getCurrentCollision())
+	/*switch(myCollidable->getCurrentCollision())
 	{
 	case col::top:
 		break;
@@ -167,5 +162,5 @@ void Fighter::hitboxCollision()
 		break;
 	case col::right:
 		break;
-	}
+	}*/
 }

@@ -1,14 +1,14 @@
 #include "HitBox.h"
 
-HitBox::HitBox(Mesh *m, float timeToLive)
+HitBox::HitBox(SPC_Transform t,SPC_Renderable r,float timeToLive)
 {
-	m_mesh = m;
+	m_Renderable = r;
 	m_timeToLive = timeToLive;
 }
 HitBox::~HitBox()
 {
 	
-	m_mesh=nullptr;
+	m_Renderable = nullptr;
 }
 void HitBox::update(float dt)
 {

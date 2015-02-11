@@ -4,10 +4,14 @@ FallingBlock::FallingBlock()
 {
 
 }
-FallingBlock::FallingBlock(float _size, glm::vec3 _position, Mesh* _mesh, sf::Vector3f _colour)
+FallingBlock::FallingBlock(SPC_Transform t, SPC_Collidable c, SPC_Renderable r)
 {
-	myCollidable=new Collidable(_size,sf::Vector2f(_position.x,_position.y),GS::gameObjType::fallingBlock);
-	myTransform = _position;
-	giveMesh(_mesh);
-	myColour=_colour;
+	m_Transform = t;
+	m_Collidable = c;
+	m_Renderable = r;
 }
+void FallingBlock::update(float _dt)
+{
+
+}
+

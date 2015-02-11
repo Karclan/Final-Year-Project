@@ -34,8 +34,8 @@ void Collidable::move(glm::vec2 _newPos)
 }
 bool Collidable::Interesects(Collidable* _other)
 {
-	if (m_UpperPos.x< _other->m_LowerPos.x || m_LowerPos.x > _other->upperPos.x){_collisionTarget=nullptr; return false;}
-	if (m_UpperPos.y< _other->m_LowerPos.y || m_LowerPos.y> _other->m_UpperPos.y){_collisionTarget=nullptr; return false;}
+	if (m_UpperPos.x< _other->m_LowerPos.x || m_LowerPos.x > _other->m_UpperPos.x){m_CollisionTarget=nullptr; return false;}
+	if (m_UpperPos.y< _other->m_LowerPos.y || m_LowerPos.y> _other->m_UpperPos.y){m_CollisionTarget=nullptr; return false;}
 	return true;
 
 };

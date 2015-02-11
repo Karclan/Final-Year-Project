@@ -19,6 +19,7 @@
   <ItemGroup>
     <ClInclude Include="include\Block.h" />
     <ClInclude Include="include\Camera.h" />
+    <ClInclude Include="include\CameraObj.h" />
     <ClInclude Include="include\Collidable.h" />
     <ClInclude Include="include\CollisionManager.h" />
     <ClInclude Include="include\Component.h" />
@@ -29,12 +30,15 @@
     <ClInclude Include="include\GameObject.h" />
     <ClInclude Include="include\GameObjectManager.h" />
     <ClInclude Include="include\GS.h" />
+    <ClInclude Include="include\Light.h" />
     <ClInclude Include="include\HitBox.h" />
     <ClInclude Include="include\Input.h" />
     <ClInclude Include="include\Mesh.h" />
     <ClInclude Include="include\Renderable.h" />
     <ClInclude Include="include\Renderer.h" />
     <ClInclude Include="include\Scene.h" />
+    <ClInclude Include="include\SceneBasic.h" />
+    <ClInclude Include="include\SceneTest.h" />
     <ClInclude Include="include\Shader.h" />
     <ClInclude Include="include\ShaderHandler.h" />
     <ClInclude Include="include\Timer.h" />
@@ -42,6 +46,7 @@
     <ClInclude Include="include\X360Controller.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="include\SceneTest.cpp" />
     <ClCompile Include="src\Block.cpp" />
     <ClCompile Include="src\Camera.cpp" />
     <ClCompile Include="src\Collidable.cpp" />
@@ -60,6 +65,7 @@
     <ClCompile Include="src\Mesh.cpp" />
     <ClCompile Include="src\Renderable.cpp" />
     <ClCompile Include="src\Scene.cpp" />
+    <ClCompile Include="src\SceneBasic.cpp" />
     <ClCompile Include="src\Shader.cpp" />
     <ClCompile Include="src\ShaderHandler.cpp" />
     <ClCompile Include="src\Timer.cpp" />

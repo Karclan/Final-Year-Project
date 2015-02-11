@@ -1,5 +1,7 @@
 #include "Component.h"
 
+Component::Component(){}
+Component::~Component(){}
 void Component::setState(ComponentState::state state)
 {
 	m_state = state;

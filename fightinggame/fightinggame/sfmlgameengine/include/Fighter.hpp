@@ -2,17 +2,20 @@
 #define FIGHTER_H
 
 #include "GameObject.h"
-#include "GS.h"
+#include "Collidable.h"
+#include "Transfrom.h"
+#include "Renderable.h"
+#include "Collidable.h"
 
-namespace fsp
+namespace fighterStates
 {
-	 enum fighterStates{hit,jump,run,walk,attack,idle,dodge, FIGHTERSTATES};
+	 enum states{hit,jump,run,walk,attack,idle,dodge, FIGHTERSTATES};
 }
 
 class Fighter : public GameObject
 {
 public:
-	Fighter(float _size, glm::vec3 _position, Mesh*);
+	Fighter(float _size,SPC_Transform t,SPC_Renderable r, SPC_Collidable c);
 
 	void update(float _dt);
 	void switchState(int _newState){myState=_newState;}
@@ -34,5 +37,9 @@ protected:
 	bool inAir;
 	bool faceLeft;
 	bool takingDamage;
+
+	SPC_Renderable m_Renderable;
+	SPC_Transform m_Transform;
+	SPC_Collidable m_Collidable;
 };
 #endif

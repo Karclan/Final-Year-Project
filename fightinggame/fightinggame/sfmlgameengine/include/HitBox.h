@@ -5,18 +5,18 @@
 
 #include "Collidable.h"
 #include "Timer.h"
-#include "Mesh.h"
+#include "Renderable.h"
 
 class HitBox : public Collidable
 {
 public:
-	HitBox(Mesh *m,float timeToLive);
+	HitBox(SPC_Transform t,SPC_Renderable r,float timeToLive);
 	~HitBox();
 	void update(float dt);
 
 
 private:
 	float m_timeToLive;
-	Mesh *m_mesh;
+	SPC_Renderable m_Renderable;
 };
 #endif

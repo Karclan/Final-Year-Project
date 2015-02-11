@@ -41,11 +41,11 @@ void CollisionManager::removeFromCheck(Collidable *c)
 
 void CollisionManager::createHitBox(Mesh *m, float timeToLive)
 {
-	HitBox *newHitBox = addHitBox(m,timeToLive);
-	addToCheck(newHitBox->getCollidable());
+	///HitBox *newHitBox = addHitBox(m,timeToLive);
+	//addToCheck(newHitBox->getCollidable());
 }
-HitBox* CollisionManager::addHitBox(Mesh *m, float timeToLive)
-{
-	HitBox *nHB = new HitBox(m,timeToLive);
-	return nHB;
-}
+//HitBox* CollisionManager::addHitBox(Mesh *m, float timeToLive)
+//{
+//	//HitBox *nHB = new HitBox(m,timeToLive);
+//	//return nHB;
+//}

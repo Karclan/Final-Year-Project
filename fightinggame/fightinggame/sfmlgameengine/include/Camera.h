@@ -45,8 +45,6 @@ public:
 	glm::mat4 getProjectionMatrix();
 	glm::mat4 getViewMatrix();
 
-	std::vector<GLuint *>* lstOfShaderIDs;
-
 private:
 
 	GLuint  m_viewMatrixID;
@@ -66,4 +64,5 @@ private:
 
 	SPC_Transform m_Transform;
 };
+typedef std::shared_ptr<Camera> SPC_Camera;
 #endif

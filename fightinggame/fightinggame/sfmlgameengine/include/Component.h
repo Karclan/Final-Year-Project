@@ -21,7 +21,8 @@ public:
 	~Component();
 
 	virtual	ComponentType::type getType()=0;
-	virtual void				tearDown()=0; //! Function to set the state to teardown
+	virtual void				tearDown()=0; //!< Function to set the state to teardown
+	//!< tear down function will set the state so things that know about this component can deal with removing it
 
 	void setState(ComponentState::state state);
 

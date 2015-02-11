@@ -1,50 +1,56 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\GameObjStuff">
-      <UniqueIdentifier>{84220bab-3d67-4325-8dee-bdadb4769d66}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Outsourced Code">
       <UniqueIdentifier>{1741d31b-28d5-4b5e-bbda-7a458687f9fc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Rendering">
-      <UniqueIdentifier>{2e6d01f9-ad8c-45b0-94ab-841d8226050c}</UniqueIdentifier>
+    <Filter Include="Game-Engine">
+      <UniqueIdentifier>{7ab4cf21-d8da-4e90-be23-8373ddd61ddd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Rendering">
+    <Filter Include="Game-Engine\Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Game-Engine\Header Files\Rendering">
       <UniqueIdentifier>{f839e6fb-5f26-441f-a544-d903e75292c1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Managers">
-      <UniqueIdentifier>{c68d482a-eff3-4b9e-b219-c8b4ab90c1c2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\GameObjStuff">
+    <Filter Include="Game-Engine\Header Files\GameObjStuff">
       <UniqueIdentifier>{567787ce-3b97-4758-9f39-40a8e759bb7c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Managers">
-      <UniqueIdentifier>{ac69ec5e-dcce-4405-8b59-c534a8f431b5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Core">
-      <UniqueIdentifier>{b804fe24-cf9c-4af2-82a1-aa6bd126807a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\core">
-      <UniqueIdentifier>{f40bf5b2-97a7-4fcb-a70c-3b9a0c425bb7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Components">
+    <Filter Include="Game-Engine\Header Files\Components">
       <UniqueIdentifier>{4d643dad-61da-43c2-b11d-0f0c7d61c325}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Components">
+    <Filter Include="Game-Engine\Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Game-Engine\Source Files\GameObjStuff">
+      <UniqueIdentifier>{84220bab-3d67-4325-8dee-bdadb4769d66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game-Engine\Source Files\Rendering">
+      <UniqueIdentifier>{2e6d01f9-ad8c-45b0-94ab-841d8226050c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game-Engine\Source Files\Core">
+      <UniqueIdentifier>{b804fe24-cf9c-4af2-82a1-aa6bd126807a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game-Engine\Source Files\Components">
       <UniqueIdentifier>{070387f1-2bbf-4a4f-b968-fac8bec63003}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game-Implementation">
+      <UniqueIdentifier>{e2b49dae-4bcf-4427-9219-7fe0d780dd60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game-Implementation\Header Files">
+      <UniqueIdentifier>{b28fa248-cfcb-4ccb-85d4-8d0f998da6e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game-Implementation\Source Files">
+      <UniqueIdentifier>{55734255-f09e-4949-ae8d-965c9a00e5fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game-Engine\Header Files\Core">
+      <UniqueIdentifier>{f40bf5b2-97a7-4fcb-a70c-3b9a0c425bb7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -62,145 +68,163 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\CollisionManager.h">
-      <Filter>Header Files\Managers</Filter>
-    </ClInclude>
     <ClInclude Include="include\ControllerInput.h">
-      <Filter>Header Files\core</Filter>
-    </ClInclude>
-    <ClInclude Include="include\FallingBlock.h">
-      <Filter>Header Files\GameObjStuff</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Fighter.hpp">
-      <Filter>Header Files\GameObjStuff</Filter>
-    </ClInclude>
-    <ClInclude Include="include\GameObject.h">
-      <Filter>Header Files\GameObjStuff</Filter>
+      <Filter>Game-Engine\Header Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="include\GS.h">
-      <Filter>Header Files\core</Filter>
+      <Filter>Game-Engine\Header Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="include\Input.h">
-      <Filter>Header Files\core</Filter>
+      <Filter>Game-Engine\Header Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="include\Scene.h">
-      <Filter>Header Files\core</Filter>
+      <Filter>Game-Engine\Header Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="include\Shader.h">
-      <Filter>Header Files\Rendering</Filter>
+      <Filter>Game-Engine\Header Files\Rendering</Filter>
     </ClInclude>
     <ClInclude Include="include\ShaderHandler.h">
-      <Filter>Header Files\Rendering</Filter>
+      <Filter>Game-Engine\Header Files\Rendering</Filter>
     </ClInclude>
     <ClInclude Include="include\Renderer.h">
-      <Filter>Header Files\Rendering</Filter>
+      <Filter>Game-Engine\Header Files\Rendering</Filter>
     </ClInclude>
     <ClInclude Include="include\Mesh.h">
-      <Filter>Header Files\Rendering</Filter>
+      <Filter>Game-Engine\Header Files\Rendering</Filter>
     </ClInclude>
     <ClInclude Include="include\Timer.h">
-      <Filter>Header Files\core</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Block.h">
-      <Filter>Header Files\GameObjStuff</Filter>
+      <Filter>Game-Engine\Header Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="include\X360Controller.hpp">
       <Filter>Outsourced Code</Filter>
     </ClInclude>
     <ClInclude Include="include\Component.h">
-      <Filter>Header Files\Components</Filter>
+      <Filter>Game-Engine\Header Files\Components</Filter>
     </ClInclude>
     <ClInclude Include="include\Collidable.h">
-      <Filter>Header Files\Components</Filter>
+      <Filter>Game-Engine\Header Files\Components</Filter>
     </ClInclude>
     <ClInclude Include="include\FTInterface.h">
-      <Filter>Header Files\Rendering</Filter>
-    </ClInclude>
-    <ClInclude Include="include\GameObjectManager.h">
-      <Filter>Header Files\Managers</Filter>
+      <Filter>Game-Engine\Header Files\Rendering</Filter>
     </ClInclude>
     <ClInclude Include="include\Transfrom.h">
-      <Filter>Header Files\Components</Filter>
+      <Filter>Game-Engine\Header Files\Components</Filter>
     </ClInclude>
     <ClInclude Include="include\HitBox.h">
-      <Filter>Header Files\Components</Filter>
+      <Filter>Game-Engine\Header Files\Components</Filter>
     </ClInclude>
     <ClInclude Include="include\Camera.h">
-      <Filter>Header Files\Components</Filter>
+      <Filter>Game-Engine\Header Files\Components</Filter>
     </ClInclude>
     <ClInclude Include="include\Renderable.h">
-      <Filter>Header Files\Components</Filter>
+      <Filter>Game-Engine\Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Light.h">
+      <Filter>Game-Engine\Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameObject.h">
+      <Filter>Game-Engine\Header Files\GameObjStuff</Filter>
+    </ClInclude>
+    <ClInclude Include="include\FallingBlock.h">
+      <Filter>Game-Implementation\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Block.h">
+      <Filter>Game-Implementation\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Fighter.hpp">
+      <Filter>Game-Implementation\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameObjectManager.h">
+      <Filter>Game-Engine\Header Files\GameObjStuff</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CollisionManager.h">
+      <Filter>Game-Engine\Header Files\GameObjStuff</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CameraObj.h">
+      <Filter>Game-Implementation\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SceneBasic.h">
+      <Filter>Game-Implementation\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SceneTest.h">
+      <Filter>Game-Implementation\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Block.cpp">
-      <Filter>Source Files\GameObjStuff</Filter>
-    </ClCompile>
-    <ClCompile Include="src\CollisionManager.cpp">
-      <Filter>Source Files\Managers</Filter>
-    </ClCompile>
     <ClCompile Include="src\ControllerInput.cpp">
-      <Filter>Source Files\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="src\FallingBlock.cpp">
-      <Filter>Source Files\GameObjStuff</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Fighter.cpp">
-      <Filter>Source Files\GameObjStuff</Filter>
+      <Filter>Game-Engine\Source Files\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\FTInterface.cpp">
-      <Filter>Source Files\Rendering</Filter>
+      <Filter>Game-Engine\Source Files\Rendering</Filter>
     </ClCompile>
     <ClCompile Include="src\GameObject.cpp">
-      <Filter>Source Files\GameObjStuff</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GameObjectManager.cpp">
-      <Filter>Source Files\Managers</Filter>
+      <Filter>Game-Engine\Source Files\GameObjStuff</Filter>
     </ClCompile>
     <ClCompile Include="src\GS.cpp">
-      <Filter>Source Files\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="src\HitBox.cpp">
-      <Filter>Source Files\GameObjStuff</Filter>
+      <Filter>Game-Engine\Source Files\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Input.cpp">
-      <Filter>Source Files\Core</Filter>
+      <Filter>Game-Engine\Source Files\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Mesh.cpp">
-      <Filter>Source Files\Rendering</Filter>
+      <Filter>Game-Engine\Source Files\Rendering</Filter>
     </ClCompile>
     <ClCompile Include="src\Scene.cpp">
-      <Filter>Source Files\Core</Filter>
+      <Filter>Game-Engine\Source Files\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Shader.cpp">
-      <Filter>Source Files\Rendering</Filter>
+      <Filter>Game-Engine\Source Files\Rendering</Filter>
     </ClCompile>
     <ClCompile Include="src\ShaderHandler.cpp">
-      <Filter>Source Files\Rendering</Filter>
+      <Filter>Game-Engine\Source Files\Rendering</Filter>
     </ClCompile>
     <ClCompile Include="src\Timer.cpp">
-      <Filter>Source Files\Core</Filter>
+      <Filter>Game-Engine\Source Files\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\X360Controller.cpp">
       <Filter>Outsourced Code</Filter>
     </ClCompile>
     <ClCompile Include="src\Transform.cpp">
-      <Filter>Source Files\Components</Filter>
+      <Filter>Game-Engine\Source Files\Components</Filter>
     </ClCompile>
     <ClCompile Include="src\Component.cpp">
-      <Filter>Source Files\Components</Filter>
+      <Filter>Game-Engine\Source Files\Components</Filter>
     </ClCompile>
     <ClCompile Include="src\Collidable.cpp">
-      <Filter>Source Files\Components</Filter>
+      <Filter>Game-Engine\Source Files\Components</Filter>
     </ClCompile>
     <ClCompile Include="src\Camera.cpp">
-      <Filter>Source Files\Components</Filter>
+      <Filter>Game-Engine\Source Files\Components</Filter>
     </ClCompile>
     <ClCompile Include="src\Renderable.cpp">
-      <Filter>Source Files\Rendering</Filter>
+      <Filter>Game-Engine\Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Fighter.cpp">
+      <Filter>Game-Implementation\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Block.cpp">
+      <Filter>Game-Implementation\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HitBox.cpp">
+      <Filter>Game-Implementation\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FallingBlock.cpp">
+      <Filter>Game-Implementation\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CollisionManager.cpp">
+      <Filter>Game-Engine\Source Files\GameObjStuff</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameObjectManager.cpp">
+      <Filter>Game-Engine\Source Files\GameObjStuff</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Main.cpp">
+      <Filter>Game-Implementation</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SceneBasic.cpp">
+      <Filter>Game-Implementation\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\SceneTest.cpp">
+      <Filter>Game-Implementation\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

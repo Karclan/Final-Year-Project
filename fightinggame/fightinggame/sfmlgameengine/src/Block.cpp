@@ -2,28 +2,33 @@
 //whenever mytransform is changed, change the collision box position also
 Block::Block()
 {
-	myCollidable=nullptr;
-	setPosition(glm::vec3(0,0,0));
-	setColour(sf::Vector3f(0,0,0));
-	giveMesh(nullptr);
+	m_Collidable=nullptr;
+	m_Transform=nullptr;
+	m_Renderable=nullptr;
 }
-Block::Block(float _size, glm::vec3 _position, Mesh *_mesh, sf::Vector3f _colour)
+Block::Block(SPC_Transform t, SPC_Collidable c, SPC_Renderable r)
 {
-	myCollidable=new Collidable(_size,sf::Vector2f(_position.x,_position.y),GS::gameObjType::block);
-	init(_mesh,_colour);
-	setPosition(_position);
+	m_Transform  =t;
+	m_Collidable =c;
+	m_Renderable =r;
 }
-void Block::update(float _dt)
+void Block::update()
 {
-	updateCycle();
+
 }
-void Block::updateCycle()
+void Block::renderUpdate()
 {
-	myTransform += myVelocity;
-	myCollidable->move(sf::Vector2f(getTransform().x,getTransform().y));
+
 }
+
+//void Block::updateCycle()
+//{
+//	myTransform += myVelocity;
+//	myCollidable->move(sf::Vector2f(getTransform().x,getTransform().y));
+//}
 Block::~Block()
 {
-	myCollidable=nullptr;
-	delete myCollidable;
+	m_Collidable=nullptr;
+	m_Transform=nullptr;
+	m_Renderable=nullptr;
 }

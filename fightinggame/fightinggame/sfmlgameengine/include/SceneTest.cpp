@@ -2,7 +2,7 @@
 
 void SceneTest::init()
 {
-
+	//s.createShader("shader/basic.vert", "shader/basic.frag");
 }
 void SceneTest::update()
 {

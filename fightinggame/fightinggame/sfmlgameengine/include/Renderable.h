@@ -1,9 +1,13 @@
 #ifndef RENDERABLE_H
 #define RENDERABLE_H
 
+
+#include <glm\gtx\matrix_transform_2d.hpp>
+
 #include "Component.h"
 #include "Transfrom.h"
 #include "Mesh.h"
+#include "Shader.h"
 
 /*
 	Renderable Component.
@@ -20,33 +24,32 @@ public:
 	void renderUpdate();
 
 	void giveMesh(Mesh *mesh);
-	void setShaderHandle(GLuint shaderID);
-
-	void setAmb (glm::vec3 ambientReflection);
+	
+	void setShader(Shader *shader);
 	void setDiff(glm::vec3 diffuseReflection);
 	void setSpec(glm::vec3 specularReflection);
 	void setSpecEx(GLfloat exponent);
 
 	Mesh* getMesh();
-	GLuint getShaderHandle();
-	glm::vec3 getAmb();
+	Shader* getShader();
 	glm::vec3 getDiff();
 	glm::vec3 getSpec();
-	float getSpecEx();
+	GLfloat getSpecEx();
 
 private:
+	void setShaderHandle();
 
 	GLuint m_ShaderHandle;
 	GLuint m_ModelMatrixID;
 	glm::mat4 m_ModelMatrix;
 
 	glm::vec3 m_ColourTint;
-	glm::vec3 m_AmbientReflection;
 	glm::vec3 m_DiffuseReflection;
 	glm::vec3 m_SpecularReflection;
 	GLfloat m_SpecularExponent;
 	
 	Mesh *m_Mesh;
+	Shader *m_Shader;
 	SPC_Transform m_Transform;
 };
 

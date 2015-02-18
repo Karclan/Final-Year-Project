@@ -27,7 +27,9 @@ public:
 	void createShader(string vertFile, string fragFile);
 	void linkMe();
 
-	GLuint getHandle(){return shaderProgID;}
+	GLuint getHandle(){return m_ProgID;}
+
+	void useProgram();
 
 	void setUniform(const char *_name, float _x, float _y, float _z);
     void setUniform(const char *_name, const glm::vec2 &_v);
@@ -46,7 +48,7 @@ private:
 	std::map<std::string, int> uniformLocations;
     GLint  getUniformLocation(const char * name );
 
-	GLuint vertShader, fragShader;
-	GLuint shaderProgID;
+	GLuint m_vertShader, m_fragShader;
+	GLuint m_ProgID;
 };
 #endif

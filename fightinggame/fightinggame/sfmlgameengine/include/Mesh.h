@@ -20,7 +20,7 @@
 class Mesh
 {
 public:
-	Mesh();
+	//Mesh();
 	Mesh(int _primativeType, sf::Vector3f colour, GLuint myShaderHandle);
 	~Mesh();
 	void genTexture(std::string textFile);

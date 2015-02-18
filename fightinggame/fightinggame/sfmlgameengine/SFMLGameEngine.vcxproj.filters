@@ -196,9 +196,6 @@
     <ClCompile Include="src\Camera.cpp">
       <Filter>Game-Engine\Source Files\Components</Filter>
     </ClCompile>
-    <ClCompile Include="src\Renderable.cpp">
-      <Filter>Game-Engine\Source Files\Rendering</Filter>
-    </ClCompile>
     <ClCompile Include="src\Fighter.cpp">
       <Filter>Game-Implementation\Source Files</Filter>
     </ClCompile>
@@ -225,6 +222,12 @@
     </ClCompile>
     <ClCompile Include="include\SceneTest.cpp">
       <Filter>Game-Implementation\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderable.cpp">
+      <Filter>Game-Engine\Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderer.cpp">
+      <Filter>Game-Engine\Source Files\Rendering</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

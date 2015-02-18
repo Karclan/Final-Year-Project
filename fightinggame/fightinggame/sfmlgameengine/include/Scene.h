@@ -16,6 +16,7 @@
 #include "GameObjectManager.h"
 #include "GameObject.h"
 #include "Shader.h"
+#include "Renderer.h"
 #include "Input.h"
 #include "ControllerInput.h"
 #include "FTInterface.h"
@@ -24,21 +25,22 @@
 class Scene
 {
 public:
-
-	virtual void init()=0;
-	virtual void update()=0;
-	virtual void handleInput()=0;
-	virtual void handleController()=0;
+	Scene();
+	~Scene();
+	virtual void init()				=0;
+	virtual void update()			=0;
+	virtual void handleInput()		=0;
+	virtual void handleController()	=0;
 
 	void keyDown(int key_code);
-	void keyUp(int key_code);	
+	void keyUp	(int key_code);	
 
 private:
-	Input _inputHandler;
-	ControllerInput _controllerInput;
 
-	Shader s;
-	CollisionManager m_CollisionManager;
-	GameObjectManager m_GameObjectManager;
+	Input				m_inputHandler;
+	ControllerInput		m_controllerInput;
+	CollisionManager	m_CollisionManager;
+	GameObjectManager	m_GameObjectManager;
+	Renderer			m_Renderer;
 };
 #endif // !SCENE_H

@@ -48,6 +48,16 @@
 //Reworking gameobjects to be component based
 //so that it is easier to make the game and have
 //elments modular and more OO
+Scene::Scene()
+{
+	m_Renderer.init();
+	m_inputHandler.init();
+	init();
+}
+Scene::~Scene()
+{
+
+}
 
 void Scene::init()
 {
@@ -119,11 +129,11 @@ void Scene::update()
 
 void Scene::keyDown(int key_code)
 {
-	_inputHandler.keyPressed(key_code);
+	m_inputHandler.keyPressed(key_code);
 }
 void Scene::keyUp(int key_code)
 {
-	_inputHandler.keyReleased(key_code);
+	m_inputHandler.keyReleased(key_code);
 }
 //This will be a state swapping function only eventually
 //void Scene::handleController(float dt)

@@ -10,7 +10,10 @@ GameObjectManager::~GameObjectManager(void)
 }
 void GameObjectManager::update()
 {
-
+	for (auto it : m_GameObjects)
+	{ 
+		it->update(Timer::getTime());
+	}
 }
 void GameObjectManager::newGO(int type)
 {

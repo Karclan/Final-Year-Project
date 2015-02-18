@@ -22,20 +22,22 @@
 #include "FTInterface.h"
 
 //!< Interface Scene class
+
 class Scene
 {
 public:
 	Scene();
 	~Scene();
+
 	virtual void init()				=0;
 	virtual void update()			=0;
 	virtual void handleInput()		=0;
 	virtual void handleController()	=0;
 
-	void keyDown(int key_code);
-	void keyUp	(int key_code);	
+	void keyDown (int key_code);
+	void keyUp	 (int key_code);	
 
-private:
+protected:
 
 	Input				m_inputHandler;
 	ControllerInput		m_controllerInput;

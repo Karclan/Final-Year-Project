@@ -48,7 +48,6 @@ void Renderable::setSpecEx(GLfloat exponent)
 {
 	m_SpecularExponent = exponent;
 }
-
 Mesh* Renderable::getMesh()
 {
 	return m_Mesh;

@@ -14,7 +14,7 @@ class GameObjectManager
 public:
 	GameObjectManager(void);
 	~GameObjectManager(void);
-	std::list<GameObject*>& getObjectList(){return m_lstOfGameObjects;}
+	std::list<GameObject*>& getObjectList(){ return m_GameObjects; }
 	
 	void update();
 
@@ -22,7 +22,7 @@ public:
 private:
 	GameObject* newObj();
 
-	std::list<GameObject *> m_lstOfGameObjects;
-	CollisionManager* m_cm;
+	std::list<GameObject *> m_GameObjects;
+	CollisionManager* m_collisionManagerPTR;
 };
 #endif

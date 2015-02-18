@@ -5,7 +5,7 @@ void Renderer::init()
 	//create shaders
 	//set lights
 	basic = new Shader();
-	basic->createShader("basic.vert","basic.frag");
+	basic->createShader("shader/basic.vert","shader/basic.frag");
 	m_shaders.emplace("basic",basic);
 
 	for(auto it : m_shaders)
@@ -67,6 +67,7 @@ void Renderer::setLights(Shader* s)
 
 void Renderer::render()
 {
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	for(auto it: m_renderables)
 	{
 		it->renderUpdate();

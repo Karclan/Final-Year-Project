@@ -50,9 +50,6 @@
 //elments modular and more OO
 Scene::Scene()
 {
-	m_Renderer.init();
-	m_inputHandler.init();
-	init();
 }
 Scene::~Scene()
 {

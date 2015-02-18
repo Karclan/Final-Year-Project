@@ -17,6 +17,10 @@ Mesh::Mesh(int _primativeType, sf::Vector3f colour, GLuint _shaderHandle)
 	myShaderHandle = _shaderHandle;
 	init(_primativeType,colour);
 }
+Mesh::~Mesh()
+{
+
+}
 void Mesh::init(int _primativeType, sf::Vector3f colour)
 {
 	//model loader stuff goes here and then inputted into the

@@ -11,14 +11,17 @@ Block::Block(SPC_Transform t, SPC_Collidable c, SPC_Renderable r)
 	m_Transform  =t;
 	m_Collidable =c;
 	m_Renderable =r;
+	m_components.push_back(m_Transform);
+	m_components.push_back(m_Collidable);
+	m_components.push_back(m_Renderable);
 }
-void Block::update()
+void Block::update(float dt)
 {
-
+	m_Renderable->renderUpdate();
 }
 void Block::renderUpdate()
 {
-
+	
 }
 
 //void Block::updateCycle()

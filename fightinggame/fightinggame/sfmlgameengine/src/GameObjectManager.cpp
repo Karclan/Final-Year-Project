@@ -2,11 +2,20 @@
 
 GameObjectManager::GameObjectManager(void)
 {
-
+	m_GameObjects.clear();
+	m_collisionManagerPTR = nullptr;
 }
 GameObjectManager::~GameObjectManager(void)
 {
-
+	for (auto it : m_GameObjects)
+	{
+		delete it;
+	}
+	m_GameObjects.clear();
+}
+void GameObjectManager::addGO(GameObject *GO)
+{
+	m_GameObjects.push_back(GO);
 }
 void GameObjectManager::update()
 {
@@ -15,7 +24,7 @@ void GameObjectManager::update()
 		it->update(Timer::getTime());
 	}
 }
-void GameObjectManager::newGO(int type)
+void GameObjectManager::newGO(GameObjectType::type)
 {
 	/*GameObject *n = newObj();
 	switch(type)

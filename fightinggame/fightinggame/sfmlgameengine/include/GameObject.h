@@ -6,6 +6,10 @@
 #include "GS.h"
 #include <vector>
 
+namespace GameObjectType
+{
+	enum type{ BLOCK, FIGHTER, GAMEOBJECTTYPES };
+}
 class GameObject
 {
 public:

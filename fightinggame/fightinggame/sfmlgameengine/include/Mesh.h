@@ -9,7 +9,7 @@
 #include <SFML\OpenGL.hpp>
 
 #include <glm\gtx\transform.hpp>
-
+	
 #include <stdio.h>
 #include <iostream>
 #include <fstream>
@@ -21,7 +21,7 @@ class Mesh
 {
 public:
 	//Mesh();
-	Mesh(int _primativeType, sf::Vector3f colour, GLuint myShaderHandle);
+	Mesh(std::string filename, sf::Vector3f colour, GLuint myShaderHandle);
 	~Mesh();
 	void genTexture(std::string textFile);
 	void setColour(sf::Vector3f colour);
@@ -39,8 +39,7 @@ public:
 	GLuint myShaderHandle;
 
 private:
-
-	void init(int _primativeType, sf::Vector3f colour);
+	void init(sf::Vector3f colour);
 	void genMesh();
 
 	bool hasTexture;
@@ -53,5 +52,8 @@ private:
 	GLuint myTexture;
 	sf::Image myImage;
 	sf::Vector3f myDefColour;
+	
+
+	std::string m_FileName;
 };
 #endif

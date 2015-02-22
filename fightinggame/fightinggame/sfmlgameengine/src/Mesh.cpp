@@ -12,22 +12,25 @@ struct VertexIndex
 	int normalID;
 };
 
-Mesh::Mesh(int _primativeType, sf::Vector3f colour, GLuint _shaderHandle)
+Mesh::Mesh(std::string filename, sf::Vector3f colour, GLuint _shaderHandle)
 {
 	myShaderHandle = _shaderHandle;
-	init(_primativeType,colour);
+	m_FileName = filename;
+	init(colour);
+	std::cout << "C| Mesh Created!\n";
 }
 Mesh::~Mesh()
 {
 
 }
-void Mesh::init(int _primativeType, sf::Vector3f colour)
+void Mesh::init(sf::Vector3f colour)
 {
 	//model loader stuff goes here and then inputted into the
 	//points, colours and indices stuff as well as anything extra
 	//that I add like texture coords and stuff
 	myDefColour = colour;
-	load("resources/cube.obj");	
+	m_FileName = "resources/" + m_FileName;
+	load(m_FileName);
 	genMesh();
 }
 void Mesh::genMesh()

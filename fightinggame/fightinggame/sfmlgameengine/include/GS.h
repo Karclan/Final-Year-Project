@@ -6,9 +6,6 @@
 
 namespace GS
 {
-	extern enum gameObjType{gameObject, block, fallingBlock, Fighter, hitBox,
-		gameObjectTypes};
-
 	extern enum KEYS{W,S,A,D, 
 		NUMBEROFKEYS};
 

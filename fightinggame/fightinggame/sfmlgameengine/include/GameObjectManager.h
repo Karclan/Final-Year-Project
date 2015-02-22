@@ -14,11 +14,13 @@ class GameObjectManager
 public:
 	GameObjectManager(void);
 	~GameObjectManager(void);
+
+	void addGO(GameObject* GO);
 	std::list<GameObject*>& getObjectList(){ return m_GameObjects; }
 	
 	void update();
 
-	void newGO(int type/*position*/);
+	void newGO(GameObjectType::type);
 private:
 	GameObject* newObj();
 

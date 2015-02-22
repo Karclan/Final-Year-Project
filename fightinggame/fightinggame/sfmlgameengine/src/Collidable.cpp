@@ -5,6 +5,7 @@ Collidable::Collidable()
 	m_Owner=NULL;
 	m_CollisionTarget=nullptr;
 	m_currentCollision = CollisionType::noCollision;
+	std::cout << "Collidable Component created!\n";
 }
 ComponentType::type Collidable::getType()
 {

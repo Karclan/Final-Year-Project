@@ -67,7 +67,7 @@ vec3 CalSpotLight(SpotLight light, vec3 normal, vec3 viewDir, vec3 vertPos)
 	float attenuation = 1.0 / (light.constant + light.linear * distance + light.quadratic * (distance * distance));
 	
 	vec3 ambientCol = light.amb * material.diff;
-	ambientCol *= attenuation;
+	//ambientCol *= attenuation;
 
 	if(theta > light.spotOutCut)
 	{
@@ -100,7 +100,7 @@ vec3 CalPointLight(PointLight light, vec3 normal, vec3 viewDir, vec3 vertPos)
 	float attenuation = 1.0 / (light.constant + light.linear * distance + light.quadratic * (distance * distance));
 	
 	vec3 ambientCol = light.amb * material.diff;
-	ambientCol *= attenuation;
+	//ambientCol *= attenuation;
 	//if(dot(viewDir,normal)>0)
 	//{
 	float diffuse  = max(dot(normal, lightDir), 0.0);

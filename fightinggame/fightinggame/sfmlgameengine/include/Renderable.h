@@ -18,6 +18,8 @@ class Renderable : public Component
 {
 public:
 	Renderable();
+	Renderable(SPC_Transform t, Mesh *m, Shader* s);
+
 	ComponentType::type getType();
 	void tearDown();
 

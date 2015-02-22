@@ -15,6 +15,8 @@
 #include <glm\gtx\transform.hpp>
 #include <glm\gtx\rotate_vector.hpp>
 
+#include "Transfrom.h"
+
 #include "Shader.h"
 #include "Mesh.h"
 #include "Camera.h"
@@ -24,18 +26,23 @@ class Renderer
 {
 public:
 	void init();
+	void loadMesh(const char* filename);
 	void render();
-	void addToRender();
-private:
+	void setActiveCamera(int i);
 
-	void setMaterials(Renderable*);
-	void setLights(Shader *s);
+	SPC_Camera		createCamera	(SPC_Transform t);
+	SPC_Renderable	createRenderable(SPC_Transform t);
+private:
+	Camera* newCamera(SPC_Transform);
+	Renderable* newRenderable(SPC_Transform);
+	void setMaterials	(SPC_Renderable);
+	void setLights		(Shader *s);
 
 	Shader* basic;
 
-	std::map<std::string,Shader*> m_shaders;
-	std::map<std::string,Mesh> m_meshes;
-	std::vector<Camera*> m_cameras;
-	std::vector<Renderable*> m_renderables;
+	std::map<std::string,Shader*>	m_shaders;
+	std::map<std::string,Mesh*>		m_meshes;
+	std::vector<SPC_Camera>			m_cameras;
+	std::vector<SPC_Renderable>		m_renderables;
 };
 #endif

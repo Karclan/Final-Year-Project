@@ -44,10 +44,6 @@ int main()
 	Scene *s = new SceneTest();
 	s->init();
 
-	glEnable(GL_DEPTH_TEST);
-	glClearDepth(1.0f);
-	glClearColor(0.5f,0.5f,0.5f,1.0f);
-
 	//--MAIN LOOP--//
 	while (window.isOpen())
 	{

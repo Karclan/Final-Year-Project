@@ -23,13 +23,14 @@ class Camera : public Component
 {
 public:
 	Camera();
+	Camera(SPC_Transform t);
 	~Camera();
 
 	ComponentType::type getType();
 
 	void tearDown();
 
-	void init();
+	void init(SPC_Transform t);
 	void update();
 
 	void setPostion(glm::vec3 newPos);
@@ -37,25 +38,19 @@ public:
 
 	void pan(glm::vec3 pan);
 	void zoom(float zoomAmount);
-	void rotate(float angleX, float angleY, float angleZ);
+	//void rotate(float angleX, float angleY, float angleZ);
 
-	glm::vec3 getRotation(){return glm::vec3(m_Yaw,m_Pitch,m_Roll);}
+	glm::vec3 getPosition(){ return m_Transform->getPosition();}
+	glm::vec3 getRotation(){return m_Transform->getRotation();}
 	glm::vec3 getTarget(){return m_Target;}
 
-	glm::mat4 getProjectionMatrix();
-	glm::mat4 getViewMatrix();
+	glm::mat4 getProjectionMatrix(){ return m_mProj; }
+	glm::mat4 getViewMatrix(){ return m_mView; }
 
 private:
 
-	GLuint  m_viewMatrixID;
-	GLuint	m_projectionMatrixID;
-
 	glm::mat4 m_mProj;
 	glm::mat4 m_mView;
-
-	float m_Yaw;
-	float m_Pitch;
-	float m_Roll;
 
 	glm::vec3 m_Target;
 	glm::vec3 m_Up;

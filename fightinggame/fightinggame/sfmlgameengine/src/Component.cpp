@@ -1,7 +1,11 @@
 #include "Component.h"
 
-Component::Component(){}
-Component::~Component(){}
+Component::Component(){
+	std::cout << "C| Component: ";
+}
+Component::~Component(){
+	std::cout << "D| Component: ";
+}
 void Component::setState(ComponentState::state state)
 {
 	m_state = state;

@@ -49,6 +49,7 @@
     <ClCompile Include="include\SceneTest.cpp" />
     <ClCompile Include="src\Block.cpp" />
     <ClCompile Include="src\Camera.cpp" />
+    <ClCompile Include="src\CameraObj.cpp" />
     <ClCompile Include="src\Collidable.cpp" />
     <ClCompile Include="src\CollisionManager.cpp" />
     <ClCompile Include="src\Component.cpp" />

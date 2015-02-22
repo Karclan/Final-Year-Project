@@ -2,6 +2,8 @@
 #define SCENETEST_H
 
 #include "Scene.h"
+#include "Block.h"
+#include "CameraObj.h"
 class SceneTest : public Scene
 {
 public:
@@ -11,5 +13,12 @@ public:
 	void handleController();
 
 private:
+	//Transform t;
+	//Collidable c;
+	//Transform ct;
+	//camera ca;
+
+	Block *m_rotatingCube;
+	CameraObj *m_camera;
 };
 #endif

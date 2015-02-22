@@ -13,7 +13,7 @@ public:
 	Block();
 	~Block();
 	
-	void update();
+	void update(float dt);
 	void renderUpdate();
 	//void updateCycle();
 protected:

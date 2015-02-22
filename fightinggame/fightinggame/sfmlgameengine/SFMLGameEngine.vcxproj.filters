@@ -229,5 +229,8 @@
     <ClCompile Include="src\Renderer.cpp">
       <Filter>Game-Engine\Source Files\Rendering</Filter>
     </ClCompile>
+    <ClCompile Include="src\CameraObj.cpp">
+      <Filter>Game-Implementation\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

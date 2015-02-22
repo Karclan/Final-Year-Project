@@ -9,9 +9,38 @@ void SceneTest::init()
 	//load objects
 	//put into managers
 
-	/*cube = new Mesh(1, sf::Vector3f(1.f, 0.5f, 0.2f), s.shaderProgID);
+	m_Renderer.loadMesh("cube.obj");
 
-	lstOfMeshes.push_back(cube);
+	Transform* t = new Transform();
+	SPC_Transform rct(t);// = std::make_shared<Transform>(t);
+	Collidable* c = new Collidable();
+	SPC_Collidable rcc(c);
+	SPC_Renderable r(m_Renderer.createRenderable(rct));
+
+	rct->setPosition(glm::vec3(0.f, 0.f, -5.f));
+	r->setDiff(glm::vec3(0.8f, 0.8f, 0.8f));
+	r->setSpec(glm::vec3(0.5f, 0.5f, 0.5f));
+	r->setSpecEx(64.f);
+	m_rotatingCube = new Block(rct,rcc,r);
+
+	//SPC_Transform test = std::dynamic_pointer_cast<Transform>(m_rotatingCube->findComponent(ComponentType::TRANSFORM));
+
+	//test->setPosition(glm::vec3(0.f, 0.f, -40.f));
+
+	Transform* ct = new Transform();
+	SPC_Transform st(ct);
+	SPC_Camera sc(m_Renderer.createCamera(st));
+	m_camera = new CameraObj(sc, st);
+	//test = std::dynamic_pointer_cast<Transform>(m_camera->findComponent(ComponentType::TRANSFORM));
+
+	//if (test != nullptr)
+	//{
+	//	test->setPosition(glm::vec3(0.f, 0.f, 5.f));
+	//}
+
+	//m_Renderer.setActiveCamera(0);
+
+	/*lstOfMeshes.push_back(cube);
 
 	flat_plane = new Block(5.f, glm::vec3(GS::floor.x, GS::floor.y - 0.2f, 0.f), cube, sf::Vector3f(1.f, 0.2f, 0.2f));
 	rotating_3Dcube = new Block(5.f, glm::vec3(GS::floor.x, GS::floor.y + 2.f, -5.f), cube, sf::Vector3f(4.f, 0.8f, 0.4f));

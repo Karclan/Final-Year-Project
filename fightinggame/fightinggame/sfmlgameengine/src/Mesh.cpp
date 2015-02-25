@@ -12,23 +12,22 @@ struct VertexIndex
 	int normalID;
 };
 
-Mesh::Mesh(std::string filename, sf::Vector3f colour, GLuint _shaderHandle)
+Mesh::Mesh(std::string filename, GLuint _shaderHandle)
 {
 	myShaderHandle = _shaderHandle;
 	m_FileName = filename;
-	init(colour);
+	init();
 	std::cout << "C| Mesh Created!\n";
 }
 Mesh::~Mesh()
 {
 
 }
-void Mesh::init(sf::Vector3f colour)
+void Mesh::init()
 {
 	//model loader stuff goes here and then inputted into the
 	//points, colours and indices stuff as well as anything extra
 	//that I add like texture coords and stuff
-	myDefColour = colour;
 	m_FileName = "resources/" + m_FileName;
 	load(m_FileName);
 	genMesh();
@@ -91,10 +90,6 @@ void Mesh::genTexture(std::string _texName)
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 	}
 	hasTexture=true;
-}
-void Mesh::setColour(sf::Vector3f _colour)
-{
-	myDefColour=_colour;
 }
 void Mesh::load(std::string _fileName)
 {
@@ -288,7 +283,7 @@ void Mesh::load(std::string _fileName)
 		for(auto iter : myFaces)
 		{
 			_verticesOrderd.push_back(_vertices.at(iter.vertex-1));
-			_textureUVsOrderd.push_back(_textureUVs.at(iter.iUV-1));
+			_textureUVsOrderd.push_back(_textureUVs.at(iter.iUV - 1));
 			_normalsOrderd.push_back(_normals.at(iter.norm-1));
 			step ++;
 			if(step == 3)

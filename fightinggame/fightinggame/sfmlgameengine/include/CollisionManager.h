@@ -15,18 +15,15 @@ using namespace std;
 
 class CollisionManager
 {
-private:
-	std::list<Collidable*> m_lstOfCollidables;
-
-	void checkCollision(Collidable* , Collidable*);
-	HitBox* addHitBox(Mesh *m, float timeToLive);
-	
 public:
-	void addCollisionObject(Collidable *_newCollidable){m_lstOfCollidables.push_back(_newCollidable);}
-	void createHitBox(Mesh *m, float timeToLive);
-	void addToCheck(Collidable*);
-	void removeFromCheck(Collidable*);
+	SPC_Collidable createCollidable	(SPC_Transform t, float size, GameObjectType::type owner);
+	void addCollisionObject			(Collidable *_newCollidable){ m_lstOfCollidables.push_back(_newCollidable); }
+	void addToCheck					(Collidable*);
+	void removeFromCheck			(Collidable*);
 	void removeFromCheck();
 	void update();
+private:
+	std::list<Collidable*> m_lstOfCollidables;
+	void checkCollision(SPC_Collidable, SPC_Collidable);
 };
 #endif

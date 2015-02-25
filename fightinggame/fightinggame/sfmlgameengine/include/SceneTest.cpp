@@ -1,42 +1,31 @@
 #include "SceneTest.h"
 
+//SPC_Transform test = std::dynamic_pointer_cast<Transform>(m_rotatingCube->findComponent(ComponentType::TRANSFORM));
+//test->setPosition(glm::vec3(0.f, 0.f, -40.f));
+//if (test != nullptr)
+//{
+//	test->setPosition(glm::vec3(0.f, 0.f, 5.f));
+//}
+
 void SceneTest::init()
 {
 	m_Renderer.init();
 	m_inputHandler.init();
+	m_Renderer.loadMesh("hexagonprism.obj");
+	
+	SPC_Transform  rct(m_TransformManager.createTransform(glm::vec3(0.f, 0.f, 0.f), glm::vec3(0.f, 0.f, 0.f), glm::vec3(1, 1, 1), glm::vec3(0.f, 0.f, 0.f)));
+	SPC_Collidable rcc(m_CollisionManager.createCollidable(rct, 5.0, GameObjectType::BLOCK));
+	SPC_Renderable rcr(m_Renderer.createRenderable(rct));
 
-	//load meshes
-	//load objects
-	//put into managers
+	rcr->setDiff(glm::vec3(0.8f, 0.8f, 0.8f));
+	rcr->setSpec(glm::vec3(0.5f, 0.5f, 0.5f));
+	rcr->setSpecEx(64.f);
+	m_rotatingCube = new Block(rct, rcc, rcr);
 
-	m_Renderer.loadMesh("cube.obj");
-
-	Transform* t = new Transform();
-	SPC_Transform rct(t);// = std::make_shared<Transform>(t);
-	Collidable* c = new Collidable();
-	SPC_Collidable rcc(c);
-	SPC_Renderable r(m_Renderer.createRenderable(rct));
-
-	rct->setPosition(glm::vec3(0.f, 0.f, -5.f));
-	r->setDiff(glm::vec3(0.8f, 0.8f, 0.8f));
-	r->setSpec(glm::vec3(0.5f, 0.5f, 0.5f));
-	r->setSpecEx(64.f);
-	m_rotatingCube = new Block(rct,rcc,r);
-
-	//SPC_Transform test = std::dynamic_pointer_cast<Transform>(m_rotatingCube->findComponent(ComponentType::TRANSFORM));
-
-	//test->setPosition(glm::vec3(0.f, 0.f, -40.f));
-
-	Transform* ct = new Transform();
-	SPC_Transform st(ct);
-	SPC_Camera sc(m_Renderer.createCamera(st));
+	SPC_Transform  st(m_TransformManager.createTransform(glm::vec3(0.f, 0.f, -5.f), glm::vec3(0.f, 0.f, 0.f), glm::vec3(1, 1, 1), glm::vec3(0.f, 0.f, 0.f)));
+	SPC_Camera	   sc(m_Renderer.createCamera(st));
 	m_camera = new CameraObj(sc, st);
-	//test = std::dynamic_pointer_cast<Transform>(m_camera->findComponent(ComponentType::TRANSFORM));
-
-	//if (test != nullptr)
-	//{
-	//	test->setPosition(glm::vec3(0.f, 0.f, 5.f));
-	//}
+	
 
 	//m_Renderer.setActiveCamera(0);
 
@@ -79,7 +68,8 @@ void SceneTest::update()
 {
 	//non fixed update
 	m_CollisionManager.update();
-
+	SPC_Transform t = std::dynamic_pointer_cast<Transform>(m_rotatingCube->findComponent(ComponentType::TRANSFORM));
+	t->rotate(glm::vec3(45.f, 0.f, 0.f));
 	//fixed update
 	m_GameObjectManager.update();
 	m_Renderer.render();

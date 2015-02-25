@@ -21,7 +21,7 @@ class Mesh
 {
 public:
 	//Mesh();
-	Mesh(std::string filename, sf::Vector3f colour, GLuint myShaderHandle);
+	Mesh(std::string filename, GLuint myShaderHandle);
 	~Mesh();
 	void genTexture(std::string textFile);
 	void setColour(sf::Vector3f colour);
@@ -32,14 +32,12 @@ public:
 	GLuint getVAO(){return VAOHandle;}
 	GLuint getTexture(){return myTexture;}
 
-	sf::Vector3f getColour(){return myDefColour;}
-
 	glm::mat4 mModel;
 	GLuint modelMatrixID;
 	GLuint myShaderHandle;
 
 private:
-	void init(sf::Vector3f colour);
+	void init();
 	void genMesh();
 
 	bool hasTexture;
@@ -51,7 +49,6 @@ private:
 	GLuint VAOHandle, VBOHandle[4];
 	GLuint myTexture;
 	sf::Image myImage;
-	sf::Vector3f myDefColour;
 	
 
 	std::string m_FileName;

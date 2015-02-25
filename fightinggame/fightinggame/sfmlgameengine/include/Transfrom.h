@@ -16,15 +16,16 @@
 class Transform : public Component
 {
 public:
-	Transform();
+	//Transform();
+	Transform(glm::vec3 position, glm::vec3 rotation, glm::vec3 scale, glm::vec3 transform);
 
 	ComponentType::type getType();
 	void tearDown();
 
 	void setPosition(glm::vec3 newPosition) {m_Position=newPosition;}
 	void translate	(glm::vec3 newTransform){m_Position+=newTransform;}
-	void rotate(glm::vec3 rot);
-	void scale (glm::vec3 newScale);
+	void rotate		(glm::vec3 rot);
+	void scale		(glm::vec3 newScale);
 	void setVelocity(glm::vec3 velocity){m_Velocity=velocity;}
 	void modVelocity(glm::vec3 velocity){m_Velocity+=velocity;}
 

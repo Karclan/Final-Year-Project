@@ -9,16 +9,22 @@ void CollisionManager::update()
 		{
 			if(i!=j)
 			{
-				checkCollision(i,j);
+				checkCollision(SPC_Collidable(i),SPC_Collidable(j));
 			}
 		}
 	}
 
 }
 
-void CollisionManager::checkCollision(Collidable *_a, Collidable *_b)
+void CollisionManager::checkCollision(SPC_Collidable a, SPC_Collidable b)
 {
-	_a->InteresectsDetailed(_b);
+	a->InteresectsDetailed(b);
+}
+SPC_Collidable CollisionManager::createCollidable(SPC_Transform t, float size, GameObjectType::type owner)
+{
+	Collidable* c = new Collidable(t,size,owner);
+	m_lstOfCollidables.push_back(c);
+	return SPC_Collidable(c);
 }
 void CollisionManager::addToCheck(Collidable *n)
 {
@@ -38,14 +44,3 @@ void CollisionManager::removeFromCheck(Collidable *c)
 		if(it==c) it=nullptr;
 	}
 }
-
-void CollisionManager::createHitBox(Mesh *m, float timeToLive)
-{
-	///HitBox *newHitBox = addHitBox(m,timeToLive);
-	//addToCheck(newHitBox->getCollidable());
-}
-//HitBox* CollisionManager::addHitBox(Mesh *m, float timeToLive)
-//{
-//	//HitBox *nHB = new HitBox(m,timeToLive);
-//	//return nHB;
-//}

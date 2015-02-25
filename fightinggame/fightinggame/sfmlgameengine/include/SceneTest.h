@@ -13,12 +13,15 @@ public:
 	void handleController();
 
 private:
-	//Transform t;
-	//Collidable c;
-	//Transform ct;
-	//camera ca;
 
+	Block *m_decorBlocks[10];
 	Block *m_rotatingCube;
+	Block *m_floor;
+	Block *m_levelBlocks[10];
+	Fighter *player1;
+	Fighter *player2;
 	CameraObj *m_camera;
+
+	float m_UpdateTimer;
 };
 #endif

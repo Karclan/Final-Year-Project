@@ -12,6 +12,10 @@ using namespace std;
 
 #include "Component.h"
 #include "Transfrom.h"
+#include "GameObject.h"
+
+class Collidable;
+typedef	std::shared_ptr<Collidable> SPC_Collidable;
 
 namespace CollisionType
 {
@@ -20,46 +24,46 @@ namespace CollisionType
 
 class Collidable : public Component
 {
-
+	
 public:
 
 	Collidable();
-	Collidable(float _size /*Size*/, sf::Vector2f _position /*Position*/, int _owner);
+	Collidable(SPC_Transform t, float size, GameObjectType::type owner);
 
 	ComponentType::type getType();
 	void tearDown();
 
-	void move(glm::vec2 newPos);
-	bool Interesects(Collidable* other);
-	int  InteresectsDetailed(Collidable* other);
+	void update();
+	bool Interesects(SPC_Collidable other);
+	int  InteresectsDetailed(SPC_Collidable other);
 	int  getCurrentCollision(){return m_currentCollision;}
-	int  getOwner(){return m_Owner;}
 
-
-	glm::vec2 getPos(){return glm::vec2(m_Transform->getPosition());}
+	GameObjectType::type  getOwner(){ return m_Owner; }
+	SPC_Transform getTransform(){ return m_Transform; }
+	glm::vec2 getUpperBounds(){ return m_UpperPos; }
+	glm::vec2 getLowerBounds(){ return m_LowerPos; }
 	float getSize(){return m_Size;}
-	Collidable* getCollisionTatget(){return m_CollisionTarget;}
+	SPC_Collidable getCollisionTatget(){ return m_CollisionTarget; }
 
-	int m_currentCollision;
+	//Collidable& operator= (Collidable& newC){
+	//	m_Transform->setPosition(newC.m_Transform->getPosition());
+	//	m_Size = newC.m_Size;
+	//	m_UpperPos = glm::vec2(newC.m_Transform->getPosition().x+m_Size/2, newC.m_Transform->getPosition().y+m_Size/2);
+	//	m_LowerPos = glm::vec2(newC.m_Transform->getPosition().x-m_Size/2, newC.m_Transform->getPosition().y-m_Size/2);
+	//	return *this;
+	//};
 
-	Collidable& operator= (Collidable& newC){
-		m_Transform->setPosition(newC.m_Transform->getPosition());
-		m_Size = newC.m_Size;
-		m_UpperPos = glm::vec2(newC.m_Transform->getPosition().x+m_Size/2, newC.m_Transform->getPosition().y+m_Size/2);
-		m_LowerPos = glm::vec2(newC.m_Transform->getPosition().x-m_Size/2, newC.m_Transform->getPosition().y-m_Size/2);
-		return *this;
-	};
 private:
 
+	GameObjectType::type m_Owner;
+	CollisionType::type  m_currentCollision;
 	glm::vec2 m_UpperPos, m_LowerPos;
-	float m_Size;
-	int m_Owner;
-	
 
-	Collidable *m_CollisionTarget;
+	float m_Size;
+
+	SPC_Collidable m_CollisionTarget;
 	SPC_Transform m_Transform;
 };
 
-typedef	std::shared_ptr<Collidable> SPC_Collidable;
 
 #endif

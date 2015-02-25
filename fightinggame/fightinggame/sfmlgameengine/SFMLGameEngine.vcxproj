@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram.cd" />
     <None Include="shader\basic.frag" />
     <None Include="shader\basic.vert" />
     <None Include="shader\textShader.frag" />
@@ -37,11 +38,11 @@
     <ClInclude Include="include\Renderable.h" />
     <ClInclude Include="include\Renderer.h" />
     <ClInclude Include="include\Scene.h" />
-    <ClInclude Include="include\SceneBasic.h" />
     <ClInclude Include="include\SceneTest.h" />
     <ClInclude Include="include\Shader.h" />
     <ClInclude Include="include\ShaderHandler.h" />
     <ClInclude Include="include\Timer.h" />
+    <ClInclude Include="include\TransformManager.h" />
     <ClInclude Include="include\Transfrom.h" />
     <ClInclude Include="include\X360Controller.hpp" />
   </ItemGroup>
@@ -67,11 +68,11 @@
     <ClCompile Include="src\Renderable.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\Scene.cpp" />
-    <ClCompile Include="src\SceneBasic.cpp" />
     <ClCompile Include="src\Shader.cpp" />
     <ClCompile Include="src\ShaderHandler.cpp" />
     <ClCompile Include="src\Timer.cpp" />
     <ClCompile Include="src\Transform.cpp" />
+    <ClCompile Include="src\TransformManager.cpp" />
     <ClCompile Include="src\X360Controller.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

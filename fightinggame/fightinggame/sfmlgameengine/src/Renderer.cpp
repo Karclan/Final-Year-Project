@@ -21,7 +21,7 @@ void Renderer::init()
 }
 void Renderer::loadMesh(const char* filename)
 {
-	Mesh* newMesh = new Mesh(filename,sf::Vector3f(1.f, 1.f, 1.f), basic->getHandle());
+	Mesh* newMesh = new Mesh(filename, basic->getHandle());
 	m_meshes.emplace(filename, newMesh);
 }
 void Renderer::render()
@@ -66,13 +66,13 @@ void Renderer::setActiveCamera(int i)
 }
 SPC_Camera Renderer::createCamera(SPC_Transform sT)
 {
-	Camera* c = newCamera(sT);
+	Camera* c = new Camera(sT);
 	m_cameras.push_back(SPC_Camera(c));
 	return SPC_Camera(c);
 }
 SPC_Renderable Renderer::createRenderable(SPC_Transform sT)
 {
-	Renderable* r = newRenderable(sT);
+	Renderable* r = new Renderable(sT, m_meshes.find("hexagonprism.obj")->second, basic);
 	m_renderables.push_back(SPC_Renderable(r));
 	return SPC_Renderable(r);
 }

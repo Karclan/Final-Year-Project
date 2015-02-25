@@ -81,7 +81,10 @@ vec3 CalSpotLight(SpotLight light, vec3 normal, vec3 viewDir, vec3 vertPos)
     
 			vec3 diffuseCol = light.diff * diffuse * material.diff * intensity; 
 			vec3 specularCol = light.spec * specular * material.spec * intensity;
-
+			if(dot(viewDir,normal)>0)
+			{
+			specularCol=vec3(0,0,0);
+			}
 			diffuseCol *= attenuation;
 			specularCol*= attenuation;
 
@@ -109,7 +112,10 @@ vec3 CalPointLight(PointLight light, vec3 normal, vec3 viewDir, vec3 vertPos)
 
 	vec3 diffuseCol  = light.diff * diffuse  * material.diff; 
 	vec3 specularCol = light.spec * specular * material.spec;
-
+	if(dot(viewDir,normal)>0)
+	{
+	specularCol=vec3(0,0,0);
+	}
 
 	diffuseCol *= attenuation;
 	specularCol*= attenuation;

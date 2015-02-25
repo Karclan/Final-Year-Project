@@ -14,6 +14,7 @@
 
 #include "CollisionManager.h"
 #include "GameObjectManager.h"
+#include "TransformManager.h"
 #include "GameObject.h"
 #include "Shader.h"
 #include "Renderer.h"
@@ -44,5 +45,6 @@ protected:
 	CollisionManager	m_CollisionManager;
 	GameObjectManager	m_GameObjectManager;
 	Renderer			m_Renderer;
+	TransformManager	m_TransformManager;
 };
 #endif // !SCENE_H

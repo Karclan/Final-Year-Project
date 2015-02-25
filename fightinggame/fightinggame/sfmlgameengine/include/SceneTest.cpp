@@ -1,5 +1,6 @@
 #include "SceneTest.h"
 
+
 //SPC_Transform test = std::dynamic_pointer_cast<Transform>(m_rotatingCube->findComponent(ComponentType::TRANSFORM));
 //test->setPosition(glm::vec3(0.f, 0.f, -40.f));
 //if (test != nullptr)
@@ -9,6 +10,9 @@
 
 void SceneTest::init()
 {
+	m_FrameDelay		= 1 / GS::FRAMERATE;
+	m_FixedFrameTimer	= 0;
+	
 	m_Renderer.init();
 	m_inputHandler.init();
 	m_Renderer.loadMesh("hexagonprism.obj");
@@ -17,9 +21,9 @@ void SceneTest::init()
 	SPC_Collidable rcc(m_CollisionManager.createCollidable(rct, 5.0, GameObjectType::BLOCK));
 	SPC_Renderable rcr(m_Renderer.createRenderable(rct));
 
-	rcr->setDiff(glm::vec3(0.8f, 0.8f, 0.8f));
-	rcr->setSpec(glm::vec3(0.5f, 0.5f, 0.5f));
-	rcr->setSpecEx(64.f);
+	rcr->setDiff	(glm::vec3(0.8f, 0.2f, 0.8f));
+	rcr->setSpec	(glm::vec3(0.5f, 0.5f, 0.5f));
+	rcr->setSpecEx	(64.f);
 	m_rotatingCube = new Block(rct, rcc, rcr);
 
 	SPC_Transform  st(m_TransformManager.createTransform(glm::vec3(0.f, 0.f, -5.f), glm::vec3(0.f, 0.f, 0.f), glm::vec3(1, 1, 1), glm::vec3(0.f, 0.f, 0.f)));
@@ -27,7 +31,7 @@ void SceneTest::init()
 	m_camera = new CameraObj(sc, st);
 	
 
-	//m_Renderer.setActiveCamera(0);
+	m_Renderer.setActiveCamera(0);
 
 	/*lstOfMeshes.push_back(cube);
 
@@ -68,10 +72,18 @@ void SceneTest::update()
 {
 	//non fixed update
 	m_CollisionManager.update();
+	std::cout << m_Renderer.calculateFrameRate() << " fps\n";
 	SPC_Transform t = std::dynamic_pointer_cast<Transform>(m_rotatingCube->findComponent(ComponentType::TRANSFORM));
-	t->rotate(glm::vec3(45.f, 0.f, 0.f));
+	
 	//fixed update
-	m_GameObjectManager.update();
+	m_FixedFrameTimer = Timer::getTime().asSeconds();
+	if (m_FixedFrameTimer >= m_FrameDelay)
+	{
+		t->rotate(glm::vec3(Timer::getTime().asSeconds()*45.f, 0.f, 0.f));
+		m_GameObjectManager.update();
+		m_FixedFrameTimer = 0;
+	}
+
 	m_Renderer.render();
 }
 void SceneTest::handleInput()

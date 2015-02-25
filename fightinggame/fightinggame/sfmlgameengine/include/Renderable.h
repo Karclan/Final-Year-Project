@@ -1,7 +1,7 @@
 #ifndef RENDERABLE_H
 #define RENDERABLE_H
 
-
+#define GLM_FORCE_RADIANS
 #include <glm\gtx\matrix_transform_2d.hpp>
 
 #include "Component.h"

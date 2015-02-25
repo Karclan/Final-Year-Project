@@ -33,7 +33,7 @@ void FTInterface::renderText(std::string text, GLfloat x,GLfloat y,GLfloat scale
 	glm::mat4 mProj = glm::ortho(0.0f,600.f,0.0f,600.f);
 
 	glUniformMatrix4fv(glGetUniformLocation(ins->textShader.getHandle(),"mProjection"),1,FALSE,&mProj[0][0]);
-	glUniform3f(glGetUniformLocation(ins->textShader.getHandle(),"textColour"),colour.x,colour.y,colour.z);
+	glUniform3f(glGetUniformLocation(ins->textShader.getHandle(),		"textColour") ,colour.x,colour.y,colour.z);
 	glActiveTexture(GL_TEXTURE0);
 	glBindVertexArray(ins->VAO);
 

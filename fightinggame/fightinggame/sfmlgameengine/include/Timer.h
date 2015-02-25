@@ -6,17 +6,18 @@
 class Timer
 {
 public:
+	static void  init();
+	static sf::Time getTime();
 	
-	static void init();
-	static float getTime();
-	static void update();
+	static void  update();
+
 	
 private:
-	Timer();
+	 Timer();
 	~Timer();
 	static Timer* get();
 
-	sf::Clock m_clock;
 	sf::Time  m_time;
+	sf::Clock m_clock;
 };
 #endif

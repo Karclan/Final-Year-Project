@@ -12,7 +12,7 @@ HitBox::~HitBox()
 }
 void HitBox::update(float dt)
 {
-	m_timeToLive -=Timer::getTime();
+	m_timeToLive -=Timer::getTime().asSeconds();
 	if(m_timeToLive < 0)
 	{
 		std::cout<<"Hitbox destoryed";

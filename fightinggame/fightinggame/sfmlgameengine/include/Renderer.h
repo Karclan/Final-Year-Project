@@ -15,12 +15,14 @@
 #include <glm\gtx\transform.hpp>
 #include <glm\gtx\rotate_vector.hpp>
 
+#include "Timer.h"
+#include "FTInterface.h"
 #include "Transfrom.h"
-
+#include "Renderable.h"
 #include "Shader.h"
 #include "Mesh.h"
 #include "Camera.h"
-#include "Renderable.h"
+
 
 class Renderer
 {
@@ -29,14 +31,16 @@ public:
 	void loadMesh(const char* filename);
 	void render();
 	void setActiveCamera(int i);
-
+	int  calculateFrameRate();
 	SPC_Camera		createCamera	(SPC_Transform t);
 	SPC_Renderable	createRenderable(SPC_Transform t);
+
 private:
-	Camera* newCamera(SPC_Transform);
-	Renderable* newRenderable(SPC_Transform);
-	void setMaterials	(SPC_Renderable);
-	void setLights		(Shader *s);
+	int m_ActiveCamera;
+
+	void updateMatricies	 (SPC_Renderable, SPC_Camera);
+	void setMaterials		 (SPC_Renderable);
+	void setLights			 (Shader *s);
 
 	Shader* basic;
 

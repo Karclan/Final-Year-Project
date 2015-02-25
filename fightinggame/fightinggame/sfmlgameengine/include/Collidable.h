@@ -21,7 +21,10 @@ namespace CollisionType
 {
 	enum type{top,botton,left,right, basiccollision,noCollision};
 }
-
+namespace CollidableType
+{
+	enum type{STATIC,DYNAMIC};
+}
 class Collidable : public Component
 {
 	

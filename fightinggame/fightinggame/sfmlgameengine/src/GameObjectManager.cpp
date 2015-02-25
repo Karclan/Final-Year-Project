@@ -21,7 +21,7 @@ void GameObjectManager::update()
 {
 	for (auto it : m_GameObjects)
 	{ 
-		it->update(Timer::getTime());
+		it->update(Timer::getTime().asSeconds());
 	}
 }
 void GameObjectManager::newGO(GameObjectType::type)

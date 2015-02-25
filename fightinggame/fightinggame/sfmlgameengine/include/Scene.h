@@ -39,6 +39,8 @@ public:
 	void keyUp	 (int key_code);	
 
 protected:
+	float m_FixedFrameTimer;
+	float m_FrameDelay;
 
 	Input				m_inputHandler;
 	ControllerInput		m_controllerInput;

@@ -14,6 +14,7 @@ namespace GS
 	extern const float walkSpeed;
 	extern const float runSpeed;
 	extern const float jumpSpeed;
-	
+	extern const int SCREENWIDTH;
+	extern const int SCREENHEIGHT;
 }
 #endif

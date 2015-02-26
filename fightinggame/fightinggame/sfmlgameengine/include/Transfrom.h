@@ -16,7 +16,7 @@
 class Transform : public Component
 {
 public:
-	//Transform();
+	Transform();
 	Transform(glm::vec3 position, glm::vec3 rotation, glm::vec3 scale, glm::vec3 transform);
 
 	ComponentType::type getType();

@@ -14,6 +14,7 @@
 #include <glm\gtx\transform.hpp>
 #include <glm\gtx\rotate_vector.hpp>
 
+#include "GS.h"
 #include "Component.h"
 #include "Transfrom.h"
 #include "Mesh.h"
@@ -33,22 +34,22 @@ public:
 	void init(SPC_Transform t);
 	void update();
 
-	void setPostion(glm::vec3 newPos);
-	void setTarget(glm::vec3 newTarg);
+	void setPostion	(glm::vec3 newPos);
+	void setTarget	(glm::vec3 newTarg);
 
-	void pan(glm::vec3 pan);
-	void zoom(float zoomAmount);
-	//void rotate(float angleX, float angleY, float angleZ);
+	void pan	(glm::vec3 pan);
+	void zoom	(float zoomAmount);
+	void orbit	(glm::vec3 rot);
+	void rotate(glm::vec3 rot);
 
-	glm::vec3 getPosition(){ return m_Transform->getPosition();}
-	glm::vec3 getRotation(){return m_Transform->getRotation();}
-	glm::vec3 getTarget(){return m_Target;}
+	glm::vec3 getPosition()	{ return m_Transform->getPosition();}
+	glm::vec3 getRotation()	{return m_Transform->getRotation();}
+	glm::vec3 getTarget()	{return m_Target;}
 
-	glm::mat4 getProjectionMatrix(){ return m_mProj; }
-	glm::mat4 getViewMatrix(){ return m_mView; }
+	glm::mat4 getProjectionMatrix()	{ return m_mProj; }
+	glm::mat4 getViewMatrix()		{ return m_mView; }
 
 private:
-
 	glm::mat4 m_mProj;
 	glm::mat4 m_mView;
 

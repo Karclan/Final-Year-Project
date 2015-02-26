@@ -17,7 +17,7 @@
 #include <glm\gtc\matrix_transform.hpp>
 
 #include "Shader.h"
-
+#include "GS.h"
 struct Character
 {
 	GLuint		TextureID;

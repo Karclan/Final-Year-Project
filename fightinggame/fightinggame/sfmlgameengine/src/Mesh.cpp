@@ -267,15 +267,15 @@ void Mesh::load(std::string _fileName)
 		}
 		vertexIndexes.resize(_vertices.size());
 
-		//now do centering
-		for(size_t i=0;i<_vertices.size();i++) {
-			_vertices[i].x -= min[0];
-			_vertices[i].y -= min[1];
-			_vertices[i].z -= min[2];
-			_vertices[i].x = (_vertices[i].x/(max[0]-min[0])) -0.5f;
-			_vertices[i].y = (_vertices[i].y/(max[1]-min[1])) -0.5f;
-			_vertices[i].z = (_vertices[i].z/(max[2]-min[2])) -0.5f;
-		}
+		////now do centering
+		//for(size_t i=0;i<_vertices.size();i++) {
+		//	_vertices[i].x -= min[0];
+		//	_vertices[i].y -= min[1];
+		//	_vertices[i].z -= min[2];
+		//	_vertices[i].x = (_vertices[i].x/(max[0]-min[0])) -0.5f;
+		//	_vertices[i].y = (_vertices[i].y/(max[1]-min[1])) -0.5f;
+		//	_vertices[i].z = (_vertices[i].z/(max[2]-min[2])) -0.5f;
+		//}
 
 		_faces.clear();
 		int i = 0;

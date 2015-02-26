@@ -18,8 +18,8 @@ private:
 	Block *m_rotatingCube;
 	Block *m_floor;
 	Block *m_levelBlocks[10];
-	Fighter *player1;
-	Fighter *player2;
+	Fighter *m_player1;
+	Fighter *m_player2;
 	CameraObj *m_camera;
 
 	float m_UpdateTimer;

@@ -42,8 +42,8 @@ protected:
 	float m_FixedFrameTimer;
 	float m_FrameDelay;
 
-	Input				m_inputHandler;
-	ControllerInput		m_controllerInput;
+	Input				m_InputHandler;
+	ControllerInput		m_ControllerInput;
 	CollisionManager	m_CollisionManager;
 	GameObjectManager	m_GameObjectManager;
 	Renderer			m_Renderer;

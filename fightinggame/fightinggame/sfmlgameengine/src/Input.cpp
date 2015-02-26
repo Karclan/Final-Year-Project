@@ -4,37 +4,39 @@ void Input::init()
 {
 	for(int i=0; i<256; i++)
 	{
-		_KEYS[i] = false;
+		m_KEYS[i] = false;
 	}
 	for(int i=0; i<256; i++)
 	{
-		_KEYHELDTIME[i] = 0;
+		m_KEYHELDTIME[i] = 0.f;
 	}
+}
+void Input::update()
+{
+	for (int i = 0; i < 256; i++)
+	{
+		if (m_KEYS[i] == true)
+		{
+			m_KEYHELDTIME[i] += Timer::getTime().asMilliseconds();
+		}
+	}
+}
+bool Input::isKeyPressed(int key_code)
+{
+	return m_KEYS[key_code];
 }
 void Input::keyPressed(int key_code)
 {
-	if(_KEYS[key_code]==false)
+	if (m_KEYS[key_code] == false)
 	{
-		_KEYS[key_code]=true;
-		_KEYHELDTIME[key_code] ++;
+		m_KEYS[key_code] = true;
 	}
 }
 void Input::keyReleased(int key_code)
 {
-	if(_KEYS[key_code]==true)
+	if (m_KEYS[key_code] == true)
 	{
-		_KEYS[key_code]=false;
-		_KEYHELDTIME[key_code] =0;
+		m_KEYS[key_code] = false;
+		m_KEYHELDTIME[key_code] = 0;
 	}
-}
-void Input::keyHeld()
-{
-	for(int i=0;i<256;i++)
-	{
-		if(_KEYS[i]==true)
-		{
-			_KEYHELDTIME[i] ++;
-		}
-	}
-
 }

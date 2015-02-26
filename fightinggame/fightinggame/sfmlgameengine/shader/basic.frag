@@ -57,17 +57,17 @@ out vec4 FragColour;
 
 vec3 CalSpotLight(SpotLight light, vec3 normal, vec3 viewDir, vec3 vertPos)
 {
-	vec3 lightDir = normalize(light.position - vertPos);
+	vec3 lightDir	= normalize(light.position - vertPos);
     vec3 reflectDir = reflect(-lightDir, normal);
     
-	float theta = dot(lightDir,normalize(-light.spotDir));
-	float epsilon = (light.spotInCut - light.spotOutCut);
+	float theta		= dot(lightDir,normalize(-light.spotDir));
+	float epsilon	= (light.spotInCut - light.spotOutCut);
 	
-	float distance = length(light.position - vertPos);
+	float distance	= length(light.position - vertPos);
 	float attenuation = 1.0 / (light.constant + light.linear * distance + light.quadratic * (distance * distance));
 	
-	vec3 ambientCol = light.amb * material.diff;
-	//ambientCol *= attenuation;
+	vec3 ambientCol  = light.amb * material.diff;
+	//ambientCol	*= attenuation;
 
 	if(theta > light.spotOutCut)
 	{
@@ -81,7 +81,7 @@ vec3 CalSpotLight(SpotLight light, vec3 normal, vec3 viewDir, vec3 vertPos)
     
 			vec3 diffuseCol = light.diff * diffuse * material.diff * intensity; 
 			vec3 specularCol = light.spec * specular * material.spec * intensity;
-			if(dot(viewDir,normal)>0)
+			if(dot(viewDir,normal)<0)
 			{
 			specularCol=vec3(0,0,0);
 			}
@@ -96,14 +96,14 @@ vec3 CalSpotLight(SpotLight light, vec3 normal, vec3 viewDir, vec3 vertPos)
 
 vec3 CalPointLight(PointLight light, vec3 normal, vec3 viewDir, vec3 vertPos)
 {
-	vec3 lightDir = normalize(light.position - vertPos);
+	vec3 lightDir	= normalize(light.position - vertPos);
     vec3 reflectDir = reflect(-lightDir, normal);
 	
-	float distance = length(light.position - vertPos);
+	float distance	= length(light.position - vertPos);
 	float attenuation = 1.0 / (light.constant + light.linear * distance + light.quadratic * (distance * distance));
 	
-	vec3 ambientCol = light.amb * material.diff;
-	//ambientCol *= attenuation;
+	vec3 ambientCol  = light.amb * material.diff;
+	//ambientCol	*= attenuation;
 	//if(dot(viewDir,normal)>0)
 	//{
 	float diffuse  = max(dot(normal, lightDir), 0.0);
@@ -112,7 +112,7 @@ vec3 CalPointLight(PointLight light, vec3 normal, vec3 viewDir, vec3 vertPos)
 
 	vec3 diffuseCol  = light.diff * diffuse  * material.diff; 
 	vec3 specularCol = light.spec * specular * material.spec;
-	if(dot(viewDir,normal)>0)
+	if(dot(viewDir,normal)<0)
 	{
 	specularCol=vec3(0,0,0);
 	}

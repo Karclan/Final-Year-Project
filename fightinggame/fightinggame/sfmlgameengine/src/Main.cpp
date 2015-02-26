@@ -34,7 +34,7 @@ void initFTLib()
 }
 int main()
 {
-	sf::Window window(sf::VideoMode(600, 600), "FightingGame", sf::Style::Close, sf::ContextSettings(32));
+	sf::Window window(sf::VideoMode(GS::SCREENWIDTH, GS::SCREENHEIGHT), "FightingGame", sf::Style::Close, sf::ContextSettings(32));
 	window.setVerticalSyncEnabled(true);
 	window.setFramerateLimit(120);
 	window.setActive();

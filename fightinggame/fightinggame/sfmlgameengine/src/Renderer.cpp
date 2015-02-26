@@ -5,6 +5,7 @@
 //_______________________//
 void Renderer::init()
 {
+	glViewport(0, 0, GS::SCREENWIDTH, GS::SCREENHEIGHT);
 	glEnable(GL_DEPTH_TEST);
 	glClearDepth(1.0f);
 	glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
@@ -15,14 +16,13 @@ void Renderer::init()
 	basic->createShader("shader/basic.vert","shader/basic.frag");
 	m_shaders.emplace("basic",basic);
 	
-	
 	for(auto it : m_shaders)
 	{
 		setLights(it.second);
 	}
 	std::cout << "C| Initalized Renderer!\n";
 }
-void Renderer::loadMesh(const char* filename)
+void Renderer::loadMesh(std::string filename)
 {
 	Mesh* newMesh = new Mesh(filename, basic->getHandle());
 	m_meshes.emplace(filename, newMesh);
@@ -30,7 +30,7 @@ void Renderer::loadMesh(const char* filename)
 void Renderer::render()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	setLights(basic);
+	
 	for (auto it : m_cameras)
 	{
 		it->update();
@@ -38,11 +38,13 @@ void Renderer::render()
 	for(auto it: m_renderables)
 	{
 		it->getShader()->useProgram();
+		setLights(it->getShader());
+
 		it->renderUpdate();
 	
 		updateMatricies(it, m_cameras[m_ActiveCamera]);
 
-		setMaterials(it); //!< currently sets the normal matrix as well
+		setMaterials(it);
 
 		glBindVertexArray(it->getMesh()->getVAO());
 		glDrawElements(GL_TRIANGLES, it->getMesh()->getIndices()->size(), GL_UNSIGNED_INT, NULL);
@@ -71,15 +73,15 @@ void Renderer::setActiveCamera(int i)
 int Renderer::calculateFrameRate()
 {
 	static unsigned int frameCounter = 0;
-	static unsigned int frameTime = 0;
-	static unsigned int fps = 0;
+	static unsigned int frameTime	 = 0;
+	static unsigned int fps			 = 0;
 	frameCounter++;
 	frameTime += Timer::getTime().asMilliseconds();
 	if (frameTime >= 1000)
 	{
 		fps = frameCounter;
 		frameCounter = 0;
-		frameTime -= 1000;
+		frameTime	-= 1000;
 	}
 	return fps;
 }
@@ -89,9 +91,15 @@ SPC_Camera Renderer::createCamera(SPC_Transform sT)
 	m_cameras.push_back(SPC_Camera(c));
 	return SPC_Camera(c);
 }
-SPC_Renderable Renderer::createRenderable(SPC_Transform sT)
+SPC_Renderable Renderer::createRenderable(SPC_Transform sT,std::string filename)
 {
-	Renderable* r = new Renderable(sT, m_meshes.find("hexagonprism.obj")->second, basic);
+	std::map<std::string, Mesh*>::iterator it;
+	it = m_meshes.find(filename);
+	if (it == m_meshes.end())
+	{
+		loadMesh(filename);
+	}
+	Renderable* r = new Renderable(sT, m_meshes.find(filename)->second, basic);
 	m_renderables.push_back(SPC_Renderable(r));
 	return SPC_Renderable(r);
 }

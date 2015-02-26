@@ -28,12 +28,13 @@ class Renderer
 {
 public:
 	void init();
-	void loadMesh(const char* filename);
+	void loadMesh(std::string filename);
 	void render();
 	void setActiveCamera(int i);
 	int  calculateFrameRate();
+	void updateRenderData();
 	SPC_Camera		createCamera	(SPC_Transform t);
-	SPC_Renderable	createRenderable(SPC_Transform t);
+	SPC_Renderable	createRenderable(SPC_Transform t, std::string filename);
 
 private:
 	int m_ActiveCamera;

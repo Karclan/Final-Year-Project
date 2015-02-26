@@ -17,13 +17,13 @@ class CollisionManager
 {
 public:
 	SPC_Collidable createCollidable	(SPC_Transform t, float size, GameObjectType::type owner);
-	void addCollisionObject			(Collidable *_newCollidable){ m_lstOfCollidables.push_back(_newCollidable); }
-	void addToCheck					(Collidable*);
-	void removeFromCheck			(Collidable*);
+	void addCollisionObject			(SPC_Collidable newCollidable){ m_lstOfCollidables.push_back(newCollidable); }
+	void addToCheck					(SPC_Collidable);
+	void removeFromCheck			(SPC_Collidable);
 	void removeFromCheck();
 	void update();
 private:
-	std::list<Collidable*> m_lstOfCollidables;
+	std::list<SPC_Collidable> m_lstOfCollidables;
 	void checkCollision(SPC_Collidable, SPC_Collidable);
 };
 #endif

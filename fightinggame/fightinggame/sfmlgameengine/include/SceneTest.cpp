@@ -1,38 +1,73 @@
 #include "SceneTest.h"
 
-
-//SPC_Transform test = std::dynamic_pointer_cast<Transform>(m_rotatingCube->findComponent(ComponentType::TRANSFORM));
-//test->setPosition(glm::vec3(0.f, 0.f, -40.f));
-//if (test != nullptr)
-//{
-//	test->setPosition(glm::vec3(0.f, 0.f, 5.f));
-//}
-
 void SceneTest::init()
 {
 	m_FrameDelay		= 1 / GS::FRAMERATE;
 	m_FixedFrameTimer	= 0;
 	
 	m_Renderer.init();
-	m_inputHandler.init();
-	m_Renderer.loadMesh("hexagonprism.obj");
-	
-	SPC_Transform  rct(m_TransformManager.createTransform(glm::vec3(0.f, 0.f, 0.f), glm::vec3(0.f, 0.f, 0.f), glm::vec3(1, 1, 1), glm::vec3(0.f, 0.f, 0.f)));
-	SPC_Collidable rcc(m_CollisionManager.createCollidable(rct, 5.0, GameObjectType::BLOCK));
-	SPC_Renderable rcr(m_Renderer.createRenderable(rct));
+	m_InputHandler.init();
+	//m_Renderer.loadMesh("hexagonprism2.obj");
+	//m_Renderer.loadMesh("cube2.obj");
+	//m_Renderer.loadMesh("pyramid3.obj");
+	//m_Renderer.loadMesh("pyramid4.obj");
+	//m_Renderer.loadMesh("pyramid5.obj");
 
+	//DECORATION BLOCKS
+	float step = -4.5f;
+	for (int i = 0; i < 5; i++)
+	{
+		SPC_Transform  t(m_TransformManager.createTransform(glm::vec3(step,0.f,-4.f)));
+		SPC_Collidable c(m_CollisionManager.createCollidable(t,5.0,GameObjectType::BLOCK));
+		SPC_Renderable r(m_Renderer.createRenderable(t, "pillar.obj"));
+		m_decorBlocks[i] = new Block(t, c, r);
+		step += 2.0f;
+	}
+
+	step = -4.5f;
+	for (int i = 5; i < 10; i++)
+	{
+		SPC_Transform  t(m_TransformManager.createTransform(glm::vec3(step, 1.f, -4.f)));
+		t->scale(glm::vec3(0.5f, 1, 0.5f));
+		SPC_Collidable c(m_CollisionManager.createCollidable(t, 5.0, GameObjectType::BLOCK));
+		SPC_Renderable r(m_Renderer.createRenderable(t, "pillarcap.obj"));
+		m_decorBlocks[i] = new Block(t, c, r);
+		step += 2.0f;
+	}
+
+	//ROTATING CUBE
+	SPC_Transform  rct(m_TransformManager.createTransform	(glm::vec3(0.f, -1.f, 0.f), glm::vec3(90.f, 0.f, 0.f), glm::vec3(1.5f, 1.5f, 0.5f), glm::vec3(0.f, 0.f, 0.f)));
+	SPC_Collidable rcc(m_CollisionManager.createCollidable	(rct, 5.0, GameObjectType::BLOCK));
+	SPC_Renderable rcr(m_Renderer.createRenderable			(rct, "torus.obj"));
 	rcr->setDiff	(glm::vec3(0.8f, 0.2f, 0.8f));
 	rcr->setSpec	(glm::vec3(0.5f, 0.5f, 0.5f));
 	rcr->setSpecEx	(64.f);
 	m_rotatingCube = new Block(rct, rcc, rcr);
 
+	//Floor
+	SPC_Transform  ft(m_TransformManager.createTransform	(glm::vec3(0.f, -1.1f, 0.f), glm::vec3(0.f, 0.f, 0.f), glm::vec3(2.95f, 0.1f, 2.95f), glm::vec3(0.f, 0.f, 0.f)));
+	SPC_Collidable fc(m_CollisionManager.createCollidable	(ft, 5.0, GameObjectType::BLOCK));
+	SPC_Renderable fr(m_Renderer.createRenderable			(ft, "hexagonprism.obj"));
+	fr->setDiff(glm::vec3(0.7f, 0.2f, 0.4f));
+	fr->setSpec(glm::vec3(0.5f, 0.5f, 0.5f));
+	fr->setSpecEx(64.f);
+	m_floor = new Block(ft, fc, fr);
+
+	//Fighter 1 
+	SPC_Transform  f1t(m_TransformManager.createTransform(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(90.0f, 0.0f, 0.0f), glm::vec3(0.5f, 0.5f, 0.5f), glm::vec3(0.0f, 0.0f, 0.0f)));
+	SPC_Collidable f1c(m_CollisionManager.createCollidable(f1t, 5.0, GameObjectType::FIGHTER));
+	SPC_Renderable f1r(m_Renderer.createRenderable(f1t, "roller.obj"));
+	f1r->setDiff(glm::vec3(0.7f, 0.2f, 0.4f));
+	f1r->setSpec(glm::vec3(0.5f, 0.5f, 0.5f));
+	f1r->setSpecEx(64.f);
+	m_player1 = new Fighter(5.f, f1t, f1r, f1c);
+
+	//CAMERA
 	SPC_Transform  st(m_TransformManager.createTransform(glm::vec3(0.f, 0.f, -5.f), glm::vec3(0.f, 0.f, 0.f), glm::vec3(1, 1, 1), glm::vec3(0.f, 0.f, 0.f)));
 	SPC_Camera	   sc(m_Renderer.createCamera(st));
 	m_camera = new CameraObj(sc, st);
 	
-
 	m_Renderer.setActiveCamera(0);
-
 	/*lstOfMeshes.push_back(cube);
 
 	flat_plane = new Block(5.f, glm::vec3(GS::floor.x, GS::floor.y - 0.2f, 0.f), cube, sf::Vector3f(1.f, 0.2f, 0.2f));
@@ -70,25 +105,72 @@ void SceneTest::init()
 }
 void SceneTest::update()
 {
-	//non fixed update
+	handleInput();
+	//ùØØØØØØØØØØØØØØØØ//
+	//NON-FIXED UPDATE//
+	//________________//
 	m_CollisionManager.update();
-	std::cout << m_Renderer.calculateFrameRate() << " fps\n";
-	SPC_Transform t = std::dynamic_pointer_cast<Transform>(m_rotatingCube->findComponent(ComponentType::TRANSFORM));
 	
-	//fixed update
-	m_FixedFrameTimer = Timer::getTime().asSeconds();
+	//ùØØØØØØØØØØØØØØØØ//
+	//  FIXED UPDATE  //
+	//________________//
+	m_FixedFrameTimer = (float)Timer::getTime().asMilliseconds();
+	
 	if (m_FixedFrameTimer >= m_FrameDelay)
 	{
-		t->rotate(glm::vec3(Timer::getTime().asSeconds()*45.f, 0.f, 0.f));
+		SPC_Camera t = std::dynamic_pointer_cast<Camera>(m_camera->findComponent(ComponentType::CAMERA));
+		t->orbit(glm::vec3(0, glm::radians(Timer::getTime().asSeconds()*15.f), 0));
+		SPC_Transform k = std::dynamic_pointer_cast<Transform>(m_player1->findComponent(ComponentType::TRANSFORM));
+		k->rotate(glm::vec3(0.f, Timer::getTime().asSeconds()*45.f,0.f));
+		//std::cout << t->getRotation().x<<"\n";
 		m_GameObjectManager.update();
+		
 		m_FixedFrameTimer = 0;
 	}
 
+	//ùØØØØØØØØØØØØØØØØ//
+	//  Render Scene  //
+	//________________//
 	m_Renderer.render();
+
+	//ùØØØØØØØØØØØØØØØØ//
+	//  Render Text   //
+	//________________//
+	std::string fps = "FPS: " + std::to_string(m_Renderer.calculateFrameRate());
+	FTInterface::renderText(fps, 0, GS::SCREENHEIGHT*0.97f, 0.5, glm::vec3(0.f, 1.f, 0.f));
 }
 void SceneTest::handleInput()
 {
-
+	if (m_InputHandler.isKeyPressed(sf::Keyboard::W))
+	{
+		SPC_Transform t = std::dynamic_pointer_cast<Transform>(m_player1->findComponent(ComponentType::TRANSFORM));
+		t->translate(glm::vec3(0.f, 0.f, -5.0f*Timer::getTime().asSeconds()));
+	}
+	if (m_InputHandler.isKeyPressed(sf::Keyboard::S))
+	{
+		SPC_Transform t = std::dynamic_pointer_cast<Transform>(m_player1->findComponent(ComponentType::TRANSFORM));
+		t->translate(glm::vec3(0.f,0.f, 5.0f*Timer::getTime().asSeconds()));
+	}
+	if (m_InputHandler.isKeyPressed(sf::Keyboard::A))
+	{
+		SPC_Transform t = std::dynamic_pointer_cast<Transform>(m_player1->findComponent(ComponentType::TRANSFORM));
+		t->translate(glm::vec3(-5.0f*Timer::getTime().asSeconds(), 0.f, 0.f));
+	}
+	if (m_InputHandler.isKeyPressed(sf::Keyboard::D))
+	{
+		SPC_Transform t = std::dynamic_pointer_cast<Transform>(m_player1->findComponent(ComponentType::TRANSFORM));
+		t->translate(glm::vec3(5.0f*Timer::getTime().asSeconds(), 0.f, 0.f));
+	}
+	if (m_InputHandler.isKeyPressed(sf::Keyboard::LShift))
+	{
+		SPC_Transform t = std::dynamic_pointer_cast<Transform>(m_player1->findComponent(ComponentType::TRANSFORM));
+		t->translate(glm::vec3(0.f, -5.0f*Timer::getTime().asSeconds(), 0.f));
+	}
+	if (m_InputHandler.isKeyPressed(sf::Keyboard::Space))
+	{
+		SPC_Transform t = std::dynamic_pointer_cast<Transform>(m_player1->findComponent(ComponentType::TRANSFORM));
+		t->translate(glm::vec3(0.f, 5.0f*Timer::getTime().asSeconds(),0.f));
+	}
 }
 void SceneTest::handleController()
 {

@@ -5,6 +5,11 @@ Renderable::Renderable()
 	m_Transform = nullptr;
 	m_Mesh = nullptr;
 	m_Shader = nullptr;
+
+	m_ColourTint			= glm::vec3(1,1,1);
+	m_DiffuseReflection		= glm::vec3(1,1,1);
+	m_SpecularReflection	= glm::vec3(1,1,1);
+	m_SpecularExponent		= 128.f;
 	std::cout << "Renderable Created!\n";
 }
 Renderable::Renderable(SPC_Transform sT,Mesh* m,Shader *s)
@@ -12,6 +17,10 @@ Renderable::Renderable(SPC_Transform sT,Mesh* m,Shader *s)
 	m_Transform = sT;
 	m_Mesh = m;
 	m_Shader = s;
+	m_ColourTint			= glm::vec3(1, 1, 1);
+	m_DiffuseReflection		= glm::vec3(1, 1, 1);
+	m_SpecularReflection	= glm::vec3(1, 1, 1);
+	m_SpecularExponent		= 128.f;
 	std::cout << "Renderable Created!\n";
 }
 ComponentType::type Renderable::getType()

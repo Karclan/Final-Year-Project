@@ -2,14 +2,13 @@
 
 void CollisionManager::update()
 {
-	removeFromCheck();
-	for(auto i : m_lstOfCollidables)
+	for (auto i : m_lstOfCollidables)
 	{
-		for(auto j : m_lstOfCollidables)
+		for (auto j : m_lstOfCollidables)
 		{
 			if(i!=j)
 			{
-				checkCollision(SPC_Collidable(i),SPC_Collidable(j));
+				checkCollision(i, j);
 			}
 		}
 	}
@@ -23,10 +22,10 @@ void CollisionManager::checkCollision(SPC_Collidable a, SPC_Collidable b)
 SPC_Collidable CollisionManager::createCollidable(SPC_Transform t, float size, GameObjectType::type owner)
 {
 	Collidable* c = new Collidable(t,size,owner);
-	m_lstOfCollidables.push_back(c);
+	m_lstOfCollidables.push_back(SPC_Collidable(c));
 	return SPC_Collidable(c);
 }
-void CollisionManager::addToCheck(Collidable *n)
+void CollisionManager::addToCheck(SPC_Collidable n)
 {
 	m_lstOfCollidables.push_back(n);
 }
@@ -37,10 +36,10 @@ void CollisionManager::removeFromCheck()
 		if(it==nullptr) m_lstOfCollidables.remove(it);
 	}
 }
-void CollisionManager::removeFromCheck(Collidable *c)
+void CollisionManager::removeFromCheck(SPC_Collidable c)
 {
 	for(auto it: m_lstOfCollidables)
 	{
-		if(it==c) it=nullptr;
+		if (it == c) it = nullptr;
 	}
 }

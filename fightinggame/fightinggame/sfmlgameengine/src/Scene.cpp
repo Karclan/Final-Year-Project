@@ -74,7 +74,6 @@ void Scene::init()
 
 void Scene::update()
 {
-	//
 	//gravity(dt);
 	//handleInput(dt);
 	//if(ActiveController==true)
@@ -84,9 +83,7 @@ void Scene::update()
 	//uiPos = ActiveCamera->getPosition();
 	//test();
 	//lightPos[0] = glm::vec3(flat_cube->getTransform().x,5.f,0.f);
-
 	//m_collisionManager.update();
-
 	//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	//glBindVertexArray(0);
@@ -98,9 +95,7 @@ void Scene::update()
 	//	it->update(dt);		
 	//	
 	//	it->renderUpdate();	
-
 	//	//--Render--//
-
 	//	glUseProgram(it->getMesh()->myShaderHandle);
 
 	//	shaderHandler->setActiveShader(it->getMesh()->myShaderHandle);
@@ -112,7 +107,6 @@ void Scene::update()
 	//	shaderHandler->setUniform("NormalMatrix",normMat);
 
 	//	setMaterials(it);
-
 	//	glBindVertexArray(it->getMesh()->getVAO());
 	//	glDrawElements(GL_TRIANGLES, it->getMesh()->getIndices()->size() ,GL_UNSIGNED_INT, NULL);
 	//	glBindVertexArray(0);
@@ -126,11 +120,11 @@ void Scene::update()
 
 void Scene::keyDown(int key_code)
 {
-	m_inputHandler.keyPressed(key_code);
+	m_InputHandler.keyPressed(key_code);
 }
 void Scene::keyUp(int key_code)
 {
-	m_inputHandler.keyReleased(key_code);
+	m_InputHandler.keyReleased(key_code);
 }
 //This will be a state swapping function only eventually
 //void Scene::handleController(float dt)

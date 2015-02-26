@@ -11,9 +11,11 @@ class TransformManager
 public:
 	TransformManager();
 	void update();//<!currently unused
+	SPC_Transform createTransform();
+	SPC_Transform createTransform(glm::vec3 position);
 	SPC_Transform createTransform(glm::vec3 position,  glm::vec3 rotation, glm::vec3 scale, glm::vec3 velocity);
 private:
 
-	std::vector<Transform *>m_TransformComponents;
+	std::vector<SPC_Transform>m_TransformComponents;
 };
 #endif

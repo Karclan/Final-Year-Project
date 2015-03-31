@@ -26,7 +26,7 @@ void Camera::tearDown()
 void Camera::init(SPC_Transform t)
 {
 	m_Transform = t;
-	m_Transform->setPosition(glm::vec3(0.0f,0.0f,2.5f));
+	//m_Transform->setPosition(glm::vec3(0.0f,0.0f,2.5f));
 	m_Target = glm::vec3(0.0f,0.0f,0.0f);
 	m_Up = glm::vec3(0.0f,1.0f,0.0f);
 

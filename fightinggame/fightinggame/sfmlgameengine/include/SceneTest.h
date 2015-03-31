@@ -16,7 +16,8 @@ private:
 
 	Block *m_decorBlocks[10];
 	Block *m_rotatingCube;
-	Block *m_floor;
+	Block *m_platform[3];
+	Block *m_floorPlatform;
 	Block *m_levelBlocks[10];
 	Fighter *m_player1;
 	Fighter *m_player2;

@@ -11,8 +11,8 @@ CameraObj::CameraObj(SPC_Camera c, SPC_Transform t)
 	m_Transform = t;
 
 	m_components.push_back(c);
-	m_components.push_back(t);
-	m_Camera->init(t);
+	m_components.push_back(m_Transform);
+	m_Camera->init(m_Transform);
 }
 void CameraObj::update(float dt)
 {

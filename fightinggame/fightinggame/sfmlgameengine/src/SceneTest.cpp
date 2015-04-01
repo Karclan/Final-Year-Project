@@ -93,6 +93,7 @@ void SceneTest::init()
 	//WARNING ABOUT PARTICLE SHADER
 	//WHEN IT COMES TO RENDERING THIS PARTICLE SHADER
 	//THE DISPLAY DRIVER CRASHES, NO IDEA WHAT IS HAPPENING RIGHT NOW
+
 	//SPC_Transform fireworkT(m_TransformManager.createTransform(glm::vec3(0.f, 2.f, 0.f), glm::vec3(0.f), glm::vec3(1.f), glm::vec3(0.f)));
 	//SPC_Particle fireworkP(m_Renderer.createParticle(f1t, 1000));
 	//m_firework = new Firework(fireworkP);

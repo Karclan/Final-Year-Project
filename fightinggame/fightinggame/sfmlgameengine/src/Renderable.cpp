@@ -31,17 +31,6 @@ void Renderable::tearDown()
 {
 
 }
-void Renderable::renderUpdate()
-{
-	m_Mesh->mModel = glm::mat4(1.f);
-	m_Mesh->mModel = glm::translate(m_Transform->getPosition()); // glm::translate(getTransform());
-
-	m_Mesh->mModel = glm::rotate(m_Mesh->mModel, glm::radians(m_Transform->getRotation().x), glm::vec3(1.f,0.f,0.f));
-	m_Mesh->mModel = glm::rotate(m_Mesh->mModel, glm::radians(m_Transform->getRotation().y), glm::vec3(0.f,1.f,0.f));
-	m_Mesh->mModel = glm::rotate(m_Mesh->mModel, glm::radians(m_Transform->getRotation().z), glm::vec3(0.f,0.f,1.f));
-
-	m_Mesh->mModel = glm::scale(m_Mesh->mModel,m_Transform->getScale());
-}
 void Renderable::giveMesh(Mesh *mesh)
 {
 	m_Mesh = mesh;

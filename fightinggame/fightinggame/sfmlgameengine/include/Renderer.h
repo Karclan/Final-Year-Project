@@ -28,9 +28,12 @@
 class Renderer
 {
 public:
+	Renderer();
+	~Renderer();
 	void init();
 	void loadMesh(std::string filename);
 	void render();
+	void updateParticles(float t);
 	void setActiveCamera(int i);
 	int  calculateFrameRate();
 	void updateRenderData  ();
@@ -45,6 +48,7 @@ private:
 	void setLights			 (Shader *s);
 
 	Shader* basic;
+	Shader* particle;
 
 	std::map<std::string,Shader*> m_shaders;
 	std::map<std::string,Mesh*>	  m_meshes;

@@ -6,8 +6,10 @@ TransformManager::TransformManager()
 }
 void TransformManager::update()
 {
-
-
+	for (auto it : m_TransformComponents)
+	{
+		it->update();
+	}
 }
 SPC_Transform TransformManager::createTransform()
 {

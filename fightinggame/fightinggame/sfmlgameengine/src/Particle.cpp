@@ -2,19 +2,26 @@
 
 Particle::Particle()
 {
+	std::cout << "Particle created with nullptrs\n";
 	m_transform		 = nullptr;
 	m_shader		 = nullptr;
 	m_particleSystem = nullptr;
+	m_renderFlag	 = false;
+	m_playFlag       = false;
 	m_particlePool	 = 0;
-	std::cout << "Particle created with nullptrs\n";
+
 }
 Particle::Particle(SPC_Transform t, size_t poolSize, Shader* s)
 {
-	m_transform = t;
-	m_particlePool = poolSize;
-	m_shader = s;
-	m_particleSystem.reset(new ParticleSystem(poolSize));
 	std::cout << "Particle created with pointers\n";
+	m_transform		= t;
+	m_particlePool  = poolSize;
+	m_shader		= s;
+	m_renderFlag	= true;
+	m_playFlag		= true;
+	m_particleRenderable.reset(new ParticleRenderable());
+	m_particleSystem.reset(new ParticleSystem(poolSize));
+	
 }
 ComponentType::type Particle::getType()
 {
@@ -31,7 +38,12 @@ void Particle::init()
 void Particle::render()
 {
 	if (!m_renderFlag)return;
-	m_shader->useProgram();
+
+	//m_shader->useProgram();
+	//m_shader->setUniform("u_ModelMatrix", glm::mat4(1.f));
+	//m_shader->setUniform("u_PointSize", 10.f);
+	//m_shader->setUniform("u_ViewMatrix", viewMatrix);
+	//m_shader->setUniform("u_ProjectionView", projectionMatrix);
 	glEnable(GL_PROGRAM_POINT_SIZE);
 	m_particleRenderable->render(m_particleSystem);
 	glDisable(GL_PROGRAM_POINT_SIZE);
@@ -86,5 +98,5 @@ void Particle::clear()
 }
 void Particle::resetParticles()
 {
-	m_particleSystem.reset();
+	m_particleSystem->reset();
 }

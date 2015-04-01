@@ -19,7 +19,7 @@ ParticleRenderable::~ParticleRenderable()
 void ParticleRenderable::generate(SP_ParticleSystem s, size_t particlePool)
 {
 	//_particlePool = particlePool;
-	if(_generatedFlag)
+	if(_generatedFlag) 
 	{
 		glDisableVertexAttribArray(0);
 		glDisableVertexAttribArray(1);
@@ -27,8 +27,8 @@ void ParticleRenderable::generate(SP_ParticleSystem s, size_t particlePool)
 		glDeleteBuffers(1,&_particleColourBuffer);
 		glDeleteVertexArrays(1,&_vao);
 	}
-	//
-	////_particleSystem.reset(new ParticleSystem(_particlePool));
+	
+	//_particleSystem.reset(new ParticleSystem(_particlePool));
 	_generatedFlag=true;
 
 	//_particleSystem->addEmitter(_emitter);
@@ -64,11 +64,6 @@ void ParticleRenderable::render(SP_ParticleSystem s)
 	if(!_generatedFlag)return;
 	
 	//_shader->useProgram();
-
-
-	//_shader->setUniform("u_ModelMatrix",glm::mat4(1.f));
-	//_shader->setUniform("u_ViewMatrix",viewMatrix);
-	//_shader->setUniform("u_ProjectionView",projectionMatrix);
 
 	glBindVertexArray(_vao);
 

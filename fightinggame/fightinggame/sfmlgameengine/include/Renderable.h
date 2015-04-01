@@ -3,6 +3,7 @@
 
 #define GLM_FORCE_RADIANS
 #include <glm\gtx\matrix_transform_2d.hpp>
+#include <glm\gtc\matrix_transform.hpp>
 
 #include "Component.h"
 #include "Transfrom.h"
@@ -23,7 +24,6 @@ public:
 	ComponentType::type getType();
 	void tearDown();
 
-	void renderUpdate();
 	void giveMesh (Mesh *mesh);
 	
 	void setShader(Shader *shader);
@@ -36,13 +36,16 @@ public:
 	glm::vec3 getDiff();
 	glm::vec3 getSpec();
 	GLfloat	  getSpecEx();
+	glm::mat4 m_ModelMatrix;
 
+
+	SPC_Transform getTransform(){ return m_Transform; }
 private:
 	void setShaderHandle();
 
 	GLuint	  m_ShaderHandle;
 	GLuint	  m_ModelMatrixID;
-	glm::mat4 m_ModelMatrix;
+	
 
 	glm::vec3 m_ColourTint;
 	glm::vec3 m_DiffuseReflection;

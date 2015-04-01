@@ -41,7 +41,7 @@ void SceneTest::init()
 	//m_rotatingCube = new Block(rct, rcc, rcr);
 
 	//Floor
-	SPC_Transform  ft(m_TransformManager.createTransform	(glm::vec3(0.f, 0.0f, 0.f), glm::vec3(0.f, 0.f, 0.f), glm::vec3(8.f, 0.3f, 3.f), glm::vec3(0.f, 0.f, 0.f)));
+	SPC_Transform  ft(m_TransformManager.createTransform	(glm::vec3(0.f), glm::vec3(0.f), glm::vec3(8.f, 0.3f, 3.f), glm::vec3(0.f)));
 	SPC_Collidable fc(m_CollisionManager.createCollidable	(ft, 5.0, GameObjectType::BLOCK));
 	SPC_Renderable fr(m_Renderer.createRenderable			(ft, "hexagonprism.obj"));
 	fr->setDiff(glm::vec3(0.7f, 0.2f, 0.4f));
@@ -50,7 +50,7 @@ void SceneTest::init()
 	m_floorPlatform = new Block(ft, fc, fr);
 
 	//Platform 1
-	SPC_Transform  pft0(m_TransformManager.createTransform(glm::vec3(3.f, 2.f, 0.f), glm::vec3(0.f, 0.f, 0.f), glm::vec3(1.f,0.3f,1.f), glm::vec3(0.f, 0.f, 0.f)));
+	SPC_Transform  pft0(m_TransformManager.createTransform(glm::vec3(3.f, 2.f, 0.f), glm::vec3(0.f), glm::vec3(1.f,0.3f,1.f), glm::vec3(0.f)));
 	SPC_Collidable pfc0(m_CollisionManager.createCollidable(pft0, 5.0, GameObjectType::BLOCK));
 	SPC_Renderable pfr0(m_Renderer.createRenderable(pft0, "cube2.obj"));
 	pfr0->setSpec(glm::vec3(0.5f, 0.5f, 0.5f));
@@ -58,7 +58,7 @@ void SceneTest::init()
 	m_platform[0] = new Block(pft0, pfc0, pfr0);
 
 	//Platform 2
-	SPC_Transform  pft1(m_TransformManager.createTransform(glm::vec3(0.f, 4.f, 0.f), glm::vec3(0.f, 0.f, 0.f), glm::vec3(1.f, 0.3f, 1.f), glm::vec3(0.f, 0.f, 0.f)));
+	SPC_Transform  pft1(m_TransformManager.createTransform(glm::vec3(0.f, 4.f, 0.f), glm::vec3(0.f), glm::vec3(1.f, 0.3f, 1.f), glm::vec3(0.f)));
 	SPC_Collidable pfc1(m_CollisionManager.createCollidable(pft1, 5.0, GameObjectType::BLOCK));
 	SPC_Renderable pfr1(m_Renderer.createRenderable(pft1, "cube2.obj"));
 	pfr1->setSpec(glm::vec3(0.5f, 0.5f, 0.5f));
@@ -66,7 +66,7 @@ void SceneTest::init()
 	m_platform[1] = new Block(pft1, pfc1, pfr1);
 
 	//Platform 3
-	SPC_Transform  pft2(m_TransformManager.createTransform(glm::vec3(-3.f, 2.f, 0.f), glm::vec3(0.f, 0.f, 0.f), glm::vec3(1.f, 0.3f, 1.f), glm::vec3(0.f, 0.f, 0.f)));
+	SPC_Transform  pft2(m_TransformManager.createTransform(glm::vec3(-3.f, 2.f, 0.f), glm::vec3(0.f), glm::vec3(1.f, 0.3f, 1.f), glm::vec3(0.f)));
 	SPC_Collidable pfc2(m_CollisionManager.createCollidable(pft2, 5.0, GameObjectType::BLOCK));
 	SPC_Renderable pfr2(m_Renderer.createRenderable(pft2, "cube2.obj"));
 	pfr2->setSpec(glm::vec3(0.5f, 0.5f, 0.5f));
@@ -74,7 +74,7 @@ void SceneTest::init()
 	m_platform[2] = new Block(pft2, pfc2, pfr2);
 
 	//Fighter 1 
-	SPC_Transform  f1t(m_TransformManager.createTransform(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(90.0f, 0.0f, 0.0f), glm::vec3(0.5f, 0.5f, 0.5f), glm::vec3(0.0f, 0.0f, 0.0f)));
+	SPC_Transform  f1t(m_TransformManager.createTransform(glm::vec3(0.0f), glm::vec3(90.0f, 0.0f, 0.0f), glm::vec3(0.5f), glm::vec3(0.0f)));
 	SPC_Collidable f1c(m_CollisionManager.createCollidable(f1t, 5.0, GameObjectType::FIGHTER));
 	SPC_Renderable f1r(m_Renderer.createRenderable(f1t, "roller.obj"));
 	f1r->setDiff(glm::vec3(0.7f, 0.2f, 0.4f));
@@ -83,11 +83,20 @@ void SceneTest::init()
 	m_player1 = new Fighter(5.f, f1t, f1r, f1c);
 
 	//CAMERA
-	SPC_Transform  st(m_TransformManager.createTransform(glm::vec3(0.f, 3.f, 6.f), glm::vec3(0.f, 0.f, 0.f), glm::vec3(1, 1, 1), glm::vec3(0.f, 0.f, 0.f)));
+	SPC_Transform  st(m_TransformManager.createTransform(glm::vec3(0.f, 3.f, 6.f), glm::vec3(0.f), glm::vec3(1.f), glm::vec3(0.f)));
 	SPC_Camera	   sc(m_Renderer.createCamera(st));
 	m_camera = new CameraObj(sc, st);
 
 	m_Renderer.setActiveCamera(0);
+	
+
+	//WARNING ABOUT PARTICLE SHADER
+	//WHEN IT COMES TO RENDERING THIS PARTICLE SHADER
+	//THE DISPLAY DRIVER CRASHES, NO IDEA WHAT IS HAPPENING RIGHT NOW
+	//SPC_Transform fireworkT(m_TransformManager.createTransform(glm::vec3(0.f, 2.f, 0.f), glm::vec3(0.f), glm::vec3(1.f), glm::vec3(0.f)));
+	//SPC_Particle fireworkP(m_Renderer.createParticle(f1t, 1000));
+	//m_firework = new Firework(fireworkP);
+	//m_firework->init();
 	/*lstOfMeshes.push_back(cube);
 
 	flat_plane = new Block(5.f, glm::vec3(GS::floor.x, GS::floor.y - 0.2f, 0.f), cube, sf::Vector3f(1.f, 0.2f, 0.2f));
@@ -130,26 +139,28 @@ void SceneTest::update()
 	//NON-FIXED UPDATE//
 	//________________//
 	m_CollisionManager.update();
-	
+
 	//¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯//
 	//  FIXED UPDATE  //
 	//________________//
 	m_FixedFrameTimer = (float)Timer::getTime().asMilliseconds();
-	
+
 	if (m_FixedFrameTimer >= m_FrameDelay)
 	{
+		m_Renderer.updateParticles((float)Timer::getTime().asMilliseconds());
+
 		SPC_Camera t = std::dynamic_pointer_cast<Camera>(m_camera->findComponent(ComponentType::CAMERA));
 		//t->orbit(glm::vec3(0, glm::radians(Timer::getTime().asSeconds()*15.f), 0));
 
-		SPC_Transform k = std::dynamic_pointer_cast<Transform>(m_player1->findComponent(ComponentType::TRANSFORM));
-		k->rotate(glm::vec3(0.f, Timer::getTime().asSeconds()*45.f,0.f));
+		//SPC_Transform k = std::dynamic_pointer_cast<Transform>(m_player1->findComponent(ComponentType::TRANSFORM));
+		//k->rotate(glm::vec3(0.f, Timer::getTime().asSeconds()*45.f, 0.f));
 
-		t->setTarget(k->getPosition());
+		//t->setTarget(k->getPosition());
 		m_GameObjectManager.update();
-		
+
 		m_FixedFrameTimer = 0;
 	}
-
+	m_TransformManager.update();
 	//¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯//
 	//  Render Scene  //
 	//________________//

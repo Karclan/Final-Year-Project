@@ -35,6 +35,7 @@ public:
 	void clear();
 	void resetParticles();
 
+	SPC_Transform getTransform(){ return m_transform; }
 private:
 
 	bool m_renderFlag;

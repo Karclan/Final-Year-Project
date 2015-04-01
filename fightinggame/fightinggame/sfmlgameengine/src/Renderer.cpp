@@ -3,6 +3,19 @@
 //¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯//
 //===PUBLIC  FUNCTIONS===//
 //_______________________//
+Renderer::Renderer()
+{
+
+}
+Renderer::~Renderer()
+{
+	for (auto it : m_shaders)
+	{
+		delete it.second;
+	}
+	m_shaders.clear();
+}
+
 void Renderer::init()
 {
 	glViewport(0, 0, GS::SCREENWIDTH, GS::SCREENHEIGHT);
@@ -15,11 +28,16 @@ void Renderer::init()
 	basic = new Shader();
 	basic->createShader("shader/basic.vert","shader/basic.frag");
 	m_shaders.emplace("basic",basic);
-	
+
 	for(auto it : m_shaders)
 	{
 		setLights(it.second);
 	}
+
+	particle = new Shader();
+	particle->createShader("shader/particle.vert", "shader/particle.frag");
+	m_shaders.emplace("particle", particle);
+
 	std::cout << "C| Initalized Renderer!\n";
 }
 void Renderer::loadMesh(std::string filename)
@@ -35,12 +53,11 @@ void Renderer::render()
 	{
 		it->update();
 	}
+
 	for(auto it: m_renderables)
 	{
 		it->getShader()->useProgram();
 		setLights(it->getShader());
-
-		it->renderUpdate();
 	
 		updateMatricies(it, m_cameras[m_ActiveCamera]);
 
@@ -50,8 +67,25 @@ void Renderer::render()
 		glDrawElements(GL_TRIANGLES, it->getMesh()->getIndices()->size(), GL_UNSIGNED_INT, NULL);
 		glBindVertexArray(0);
 	}
-}
 
+	particle->useProgram();
+	particle->setUniform("u_PointSize", 10.f);
+	particle->setUniform("u_ViewMatrix",	 m_cameras[0]->getViewMatrix());
+	particle->setUniform("u_ProjectionView", m_cameras[0]->getProjectionMatrix());
+	
+	for (auto it : m_particles)
+	{
+		particle->setUniform("u_ModelMatrix", it->getTransform()->getMatrix());
+		it->render();
+	}
+}
+void Renderer::updateParticles(float t)
+{
+	for (auto it : m_particles)
+	{
+		it->animate(t);
+	}
+}
 void Renderer::setActiveCamera(int i)
 {
 	size_t j = i;
@@ -87,9 +121,9 @@ int Renderer::calculateFrameRate()
 }
 SPC_Camera Renderer::createCamera(SPC_Transform sT)
 {
-	Camera* c = new Camera(sT);
-	m_cameras.push_back(SPC_Camera(c));
-	return SPC_Camera(c);
+	SPC_Camera c(new Camera(sT));
+	m_cameras.push_back(c);
+	return c;
 }
 SPC_Renderable Renderer::createRenderable(SPC_Transform sT,std::string filename)
 {
@@ -99,20 +133,25 @@ SPC_Renderable Renderer::createRenderable(SPC_Transform sT,std::string filename)
 	{
 		loadMesh(filename);
 	}
-	Renderable* r = new Renderable(sT, m_meshes.find(filename)->second, basic);
-	m_renderables.push_back(SPC_Renderable(r));
-	return SPC_Renderable(r);
+	SPC_Renderable r (new Renderable(sT, m_meshes.find(filename)->second, basic));
+	m_renderables.push_back(r);
+	return r;
 }
-
+SPC_Particle Renderer::createParticle(SPC_Transform t, size_t poolSize)
+{
+	SPC_Particle p(new Particle(t, poolSize, particle));
+	m_particles.push_back(p);
+	return p;
+}
 //¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯//
 //===PRIVATE FUNCTIONS===//
 //_______________________//
 
 void Renderer::updateMatricies(SPC_Renderable r, SPC_Camera c)
 {
-	glm::mat3 normMat = glm::transpose(glm::inverse(glm::mat3(glm::mat3(r->getMesh()->mModel))));
+	glm::mat3 normMat = glm::transpose(glm::inverse(glm::mat3(glm::mat3(r->getTransform()->getMatrix()))));
 	r->getShader()->setUniform("NormalMatrix",  normMat);
-	r->getShader()->setUniform("mModel",	    r->getMesh()->mModel);
+	r->getShader()->setUniform("mModel",		r->getTransform()->getMatrix());
 	r->getShader()->setUniform("mView",			c->getViewMatrix());
 	r->getShader()->setUniform("mProjection",	c->getProjectionMatrix());
 	r->getShader()->setUniform("viewPos",		c->getPosition());

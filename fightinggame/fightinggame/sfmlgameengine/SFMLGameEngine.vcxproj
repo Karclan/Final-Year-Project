@@ -14,6 +14,8 @@
     <None Include="ClassDiagram.cd" />
     <None Include="shader\basic.frag" />
     <None Include="shader\basic.vert" />
+    <None Include="shader\particle.frag" />
+    <None Include="shader\particle.vert" />
     <None Include="shader\textShader.frag" />
     <None Include="shader\textShader.vert" />
   </ItemGroup>

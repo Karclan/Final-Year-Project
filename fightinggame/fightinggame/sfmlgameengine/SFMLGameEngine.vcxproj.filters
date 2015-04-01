@@ -73,6 +73,12 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="ClassDiagram.cd" />
+    <None Include="shader\particle.frag">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shader\particle.vert">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\ControllerInput.h">
@@ -284,13 +290,13 @@
     <ClCompile Include="src\Particle.cpp">
       <Filter>Game-Engine\Source Files\Components</Filter>
     </ClCompile>
-    <ClCompile Include="src\ParticleRenderable.cpp">
-      <Filter>Game-Engine\Source Files\Rendering</Filter>
-    </ClCompile>
     <ClCompile Include="src\SceneTest.cpp">
       <Filter>Game-Implementation\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\ParticleBehaviour.cpp">
+      <Filter>Game-Engine\Source Files\Rendering\particles</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ParticleRenderable.cpp">
       <Filter>Game-Engine\Source Files\Rendering\particles</Filter>
     </ClCompile>
   </ItemGroup>

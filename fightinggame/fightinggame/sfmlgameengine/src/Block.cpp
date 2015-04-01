@@ -17,7 +17,6 @@ Block::Block(SPC_Transform t, SPC_Collidable c, SPC_Renderable r)
 }
 void Block::update(float dt)
 {
-	m_Renderable->renderUpdate();
 }
 void Block::renderUpdate()
 {

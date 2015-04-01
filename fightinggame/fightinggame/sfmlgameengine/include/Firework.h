@@ -7,6 +7,7 @@ class Firework : public ParticleBehaviour
 {
 public:
 	Firework();
+	Firework(SPC_Particle p);
 	void init();
 	void update(float t);
 private:

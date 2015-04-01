@@ -27,6 +27,7 @@
     <ClInclude Include="include\ControllerInput.h" />
     <ClInclude Include="include\FallingBlock.h" />
     <ClInclude Include="include\Fighter.hpp" />
+    <ClInclude Include="include\Firework.h" />
     <ClInclude Include="include\FTInterface.h" />
     <ClInclude Include="include\GameObject.h" />
     <ClInclude Include="include\GameObjectManager.h" />
@@ -35,6 +36,14 @@
     <ClInclude Include="include\HitBox.h" />
     <ClInclude Include="include\Input.h" />
     <ClInclude Include="include\Mesh.h" />
+    <ClInclude Include="include\Particle.h" />
+    <ClInclude Include="include\ParticleBehaviour.h" />
+    <ClInclude Include="include\particleData.h" />
+    <ClInclude Include="include\particleEmitters.h" />
+    <ClInclude Include="include\particleGenerators.h" />
+    <ClInclude Include="include\ParticleRenderable.h" />
+    <ClInclude Include="include\particleSystem.h" />
+    <ClInclude Include="include\particleUpdaters.h" />
     <ClInclude Include="include\Renderable.h" />
     <ClInclude Include="include\Renderer.h" />
     <ClInclude Include="include\Scene.h" />
@@ -47,7 +56,6 @@
     <ClInclude Include="include\X360Controller.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="include\SceneTest.cpp" />
     <ClCompile Include="src\Block.cpp" />
     <ClCompile Include="src\Camera.cpp" />
     <ClCompile Include="src\CameraObj.cpp" />
@@ -57,6 +65,7 @@
     <ClCompile Include="src\ControllerInput.cpp" />
     <ClCompile Include="src\FallingBlock.cpp" />
     <ClCompile Include="src\Fighter.cpp" />
+    <ClCompile Include="src\Firework.cpp" />
     <ClCompile Include="src\FTInterface.cpp" />
     <ClCompile Include="src\GameObject.cpp" />
     <ClCompile Include="src\GameObjectManager.cpp" />
@@ -65,9 +74,18 @@
     <ClCompile Include="src\Input.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Mesh.cpp" />
+    <ClCompile Include="src\Particle.cpp" />
+    <ClCompile Include="src\ParticleBehaviour.cpp" />
+    <ClCompile Include="src\particleData.cpp" />
+    <ClCompile Include="src\particleEmitters.cpp" />
+    <ClCompile Include="src\particleGenerators.cpp" />
+    <ClCompile Include="src\ParticleRenderable.cpp" />
+    <ClCompile Include="src\particleSystem.cpp" />
+    <ClCompile Include="src\particleUpdaters.cpp" />
     <ClCompile Include="src\Renderable.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\Scene.cpp" />
+    <ClCompile Include="src\SceneTest.cpp" />
     <ClCompile Include="src\Shader.cpp" />
     <ClCompile Include="src\ShaderHandler.cpp" />
     <ClCompile Include="src\Timer.cpp" />

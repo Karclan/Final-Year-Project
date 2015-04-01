@@ -22,7 +22,8 @@
 #include "Shader.h"
 #include "Mesh.h"
 #include "Camera.h"
-
+#include "ParticleRenderable.h"
+#include "ParticleBehaviour.h"
 
 class Renderer
 {
@@ -32,10 +33,10 @@ public:
 	void render();
 	void setActiveCamera(int i);
 	int  calculateFrameRate();
-	void updateRenderData();
+	void updateRenderData  ();
 	SPC_Camera		createCamera	(SPC_Transform t);
 	SPC_Renderable	createRenderable(SPC_Transform t, std::string filename);
-
+	SPC_Particle	createParticle	(SPC_Transform t, size_t poolSize);
 private:
 	int m_ActiveCamera;
 
@@ -45,9 +46,10 @@ private:
 
 	Shader* basic;
 
-	std::map<std::string,Shader*>	m_shaders;
-	std::map<std::string,Mesh*>		m_meshes;
-	std::vector<SPC_Camera>			m_cameras;
-	std::vector<SPC_Renderable>		m_renderables;
+	std::map<std::string,Shader*> m_shaders;
+	std::map<std::string,Mesh*>	  m_meshes;
+	std::vector<SPC_Camera>		  m_cameras;
+	std::vector<SPC_Renderable>	  m_renderables;
+	std::vector<SPC_Particle>	  m_particles;
 };
 #endif

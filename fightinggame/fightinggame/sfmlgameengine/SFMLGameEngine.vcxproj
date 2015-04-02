@@ -141,13 +141,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)include/;$(SolutionDir)dev\include\;$(SolutionDir)dev\include\freetype;$(SolutionDir)dev\include\freetype\freetype2;$(SolutionDir)dev\include\assimp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)include/;$(SolutionDir)dev\include\;$(SolutionDir)dev\include\freetype;$(SolutionDir)dev\include\freetype\freetype2;$(SolutionDir)dev\assimp;$(SolutionDir)dev\assimp\Compiler;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(ProjectDir)src/;$(SolutionDir)dev\lib\sfml;$(SolutionDir)dev\lib\glew;$(SolutionDir)dev\lib\freetype;$(SolutionDir)dev\lib\assimp;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>freetype.lib;XInput9_1_0.lib;sfml-window-d.lib;sfml-main-d.lib;sfml-system-d.lib;sfml-graphics-d.lib;sfml-audio.lib;opengl32.lib;glew32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>freetype.lib;assimp.lib;XInput9_1_0.lib;sfml-window-d.lib;sfml-main-d.lib;sfml-system-d.lib;sfml-graphics-d.lib;sfml-audio.lib;opengl32.lib;glew32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

@@ -43,7 +43,7 @@ void SceneTest::init()
 	//Floor
 	SPC_Transform  ft(m_TransformManager.createTransform	(glm::vec3(0.f,-3.f,0.f), glm::vec3(0.f), glm::vec3(1.f), glm::vec3(0.f)));
 	SPC_Collidable fc(m_CollisionManager.createCollidable	(ft, 5.0, GameObjectType::BLOCK));
-	SPC_Renderable fr(m_Renderer.createRenderable			(ft, "bridge.obj","resources/texture.png"));
+	SPC_Renderable fr(m_Renderer.createRenderable			(ft, "bridge.obj"));
 	fr->setDiff(glm::vec3(0.7f, 0.2f, 0.4f));
 	fr->setSpec(glm::vec3(0.5f, 0.5f, 0.5f));
 	fr->setSpecEx(64.f);
@@ -204,6 +204,16 @@ void SceneTest::handleInput()
 	{
 		SPC_Transform t = std::dynamic_pointer_cast<Transform>(m_player1->findComponent(ComponentType::TRANSFORM));
 		t->translate(glm::vec3(0.f, 5.0f*Timer::getTime().asSeconds(),0.f));
+	}
+	if (m_InputHandler.isKeyPressed(sf::Keyboard::Up))
+	{
+		SPC_Transform t = std::dynamic_pointer_cast<Transform>(m_camera->findComponent(ComponentType::TRANSFORM));
+		t->translate(glm::vec3(0.f, 0.f, 5.f*Timer::getTime().asSeconds()));
+	}
+	if (m_InputHandler.isKeyPressed(sf::Keyboard::Down))
+	{
+		SPC_Transform t = std::dynamic_pointer_cast<Transform>(m_camera->findComponent(ComponentType::TRANSFORM));
+		t->translate(glm::vec3(0.f, 0.f, -5.f*Timer::getTime().asSeconds()));
 	}
 }
 void SceneTest::handleController()

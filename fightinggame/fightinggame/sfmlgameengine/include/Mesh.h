@@ -12,8 +12,8 @@
 	
 
 #include <assimp\Importer.hpp>
-#include <assimp\scene.h>
-#include <assimp\postprocess.h>
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
 
 #include <stdio.h>
 #include <iostream>
@@ -43,12 +43,30 @@ private:
 	void init();
 	void genMesh();
 
+	void setVerts();
+	void setNormals();
+	void setColours();
+	void setTangents();
+	void setBiTangents();
+	void setIndicies();
+
 	bool hasTexture;
-	GLuint positionBufferHandle,normalBufferHandle,uvBufferHandle, index_buffer;
-	std::vector<sf::Vector3f> points;
-	std::vector<sf::Vector3f> normals;
-	std::vector<sf::Vector2f> uvData;
+	GLuint	positionBufferHandle,
+			normalBufferHandle,
+			uvBufferHandle,
+			tangentBufferHandle,
+			biTangentBufferHandle,
+			index_buffer;
+	std::vector<glm::vec3> vertices;
+	std::vector<glm::vec3> normals;
+
+	std::vector<glm::vec3> tangents;
+	std::vector<glm::vec3> biTangents;
+	std::vector<glm::vec2> uvData;
 	std::vector<GLuint> indices;
+
+	//std::vector<glm::vec3> colours;
+
 	GLuint VAOHandle, VBOHandle[4];
 	GLuint myTexture;
 	sf::Image myImage;

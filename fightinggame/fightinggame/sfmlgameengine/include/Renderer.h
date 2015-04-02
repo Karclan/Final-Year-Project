@@ -38,7 +38,8 @@ public:
 	int  calculateFrameRate();
 	void updateRenderData  ();
 	SPC_Camera		createCamera	(SPC_Transform t);
-	SPC_Renderable	createRenderable(SPC_Transform t, std::string filename);
+	SPC_Renderable	createRenderable(SPC_Transform t, std::string meshFilename);
+	SPC_Renderable  createRenderable(SPC_Transform t, std::string meshFilename, std::string textureFilename);
 	SPC_Particle	createParticle	(SPC_Transform t, size_t poolSize);
 private:
 	int m_ActiveCamera;

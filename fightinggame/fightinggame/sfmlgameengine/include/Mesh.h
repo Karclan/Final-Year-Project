@@ -10,6 +10,11 @@
 
 #include <glm\gtx\transform.hpp>
 	
+
+#include <assimp\Importer.hpp>
+#include <assimp\scene.h>
+#include <assimp\postprocess.h>
+
 #include <stdio.h>
 #include <iostream>
 #include <fstream>
@@ -32,8 +37,6 @@ public:
 	GLuint getVAO(){return VAOHandle;}
 	GLuint getTexture(){return myTexture;}
 
-	glm::mat4 mModel;
-	GLuint modelMatrixID;
 	GLuint myShaderHandle;
 
 private:

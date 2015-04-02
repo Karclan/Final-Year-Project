@@ -5,6 +5,7 @@
 #include <glm\gtx\matrix_transform_2d.hpp>
 #include <glm\gtc\matrix_transform.hpp>
 
+#include "Texture.h"
 #include "Component.h"
 #include "Transfrom.h"
 #include "Mesh.h"
@@ -23,9 +24,12 @@ public:
 
 	ComponentType::type getType();
 	void tearDown();
-
-	void giveMesh (Mesh *mesh);
 	
+	void giveMesh (Mesh *mesh);
+	void assignTexture(std::string filename);
+	bool textured(){ return m_Textured; }
+	void bindTexture(TextureTypes::type type);
+	void unbindTextures();
 	void setShader(Shader *shader);
 	void setDiff  (glm::vec3 diffuseReflection);
 	void setSpec  (glm::vec3 specularReflection);
@@ -54,6 +58,9 @@ private:
 	
 	Mesh*		  m_Mesh;
 	Shader*		  m_Shader;
+	bool		  m_Textured;
+	Texture		  m_TextureObject;
+
 	SPC_Transform m_Transform;
 };
 

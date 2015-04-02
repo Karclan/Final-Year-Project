@@ -1,7 +1,8 @@
 #version 430
 
-in vec3 vertPos;
-in vec3 vertNorm;
+in vec3 o_VertPos;
+in vec3 o_VertNorm;
+in vec2 o_TexCoords;
 
 #define MAX_SPOTLIGHTS 4
 #define MAX_POINTLIGHTS 4
@@ -25,7 +26,7 @@ struct SpotLight
  float quadratic;
 
  vec3 amb;            //ambient light intensity
- vec3 diff;            // Diffuse light intensity
+ vec3 diff;           // Diffuse light intensity
  vec3 spec;
 };
 
@@ -53,6 +54,8 @@ uniform SpotLight spotLight[MAX_SPOTLIGHTS];
 uniform PointLight pointLight[MAX_POINTLIGHTS];
 uniform Material material;
 
+uniform sampler2D u_DiffuseTexture;
+uniform int u_Textured;
 out vec4 FragColour;
 
 vec3 CalSpotLight(SpotLight light, vec3 normal, vec3 viewDir, vec3 vertPos)
@@ -128,20 +131,26 @@ vec3 CalPointLight(PointLight light, vec3 normal, vec3 viewDir, vec3 vertPos)
 void main()
 {
 	 //--Properties--//
-	vec3 norm = normalize(NormalMatrix * vertNorm);
-    vec3 viewDir = normalize(viewPos - vertPos);
+	vec3 norm = normalize(NormalMatrix * o_VertNorm);
+    vec3 viewDir = normalize(viewPos - o_VertPos);
 
 	vec3 result= vec3(0.0,0.0,0.0);
 
 	for(int i=0;i<numOfPointLights;++i)
 	{
-	result += CalPointLight(pointLight[i], norm, viewDir, vertPos);
+		result += CalPointLight(pointLight[i], norm, viewDir, o_VertPos);
 	}
 	for(int i=0;i<numOfSpotLights;i++)
 	{
-		result += CalSpotLight(spotLight[i] ,norm, viewDir,vertPos);
+		result += CalSpotLight(spotLight[i] ,norm, viewDir,o_VertPos);
 	}
 	
-	
-	FragColour=vec4(result,1.0);
+	vec4 colour=vec4(result,1.0);
+
+	if(u_Textured)
+	{
+	colour*=texture(u_DiffuseTexture,o_TexCoords);
+	}
+
+	FragColour=colour;
 }

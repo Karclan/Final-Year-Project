@@ -41,9 +41,9 @@ void SceneTest::init()
 	//m_rotatingCube = new Block(rct, rcc, rcr);
 
 	//Floor
-	SPC_Transform  ft(m_TransformManager.createTransform	(glm::vec3(0.f), glm::vec3(0.f), glm::vec3(8.f, 0.3f, 3.f), glm::vec3(0.f)));
+	SPC_Transform  ft(m_TransformManager.createTransform	(glm::vec3(0.f,-3.f,0.f), glm::vec3(0.f), glm::vec3(1.f), glm::vec3(0.f)));
 	SPC_Collidable fc(m_CollisionManager.createCollidable	(ft, 5.0, GameObjectType::BLOCK));
-	SPC_Renderable fr(m_Renderer.createRenderable			(ft, "hexagonprism.obj"));
+	SPC_Renderable fr(m_Renderer.createRenderable			(ft, "bridge.obj","resources/texture.png"));
 	fr->setDiff(glm::vec3(0.7f, 0.2f, 0.4f));
 	fr->setSpec(glm::vec3(0.5f, 0.5f, 0.5f));
 	fr->setSpecEx(64.f);
@@ -83,7 +83,7 @@ void SceneTest::init()
 	m_player1 = new Fighter(5.f, f1t, f1r, f1c);
 
 	//CAMERA
-	SPC_Transform  st(m_TransformManager.createTransform(glm::vec3(0.f, 3.f, 6.f), glm::vec3(0.f), glm::vec3(1.f), glm::vec3(0.f)));
+	SPC_Transform  st(m_TransformManager.createTransform(glm::vec3(0.f, 0.f, 12.f), glm::vec3(0.f), glm::vec3(1.f), glm::vec3(0.f)));
 	SPC_Camera	   sc(m_Renderer.createCamera(st));
 	m_camera = new CameraObj(sc, st);
 
@@ -153,10 +153,10 @@ void SceneTest::update()
 		SPC_Camera t = std::dynamic_pointer_cast<Camera>(m_camera->findComponent(ComponentType::CAMERA));
 		//t->orbit(glm::vec3(0, glm::radians(Timer::getTime().asSeconds()*15.f), 0));
 
-		//SPC_Transform k = std::dynamic_pointer_cast<Transform>(m_player1->findComponent(ComponentType::TRANSFORM));
-		//k->rotate(glm::vec3(0.f, Timer::getTime().asSeconds()*45.f, 0.f));
+		SPC_Transform k = std::dynamic_pointer_cast<Transform>(m_player1->findComponent(ComponentType::TRANSFORM));
+		k->rotate(glm::vec3(0.f, Timer::getTime().asSeconds()*45.f, 0.f));
 
-		//t->setTarget(k->getPosition());
+		t->setTarget(k->getPosition());
 		m_GameObjectManager.update();
 
 		m_FixedFrameTimer = 0;

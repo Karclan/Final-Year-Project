@@ -62,10 +62,22 @@ void Renderer::render()
 		updateMatricies(it, m_cameras[m_ActiveCamera]);
 
 		setMaterials(it);
-
+		if (it->textured())
+		{
+			it->getShader()->setUniform("u_Textured", 1);
+			it->bindTexture(TextureTypes::DIFFUSE);
+		}
+		else
+		{
+			it->getShader()->setUniform("u_Textured", 0);
+		}
 		glBindVertexArray(it->getMesh()->getVAO());
 		glDrawElements(GL_TRIANGLES, it->getMesh()->getIndices()->size(), GL_UNSIGNED_INT, NULL);
 		glBindVertexArray(0);
+		if (it->textured())
+		{
+			it->unbindTextures();
+		}
 	}
 
 	particle->useProgram();
@@ -125,15 +137,28 @@ SPC_Camera Renderer::createCamera(SPC_Transform sT)
 	m_cameras.push_back(c);
 	return c;
 }
-SPC_Renderable Renderer::createRenderable(SPC_Transform sT,std::string filename)
+SPC_Renderable Renderer::createRenderable(SPC_Transform sT, std::string meshFilename)
 {
 	std::map<std::string, Mesh*>::iterator it;
-	it = m_meshes.find(filename);
+	it = m_meshes.find(meshFilename);
 	if (it == m_meshes.end())
 	{
-		loadMesh(filename);
+		loadMesh(meshFilename);
 	}
-	SPC_Renderable r (new Renderable(sT, m_meshes.find(filename)->second, basic));
+	SPC_Renderable r(new Renderable(sT, m_meshes.find(meshFilename)->second, basic));
+	m_renderables.push_back(r);
+	return r;
+}
+SPC_Renderable Renderer::createRenderable(SPC_Transform t, std::string meshFilename, std::string textureFilename)
+{
+	std::map<std::string, Mesh*>::iterator it;
+	it = m_meshes.find(meshFilename);
+	if (it == m_meshes.end())
+	{
+		loadMesh(meshFilename);
+	}
+	SPC_Renderable r(new Renderable(t, m_meshes.find(meshFilename)->second, basic));
+	r->assignTexture(textureFilename);
 	m_renderables.push_back(r);
 	return r;
 }

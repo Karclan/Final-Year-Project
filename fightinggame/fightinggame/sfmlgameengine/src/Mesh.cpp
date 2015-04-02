@@ -46,36 +46,34 @@ void Mesh::genMesh()
 	glBindBuffer(GL_ARRAY_BUFFER, normalBufferHandle);
 	glBufferData(GL_ARRAY_BUFFER, (normals.size() * 3) * sizeof(float), &points[0].x, GL_STATIC_DRAW);
 
+	glBindBuffer(GL_ARRAY_BUFFER, uvBufferHandle);
+	glBufferData(GL_ARRAY_BUFFER, (uvData.size() * 2) * sizeof(float), &uvData[0].x, GL_STATIC_DRAW);
+
 	// Create and set-up the vertex array object
 	glGenVertexArrays( 1, &VAOHandle );
 	glBindVertexArray(VAOHandle);
 
-	glEnableVertexAttribArray(0);  // Vertex positionr
-	glEnableVertexAttribArray(1);  // Normal position
-
-	glBindBuffer(GL_ARRAY_BUFFER, positionBufferHandle);
-	glVertexAttribPointer( 0, 3, GL_FLOAT, FALSE, 0, (GLubyte *)NULL );
-
-	glBindBuffer(GL_ARRAY_BUFFER, normalBufferHandle);
-	glVertexAttribPointer( 1 ,3, GL_FLOAT, FALSE, 0, (GLubyte *)NULL);
-
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, index_buffer);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER,  indices.size()  * sizeof(GLuint), &indices[0],GL_STATIC_DRAW);
-
 	GLint vertPos;
 	GLint vertNormal;
+	GLint texCoords;
 
-	vertPos = glGetAttribLocation(myShaderHandle,"vertPosition");
+	vertPos = glGetAttribLocation(myShaderHandle,"i_VertPosition");
 	glEnableVertexAttribArray(vertPos);
-
 	glBindBuffer(GL_ARRAY_BUFFER, positionBufferHandle);
 	glVertexAttribPointer( vertPos, 3, GL_FLOAT, FALSE, 0, (GLubyte *)NULL );
 
-	vertNormal = glGetAttribLocation(myShaderHandle,"vertNormal");
+	vertNormal = glGetAttribLocation(myShaderHandle,"i_VertNormal");
+	glEnableVertexAttribArray(vertNormal);
 	glBindBuffer(GL_ARRAY_BUFFER, normalBufferHandle);
 	glVertexAttribPointer( vertNormal, 3, GL_FLOAT, FALSE, 0, (GLubyte *)NULL );
+	
+	texCoords = glGetAttribLocation(myShaderHandle, "i_TexCoords");
+	glEnableVertexAttribArray(texCoords);
+	glBindBuffer(GL_ARRAY_BUFFER, uvBufferHandle);
+	glVertexAttribPointer(texCoords, 2, GL_FLOAT, FALSE, 0, (GLubyte *)NULL);
 
-	modelMatrixID = glGetUniformLocation(myShaderHandle, "mModel");
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, index_buffer);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size()  * sizeof(GLuint), &indices[0], GL_STATIC_DRAW);
 
 }
 void Mesh::genTexture(std::string _texName)

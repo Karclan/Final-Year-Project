@@ -59,14 +59,14 @@ void Mesh::genMesh()
 
 	if (tangents.size() > 0)
 	{
-	glBindBuffer(GL_ARRAY_BUFFER, tangentBufferHandle);
-	glBufferData(GL_ARRAY_BUFFER, (tangents.size() * 3) * sizeof(float), &uvData[0].x, GL_STATIC_DRAW);
+		glBindBuffer(GL_ARRAY_BUFFER, tangentBufferHandle);
+		glBufferData(GL_ARRAY_BUFFER, (tangents.size() * 3) * sizeof(float), &tangents[0].x, GL_STATIC_DRAW);
 	}
 
 	if (biTangents.size() > 0)
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, biTangentBufferHandle);
-		glBufferData(GL_ARRAY_BUFFER, (biTangents.size() * 3) * sizeof(float), &uvData[0].x, GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, (biTangents.size() * 3) * sizeof(float), &biTangents[0].x, GL_STATIC_DRAW);
 	}
 	// Create and set-up the vertex array object
 	glGenVertexArrays( 1, &VAOHandle );
@@ -115,6 +115,7 @@ void Mesh::load(std::string filename)
 	Assimp::Importer importer;
 	const aiScene* scene = importer.ReadFile(filename,
 		aiProcess_CalcTangentSpace		|
+		aiProcess_GenNormals			|
 		aiProcess_Triangulate			|
 		aiProcess_JoinIdenticalVertices |
 		aiProcess_SortByPType);

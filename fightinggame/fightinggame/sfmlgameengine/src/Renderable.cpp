@@ -38,7 +38,7 @@ void Renderable::giveMesh(Mesh *mesh)
 }
 void Renderable::assignTexture(std::string filename)
 {
-	m_Textured=m_TextureObject.load(filename);
+	m_Textured=m_TextureObject.load("resources/"+filename);
 	//m_Textured=m_Texture.loadFromFile(filename);
 	//glActiveTexture(0);
 	//glBindTexture(GL_TEXTURE_2D, 0);

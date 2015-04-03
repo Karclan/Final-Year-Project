@@ -21,6 +21,10 @@ using std::string;
 
 #include <glm\gtx\transform.hpp>
 
+namespace ShaderTypes
+{
+	enum type{ VERTEX, FRAGMENT };
+}
 class Shader
 {
 public:
@@ -31,23 +35,24 @@ public:
 
 	void useProgram();
 
-	void setUniform(const char *_name, float _x, float _y, float _z);
-    void setUniform(const char *_name, const glm::vec2 &_v);
-    void setUniform(const char *_name, const glm::vec3 &_v);
-    void setUniform(const char *_name, const glm::vec4 &_v);
-	void setUniform(const char *_name, const sf::Vector3f &_v);
-    void setUniform(const char *_name, const glm::mat4 &_m);
-    void setUniform(const char *_name, const glm::mat3 &_m);
-    void setUniform(const char *_name, float _val );
-    void setUniform(const char *_name, int _val );
-    void setUniform(const char *_name, bool _val );
-    void setUniform(const char *_name, GLuint _val );
+	void setUniform(const char *name, float x, float y, float z);
+    void setUniform(const char *name, const glm::vec2	 &v);
+    void setUniform(const char *name, const glm::vec3	 &v);
+    void setUniform(const char *name, const glm::vec4	 &v);
+	void setUniform(const char *name, const sf::Vector3f &v);
+    void setUniform(const char *name, const glm::mat4	 &m);
+    void setUniform(const char *name, const glm::mat3	 &m);
+    void setUniform(const char *name, float  val );
+    void setUniform(const char *name, int	 val );
+    void setUniform(const char *name, bool	 val );
+    void setUniform(const char *name, GLuint val );
 
-
+	void setSubroutine(const char *name, ShaderTypes::type type);
 private:
-	std::map<std::string, int> uniformLocations;
-    GLint  getUniformLocation(const char * name );
-
+	std::map<std::string, int>	  uniformLocations;
+	std::map<std::string, GLuint> subroutineLocations;
+    GLint  getUniformLocation(const char * name  );
+	GLuint getSubroutineLocation(const char *name, ShaderTypes::type type);
 	GLuint m_vertShader, m_fragShader;
 	GLuint m_ProgID;
 };

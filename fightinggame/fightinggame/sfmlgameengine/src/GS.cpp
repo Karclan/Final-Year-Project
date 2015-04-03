@@ -8,6 +8,6 @@ namespace GS
 	const float walkSpeed=0.5f;
 	const float runSpeed =1.0f;
 	const float jumpSpeed=1.0f;
-	const int SCREENHEIGHT = 600;
-	const int SCREENWIDTH  = 800;
+	int SCREENHEIGHT = 600;
+	int SCREENWIDTH  = 800;
 }

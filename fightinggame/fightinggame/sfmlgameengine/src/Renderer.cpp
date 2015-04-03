@@ -21,7 +21,7 @@ void Renderer::init()
 	glViewport(0, 0, GS::SCREENWIDTH, GS::SCREENHEIGHT);
 	glEnable(GL_DEPTH_TEST);
 	glClearDepth(1.0f);
-	glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
+	glClearColor(0.8f, 1.f, 1.f, 1.0f);
 
 	//create shaders
 	//set lights
@@ -64,12 +64,12 @@ void Renderer::render()
 		setMaterials(it);
 		if (it->textured())
 		{
-			it->getShader()->setUniform("u_Textured", 1);
+			it->getShader()->setSubroutine("diffuse", ShaderTypes::FRAGMENT);
 			it->bindTexture(TextureTypes::DIFFUSE);
 		}
 		else
 		{
-			it->getShader()->setUniform("u_Textured", 0);
+			it->getShader()->setSubroutine("noTexture", ShaderTypes::FRAGMENT);
 		}
 		glBindVertexArray(it->getMesh()->getVAO());
 		glDrawElements(GL_TRIANGLES, it->getMesh()->getIndices()->size(), GL_UNSIGNED_INT, NULL);
@@ -190,15 +190,15 @@ void Renderer::setMaterials(SPC_Renderable r)
 void Renderer::setLights(Shader* s)
 {
 	glm::vec3 lightPos[3];
-	lightPos[0] = glm::vec3(-1.f,  5.0f,  0.0f);
-	lightPos[1] = glm::vec3( 1.0f, 5.0f,  0.0f);
+	lightPos[0] = glm::vec3(-6.f,  5.0f,  0.0f);
+	lightPos[1] = glm::vec3( 6.0f, 5.0f,  0.0f);
 	lightPos[2] = glm::vec3( 0.0f, 5.0f, 10.0f);
 
 	//SpotLight1
 	s->setUniform("numOfSpotLights", 2);
 	s->setUniform("spotLight[0].position"  , lightPos[0]);
 	s->setUniform("spotLight[0].spotDir"   , glm::vec3(-0.0f, -1.f, -0.f));
-	s->setUniform("spotLight[0].spotOutCut", glm::cos(glm::radians(7.f)));
+	s->setUniform("spotLight[0].spotOutCut", glm::cos(glm::radians(14.f)));
 	s->setUniform("spotLight[0].spotInCut" , glm::cos(glm::radians(5.5f)));
 	s->setUniform("spotLight[0].constant"  , 1.f);
 	s->setUniform("spotLight[0].linear"    , 0.014f);
@@ -210,7 +210,7 @@ void Renderer::setLights(Shader* s)
 	//SpotLight2
 	s->setUniform("spotLight[1].position"  , lightPos[1]);
 	s->setUniform("spotLight[1].spotDir"   , glm::vec3(-0.0f, -1.f, -0.f));
-	s->setUniform("spotLight[1].spotOutCut", glm::cos(glm::radians(7.f)));
+	s->setUniform("spotLight[1].spotOutCut", glm::cos(glm::radians(14.f)));
 	s->setUniform("spotLight[1].spotInCut" , glm::cos(glm::radians(5.5f)));
 	s->setUniform("spotLight[1].constant"  , 1.f);
 	s->setUniform("spotLight[1].linear"	   , 0.014f);

@@ -214,7 +214,20 @@ void Shader::setUniform(const char *name, bool _val )
 	int loc = getUniformLocation(name);
 	glUniform1i(loc, _val);
 }
+void Shader::setSubroutine(const char *name, ShaderTypes::type type)
+{
+	GLuint index = getSubroutineLocation(name, type);
+	switch (type)
+	{
+	case ShaderTypes::VERTEX:
+		glUniformSubroutinesuiv(GL_VERTEX_SHADER, 1,   &index);
+		break;
+	case ShaderTypes::FRAGMENT:
+		glUniformSubroutinesuiv(GL_FRAGMENT_SHADER, 1, &index);
+		break;
+	}
 
+}
 int Shader::getUniformLocation(const char * _name )
 {
 	std::map<std::string, int>::iterator pos;
@@ -225,5 +238,26 @@ int Shader::getUniformLocation(const char * _name )
 	}
 
 	return uniformLocations[_name];
+}
+GLuint Shader::getSubroutineLocation(const char*name, ShaderTypes::type type)
+{
+	std::map<std::string, GLuint>::iterator pos;
+	pos = subroutineLocations.find(name);
+	if (pos == subroutineLocations.end())
+	{
+		switch (type)
+		{
+		case ShaderTypes::VERTEX:
+			subroutineLocations[name] = glGetSubroutineIndex(m_ProgID, GL_VERTEX_SHADER,   name);
+			break;
+		case ShaderTypes::FRAGMENT:
+			subroutineLocations[name] = glGetSubroutineIndex(m_ProgID, GL_FRAGMENT_SHADER, name);
+			break;
+		default:
+			exit(EXIT_FAILURE);
+			break;
+		}
+	}
+	return subroutineLocations[name];
 }
 

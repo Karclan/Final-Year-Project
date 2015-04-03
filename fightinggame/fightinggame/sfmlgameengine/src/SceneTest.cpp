@@ -23,7 +23,21 @@ void SceneTest::init()
 	SPC_Transform  bT(m_TransformManager.createTransform(glm::vec3(0.f,2.f,-12.f),glm::vec3(0.f,90.f,0.f),glm::vec3(0.2f),glm::vec3(0.f)));
 	SPC_Collidable bC(m_CollisionManager.createCollidable(bT,5.0,GameObjectType::BLOCK));
 	SPC_Renderable bR(m_Renderer.createRenderable(bT,"sphere.obj"));
-	m_decorBlocks[6] = new Block(bT, bC, bR);
+	m_decorBlocks[0] = new Block(bT, bC, bR);
+
+	bT=(m_TransformManager.createTransform(glm::vec3(0.f, -24.f, 0.f), glm::vec3(0.f, -135.f, 0.f), glm::vec3(2.f), glm::vec3(0.f)));
+	bC=(m_CollisionManager.createCollidable(bT, 5.0, GameObjectType::BLOCK));
+	bR=(m_Renderer.createRenderable(bT, "terrain2.obj"));
+
+	bR->setDiff(glm::vec3(0.8f, 0.4f, 0.f));
+	bR->setSpec(glm::vec3(0.4f));
+	bR->setSpecEx(8.f);
+	m_decorBlocks[1] = new Block(bT, bC, bR);
+
+	//bT = (m_TransformManager.createTransform(glm::vec3(-5.f, -18.f, -15.f), glm::vec3(0.f, 0.f, 0.f), glm::vec3(0.05f), glm::vec3(0.f)));
+	//bC = (m_CollisionManager.createCollidable(bT, 5.0, GameObjectType::BLOCK));
+	//bR = (m_Renderer.createRenderable(bT, "PlasmaGen.obj","PlasmaGenDiff.png"));
+	//m_decorBlocks[2] = new Block(bT, bC, bR);
 	/*step = -4.5f;
 	for (int i = 5; i < 10; i++)
 	{
@@ -45,40 +59,40 @@ void SceneTest::init()
 	//m_rotatingCube = new Block(rct, rcc, rcr);
 
 	//Floor
-	SPC_Transform  ft(m_TransformManager.createTransform	(glm::vec3(0.f,-2.f,0.f), glm::vec3(0.f), glm::vec3(0.01f), glm::vec3(0.f)));
+	SPC_Transform  ft(m_TransformManager.createTransform	(glm::vec3(0.f,-2.f,0.f), glm::vec3(0.f), glm::vec3(1.f), glm::vec3(0.f)));
 	SPC_Collidable fc(m_CollisionManager.createCollidable	(ft, 5.0, GameObjectType::BLOCK));
-	SPC_Renderable fr(m_Renderer.createRenderable			(ft, "Plasma_Genorator.obj"));
+	SPC_Renderable fr(m_Renderer.createRenderable			(ft, "testplatform.obj","platform.png"));
 	//fr->setDiff(glm::vec3(0.7f, 0.2f, 0.4f));
 	//fr->setSpec(glm::vec3(0.5f, 0.5f, 0.5f));
 	fr->setSpecEx(64.f);
 	m_floorPlatform = new Block(ft, fc, fr);
 
 	//Platform 1
-	SPC_Transform  pft0(m_TransformManager.createTransform(glm::vec3(5.f, 2.f, 0.f), glm::vec3(0.f), glm::vec3(2.f,0.3f,1.f), glm::vec3(0.f)));
+	SPC_Transform  pft0(m_TransformManager.createTransform(glm::vec3(6.f, 4.f, 0.f), glm::vec3(90.f, 0.f, 0.f), glm::vec3(0.05f, 0.02f, 0.08f), glm::vec3(0.f)));
 	SPC_Collidable pfc0(m_CollisionManager.createCollidable(pft0, 5.0, GameObjectType::BLOCK));
-	SPC_Renderable pfr0(m_Renderer.createRenderable(pft0, "cube2.obj"));
+	SPC_Renderable pfr0(m_Renderer.createRenderable(pft0, "blox.3ds"));
 	pfr0->setSpec(glm::vec3(0.5f, 0.5f, 0.5f));
 	pfr0->setSpecEx(64.f);
 	m_platform[0] = new Block(pft0, pfc0, pfr0);
 
 	//Platform 2
-	SPC_Transform  pft1(m_TransformManager.createTransform(glm::vec3(0.f, 4.f, 0.f), glm::vec3(0.f), glm::vec3(2.f, 0.3f, 1.f), glm::vec3(0.f)));
+	SPC_Transform  pft1(m_TransformManager.createTransform(glm::vec3(0.f, 6.f, 0.f), glm::vec3(90.f,0.f,0.f), glm::vec3(0.05f,0.02f,0.08f), glm::vec3(0.f)));
 	SPC_Collidable pfc1(m_CollisionManager.createCollidable(pft1, 5.0, GameObjectType::BLOCK));
-	SPC_Renderable pfr1(m_Renderer.createRenderable(pft1, "cube2.obj"));
+	SPC_Renderable pfr1(m_Renderer.createRenderable(pft1, "blox.3ds"));
 	pfr1->setSpec(glm::vec3(0.5f, 0.5f, 0.5f));
 	pfr1->setSpecEx(64.f);
 	m_platform[1] = new Block(pft1, pfc1, pfr1);
 
 	//Platform 3
-	SPC_Transform  pft2(m_TransformManager.createTransform(glm::vec3(-5.f, 2.f, 0.f), glm::vec3(0.f), glm::vec3(2.f, 0.3f, 1.f), glm::vec3(0.f)));
+	SPC_Transform  pft2(m_TransformManager.createTransform(glm::vec3(-6.f, 4.f, 0.f), glm::vec3(90.f, 0.f, 0.f), glm::vec3(0.05f,0.02f,0.08f), glm::vec3(0.f)));
 	SPC_Collidable pfc2(m_CollisionManager.createCollidable(pft2, 5.0, GameObjectType::BLOCK));
-	SPC_Renderable pfr2(m_Renderer.createRenderable(pft2, "cube2.obj"));
+	SPC_Renderable pfr2(m_Renderer.createRenderable(pft2, "blox.3ds"));
 	pfr2->setSpec(glm::vec3(0.5f, 0.5f, 0.5f));
 	pfr2->setSpecEx(64.f);
 	m_platform[2] = new Block(pft2, pfc2, pfr2);
 
 	//Fighter 1 
-	SPC_Transform  f1t(m_TransformManager.createTransform(glm::vec3(0.0f), glm::vec3(90.0f, 0.0f, 0.0f), glm::vec3(0.5f), glm::vec3(0.0f)));
+	SPC_Transform  f1t(m_TransformManager.createTransform(glm::vec3(0.0f), glm::vec3(90.0f, 0.0f, 0.0f), glm::vec3(1.f), glm::vec3(0.0f)));
 	SPC_Collidable f1c(m_CollisionManager.createCollidable(f1t, 5.0, GameObjectType::FIGHTER));
 	SPC_Renderable f1r(m_Renderer.createRenderable(f1t, "roller.obj"));
 	f1r->setDiff(glm::vec3(0.7f, 0.2f, 0.4f));
@@ -87,7 +101,7 @@ void SceneTest::init()
 	m_player1 = new Fighter(5.f, f1t, f1r, f1c);
 
 	//CAMERA
-	SPC_Transform  st(m_TransformManager.createTransform(glm::vec3(0.f,2.f, 10.f), glm::vec3(0.f), glm::vec3(1.f), glm::vec3(0.f)));
+	SPC_Transform  st(m_TransformManager.createTransform(glm::vec3(0.f,3.5f, 15.f), glm::vec3(0.f), glm::vec3(1.f), glm::vec3(0.f)));
 	SPC_Camera	   sc(m_Renderer.createCamera(st));
 	m_camera = new CameraObj(sc, st);
 

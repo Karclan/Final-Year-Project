@@ -24,15 +24,16 @@ public:
 
 	ComponentType::type getType();
 	void tearDown();
-	
-	void giveMesh (Mesh *mesh);
-	void assignTexture(std::string filename);
-	bool textured(){ return m_Textured; }
-	void bindTexture(TextureTypes::type type);
+
+	void giveMesh(Mesh *mesh);
+	void assignTexture(std::string filename, TextureType::type type);
+	bool textured(TextureType::type type);
+	bool textured();
+	void bindTexture(TextureType::type type);
 	void unbindTextures();
 	void setShader(Shader *shader);
-	void setDiff  (glm::vec3 diffuseReflection);
-	void setSpec  (glm::vec3 specularReflection);
+	void setDiff(glm::vec3 diffuseReflection);
+	void setSpec(glm::vec3 specularReflection);
 	void setSpecEx(GLfloat exponent);
 
 	Mesh*	  getMesh();
@@ -49,17 +50,14 @@ private:
 
 	GLuint	  m_ShaderHandle;
 	GLuint	  m_ModelMatrixID;
-	
-
 	glm::vec3 m_ColourTint;
 	glm::vec3 m_DiffuseReflection;
 	glm::vec3 m_SpecularReflection;
 	GLfloat   m_SpecularExponent;
-	
-	Mesh*		  m_Mesh;
-	Shader*		  m_Shader;
-	bool		  m_Textured;
-	Texture		  m_TextureObject;
+	Mesh*	  m_Mesh;
+	Shader*	  m_Shader;
+	bool	  m_Textured	 [TextureType::TYPES];
+	Texture	  m_TextureObject[TextureType::TYPES];
 
 	SPC_Transform m_Transform;
 };

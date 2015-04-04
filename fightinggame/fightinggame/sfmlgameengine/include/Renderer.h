@@ -39,9 +39,12 @@ public:
 	void updateRenderData  ();
 	SPC_Camera		createCamera	(SPC_Transform t);
 	SPC_Renderable	createRenderable(SPC_Transform t, std::string meshFilename);
-	SPC_Renderable  createRenderable(SPC_Transform t, std::string meshFilename, std::string textureFilename);
+	SPC_Renderable  createRenderable(SPC_Transform t, std::string meshFilename, std::string diffuse);
+	SPC_Renderable  createRenderable(SPC_Transform t, std::string meshFilename, std::string diffuse, std::string specular);
 	SPC_Particle	createParticle	(SPC_Transform t, size_t poolSize);
 private:
+	void setupShadows();
+
 	int m_ActiveCamera;
 
 	void updateMatricies	 (SPC_Renderable, SPC_Camera);
@@ -51,10 +54,23 @@ private:
 	Shader* basic;
 	Shader* particle;
 
+	GLuint m_ShadowFrameBufferObject;
+	int m_ShadowMapWidth, m_ShadowMapHeight;
+	glm::vec3 m_DirectionalLightDirection;
+	glm::vec3 m_DirectionalLightPosition;
+	glm::vec3 m_DirectionalLightAmbient;
+	glm::vec3 m_DirectionalLightDiffuse;
+	glm::vec3 m_DirectionalLightSpecular;
+	glm::mat4 m_ShadowBias;
+	glm::mat4 m_ShadowViewMat;
+	glm::mat4 m_ShadowProjectionMat;
+	glm::mat4 m_LightPointViewMat;
+
 	std::map<std::string,Shader*> m_shaders;
 	std::map<std::string,Mesh*>	  m_meshes;
 	std::vector<SPC_Camera>		  m_cameras;
 	std::vector<SPC_Renderable>	  m_renderables;
 	std::vector<SPC_Particle>	  m_particles;
+	glm::vec3 m_lightPos[3];
 };
 #endif

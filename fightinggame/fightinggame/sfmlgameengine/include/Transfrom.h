@@ -4,6 +4,7 @@
 #include <memory>
 #include "Component.h"
 
+#define GLM_FORCE_RADIANS
 #include <glm\gtx\transform.hpp>
 #include <glm\gtx\rotate_vector.hpp>
 

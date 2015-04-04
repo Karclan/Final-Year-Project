@@ -13,7 +13,7 @@ Transform::Transform()
 	//m_ModelMatrix = glm::rotate	  (m_ModelMatrix, m_Rotation.z, glm::vec3(0.f, 0.f, 1.f));
 	//m_ModelMatrix = glm::translate(m_ModelMatrix, m_Position);
 	
-	std::cout << "Transform Component created!\n";
+	std::cout << "Transform Component created with defaults!\n";
 }
 Transform::Transform(glm::vec3 position, glm::vec3 rotation, glm::vec3 scale, glm::vec3 velocity)
 {
@@ -22,7 +22,7 @@ Transform::Transform(glm::vec3 position, glm::vec3 rotation, glm::vec3 scale, gl
 	m_Scale    = scale;
 	m_Velocity = velocity;
 	//m_ModelMatrix = glm::mat4(1.f);
-	std::cout << "Transfrom Component created!\n";
+	std::cout << "Transfrom Component created with user data!\n";
 }
 ComponentType::type Transform::getType()
 {

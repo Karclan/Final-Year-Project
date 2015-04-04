@@ -12,19 +12,20 @@
 
 #include "Shader.h"
 
-namespace TextureTypes
+namespace TextureType
 {
-	enum type{ DIFFUSE, SPECULAR };
+	enum type{ DIFFUSE=1, SPECULAR ,TYPES};
 }
 class Texture
 {
 public:
 	Texture();
-	bool load(std::string filename);
+	bool load(std::string filename, TextureType::type type);
 	void bind(Shader *s);
 	void unbind();
 private:
 	GLuint m_TextureHandle;
 	sf::Image m_Image;
+	TextureType::type m_TexType;
 };
 #endif

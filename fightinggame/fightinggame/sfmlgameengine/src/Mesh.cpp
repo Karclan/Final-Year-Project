@@ -119,45 +119,40 @@ void Mesh::load(std::string filename)
 		aiProcess_Triangulate			|
 		aiProcess_JoinIdenticalVertices |
 		aiProcess_SortByPType);
-	// If the import failed, report it
+
+	// If the import failed, say what went wrong and exit
 	if (!scene)
 	{
 		std::cout << "Error Loading : " << importer.GetErrorString() << "\n";
 		exit(EXIT_FAILURE);
 	}
 
-	//std::vector<glm::vec3> vertices;
-	//std::vector<glm::vec3> normals;
-	//std::vector<glm::vec3> colours;
-	//std::vector<glm::vec3> tangents;
-	//std::vector<glm::vec3> biTangents;
-	//std::vector<glm::vec2> uvdata;
-	//std::vector<GLuint>	 indicies;
-
-	aiMesh* loadedMesh = scene->mMeshes[0];
-
-	for (int i = 0; i < loadedMesh->mNumVertices; ++i)
+	//load all the meshes within the scene and add them to the mesh vectors
+	for (int i = 0; i < scene->mNumMeshes; ++i)
 	{
-		vertices.push_back(glm::vec3(loadedMesh->mVertices[i].x, loadedMesh->mVertices[i].y, loadedMesh->mVertices[i].z));
-		if (loadedMesh->HasNormals())
-			normals.push_back(glm::vec3(loadedMesh->mNormals[i].x, loadedMesh->mNormals[i].y, loadedMesh->mNormals[i].z));
-		if (loadedMesh->HasTextureCoords(0))
-			uvData.push_back(glm::vec2(loadedMesh->mTextureCoords[0][i].x, loadedMesh->mTextureCoords[0][i].y));
-		if (loadedMesh->HasTangentsAndBitangents())
+		aiMesh* loadedMesh = scene->mMeshes[i];
+
+		for (int i = 0; i < loadedMesh->mNumVertices; ++i)
 		{
-			tangents.push_back(glm::vec3(loadedMesh->mTangents[i].x, loadedMesh->mTangents[i].y, loadedMesh->mTangents[i].z));
-			biTangents.push_back(glm::vec3(loadedMesh->mBitangents[i].x, loadedMesh->mBitangents[i].y, loadedMesh->mBitangents[i].z));
+			vertices.push_back(glm::vec3(loadedMesh->mVertices[i].x, loadedMesh->mVertices[i].y, loadedMesh->mVertices[i].z));
+			if (loadedMesh->HasNormals())
+				normals.push_back(glm::vec3(loadedMesh->mNormals[i].x, loadedMesh->mNormals[i].y, loadedMesh->mNormals[i].z));
+			if (loadedMesh->HasTextureCoords(0))
+				uvData.push_back(glm::vec2(loadedMesh->mTextureCoords[0][i].x, loadedMesh->mTextureCoords[0][i].y));
+			if (loadedMesh->HasTangentsAndBitangents())
+			{
+				tangents.push_back(glm::vec3(loadedMesh->mTangents[i].x, loadedMesh->mTangents[i].y, loadedMesh->mTangents[i].z));
+				biTangents.push_back(glm::vec3(loadedMesh->mBitangents[i].x, loadedMesh->mBitangents[i].y, loadedMesh->mBitangents[i].z));
+			}
 		}
-		//colours.push_back(glm::vec3(1.f));
-	}
-	for (int i = 0; i < loadedMesh->mNumFaces; ++i)
-	{
-		for (int j = 0; j < loadedMesh->mFaces[i].mNumIndices; ++j)
+		for (int i = 0; i < loadedMesh->mNumFaces; ++i)
 		{
-			indices.push_back(loadedMesh->mFaces[i].mIndices[j]);
+			for (int j = 0; j < loadedMesh->mFaces[i].mNumIndices; ++j)
+			{
+				indices.push_back(loadedMesh->mFaces[i].mIndices[j]);
+			}
 		}
 	}
-
 	
 }
 /*void Mesh::load(std::string _fileName)

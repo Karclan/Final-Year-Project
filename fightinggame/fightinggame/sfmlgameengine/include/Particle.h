@@ -11,7 +11,7 @@ class Particle : public Component
 public:
 	Particle();
 	Particle(SPC_Transform t, size_t poolSize, Shader* s);
-
+	~Particle();
 	ComponentType::type getType();
 	void tearDown();
 

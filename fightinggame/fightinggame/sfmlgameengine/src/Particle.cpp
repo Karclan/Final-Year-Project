@@ -23,6 +23,11 @@ Particle::Particle(SPC_Transform t, size_t poolSize, Shader* s)
 	m_particleSystem.reset(new ParticleSystem(poolSize));
 	
 }
+Particle::~Particle()
+{
+	m_particleRenderable.reset();
+	m_particleSystem.reset();
+}
 ComponentType::type Particle::getType()
 {
 	return ComponentType::PARTICLE;
@@ -39,7 +44,7 @@ void Particle::render()
 {
 	if (!m_renderFlag)return;
 
-	//m_shader->useProgram();
+	m_shader->useProgram();
 	//m_shader->setUniform("u_ModelMatrix", glm::mat4(1.f));
 	//m_shader->setUniform("u_PointSize", 10.f);
 	//m_shader->setUniform("u_ViewMatrix", viewMatrix);

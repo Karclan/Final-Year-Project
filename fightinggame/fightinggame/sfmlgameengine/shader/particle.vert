@@ -20,5 +20,5 @@ void main()
 	
 	//float distance = length(eyePosition.xyz);
 	//float attenuation = inversesqrt(0.1f*distance);
-	gl_PointSize = 5.f;
+	gl_PointSize = u_PointSize;
 }

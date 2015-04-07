@@ -56,8 +56,8 @@ void SphereVelGen::generate(float dt, ParticleData *p, size_t startId, size_t en
 	for (size_t i = startId; i < endId; ++i)
 	{
 
-		phi = glm::linearRand(-M_PI, M_PI);
-		theta = glm::linearRand(-M_PI, M_PI);
+		phi = (float)glm::linearRand(-M_PI, M_PI);
+		theta = (float)glm::linearRand(-M_PI, M_PI);
 		v = glm::linearRand(_minVelocity, _maxVelocity);
 
 		r = v*sinf(phi);

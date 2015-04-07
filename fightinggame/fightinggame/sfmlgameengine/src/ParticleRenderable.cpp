@@ -30,7 +30,7 @@ void ParticleRenderable::generate(SP_ParticleSystem s, size_t particlePool)
 	
 	//_particleSystem.reset(new ParticleSystem(_particlePool));
 	_generatedFlag=true;
-
+	
 	//_particleSystem->addEmitter(_emitter);
 	//for(auto it : _updaters)
 	//{

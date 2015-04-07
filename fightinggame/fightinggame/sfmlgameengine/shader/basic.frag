@@ -10,12 +10,15 @@ in vec4 o_ShadowCoords;
 #define MAX_POINTLIGHTS 4
 
 struct Material
-{vec3 diff;
+{
+vec3 diff;
 vec3 spec;
-float specEx;};
+float specEx;
+};
 
 struct SpotLight
-{ vec3 position;
+{ 
+vec3 position;
  vec3 spotDir;
  float spotOutCut;
  float spotInCut;
@@ -26,7 +29,8 @@ struct SpotLight
 
  vec3 amb;            //ambient light intensity
  vec3 diff;           // Diffuse light intensity
- vec3 spec;};
+ vec3 spec;
+ };
 
 struct PointLight
 {

@@ -67,7 +67,7 @@ void ParticleSystem::addEmitter(SP_ParticleEmitter emitter)
 	_emitters.push_back(emitter);
 }
 
-SP_ParticleEmitter ParticleSystem::getEmitter(int id)
+SP_ParticleEmitter ParticleSystem::getEmitter(unsigned int id)
 {
 	if(id<_emitters.size()){
 		return SP_ParticleEmitter();

@@ -128,11 +128,11 @@ void Mesh::load(std::string filename)
 	}
 
 	//load all the meshes within the scene and add them to the mesh vectors
-	for (int i = 0; i < scene->mNumMeshes; ++i)
+	for (unsigned int i = 0; i < scene->mNumMeshes; ++i)
 	{
 		aiMesh* loadedMesh = scene->mMeshes[i];
 
-		for (int i = 0; i < loadedMesh->mNumVertices; ++i)
+		for (unsigned int i = 0; i < loadedMesh->mNumVertices; ++i)
 		{
 			vertices.push_back(glm::vec3(loadedMesh->mVertices[i].x, loadedMesh->mVertices[i].y, loadedMesh->mVertices[i].z));
 			if (loadedMesh->HasNormals())
@@ -145,9 +145,9 @@ void Mesh::load(std::string filename)
 				biTangents.push_back(glm::vec3(loadedMesh->mBitangents[i].x, loadedMesh->mBitangents[i].y, loadedMesh->mBitangents[i].z));
 			}
 		}
-		for (int i = 0; i < loadedMesh->mNumFaces; ++i)
+		for (unsigned int i = 0; i < loadedMesh->mNumFaces; ++i)
 		{
-			for (int j = 0; j < loadedMesh->mFaces[i].mNumIndices; ++j)
+			for (unsigned int j = 0; j < loadedMesh->mFaces[i].mNumIndices; ++j)
 			{
 				indices.push_back(loadedMesh->mFaces[i].mIndices[j]);
 			}

@@ -30,7 +30,7 @@ public:
 	virtual size_t getAliveParticleCount(){return _particles._aliveParticleCount;}
 	void addEmitter(SP_ParticleEmitter emitter);
 	void addUpdater(SP_ParticleUpdater updater);
-	SP_ParticleEmitter getEmitter(int id);
+	SP_ParticleEmitter getEmitter(unsigned int id);
 	SP_ParticleUpdater getUpdater(Updaters::type type);
 
 	ParticleData *getFinalData(){return &_particles;}

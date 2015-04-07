@@ -13,7 +13,7 @@ public:
 	void update();//<!currently unused
 	SPC_Transform createTransform();
 	SPC_Transform createTransform(glm::vec3 position);
-	SPC_Transform createTransform(glm::vec3 position,  glm::vec3 rotation, glm::vec3 scale, glm::vec3 velocity);
+	SPC_Transform createTransform(glm::vec3 position,  glm::vec3 rotation, glm::vec3 scale);
 private:
 
 	std::vector<SPC_Transform>m_TransformComponents;

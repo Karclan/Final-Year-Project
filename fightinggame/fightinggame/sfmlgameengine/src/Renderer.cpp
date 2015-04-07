@@ -19,6 +19,7 @@ Renderer::~Renderer()
 		delete it.second;
 	}
 	m_meshes.clear();
+	m_particles.clear();
 }
 
 void Renderer::init()
@@ -39,7 +40,7 @@ void Renderer::init()
 	{
 		setLights(it.second);
 	}
-
+	
 	particle = new Shader();
 	particle->createShader("shader/particle.vert", "shader/particle.frag");
 	m_shaders.emplace("particle", particle);
@@ -126,16 +127,16 @@ void Renderer::render()
 		}
 	}
 
-	//particle->useProgram();
-	//particle->setUniform("u_PointSize", 10.f);
-	//particle->setUniform("u_ViewMatrix",	 m_cameras[0]->getViewMatrix());
-	//particle->setUniform("u_ProjectionView", m_cameras[0]->getProjectionMatrix());
-	//
-	//for (auto it : m_particles)
-	//{
-	//	particle->setUniform("u_ModelMatrix", it->getTransform()->getMatrix());
-	//	it->render();
-	//}
+	particle->useProgram();
+	particle->setUniform("u_PointSize", 2.f);
+	particle->setUniform("u_ViewMatrix",	 m_cameras[0]->getViewMatrix());
+	particle->setUniform("u_ProjectionView", m_cameras[0]->getProjectionMatrix());
+	
+	for (auto it : m_particles)
+	{
+		particle->setUniform("u_ModelMatrix", it->getTransform()->getMatrix());
+		it->render();
+	}
 }
 void Renderer::updateParticles(float t)
 {

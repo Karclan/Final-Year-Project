@@ -14,6 +14,11 @@ Renderer::~Renderer()
 		delete it.second;
 	}
 	m_shaders.clear();
+	for (auto it : m_meshes)
+	{
+		delete it.second;
+	}
+	m_meshes.clear();
 }
 
 void Renderer::init()

@@ -41,7 +41,7 @@ public:
 	glm::vec3 getDiff();
 	glm::vec3 getSpec();
 	GLfloat	  getSpecEx();
-	glm::mat4 m_ModelMatrix;
+
 
 
 	SPC_Transform getTransform(){ return m_Transform; }

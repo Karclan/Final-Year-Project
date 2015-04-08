@@ -18,7 +18,7 @@ void main()
 	
 	o_colour = i_particleColour;
 	
-	//float distance = length(eyePosition.xyz);
-	//float attenuation = inversesqrt(0.1f*distance);
-	gl_PointSize = u_PointSize;
+	float distance = length(eyePosition.xyz);
+	float attenuation = inversesqrt(u_PointSize*distance);
+	gl_PointSize = attenuation;
 }

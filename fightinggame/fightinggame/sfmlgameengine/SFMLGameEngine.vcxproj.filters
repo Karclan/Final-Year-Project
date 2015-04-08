@@ -58,6 +58,12 @@
     <Filter Include="Game-Engine\Source Files\GameObjStuff/Managers">
       <UniqueIdentifier>{84220bab-3d67-4325-8dee-bdadb4769d66}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game-Engine\Header Files\Physics">
+      <UniqueIdentifier>{b38f05dc-ba8c-48bb-b905-a4a98f5c301b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game-Engine\Source Files\Physics">
+      <UniqueIdentifier>{977dc0b5-05ee-42f0-be6a-13be11c8c1d1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="shader\basic.frag">
@@ -192,6 +198,12 @@
     <ClInclude Include="include\Texture.h">
       <Filter>Game-Engine\Header Files\Rendering</Filter>
     </ClInclude>
+    <ClInclude Include="include\PhysicsBody.h">
+      <Filter>Game-Engine\Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PhysicsManager.h">
+      <Filter>Game-Engine\Header Files\Physics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\ControllerInput.cpp">
@@ -304,6 +316,12 @@
     </ClCompile>
     <ClCompile Include="src\Texture.cpp">
       <Filter>Game-Engine\Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PhysicsBody.cpp">
+      <Filter>Game-Engine\Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PhysicsManager.cpp">
+      <Filter>Game-Engine\Source Files\Physics</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

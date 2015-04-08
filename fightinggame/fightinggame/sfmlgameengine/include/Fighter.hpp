@@ -6,6 +6,7 @@
 #include "Transfrom.h"
 #include "Renderable.h"
 #include "Collidable.h"
+#include "PhysicsBody.h"
 
 namespace fighterStates
 {
@@ -15,7 +16,7 @@ namespace fighterStates
 class Fighter : public GameObject
 {
 public:
-	Fighter(float _size,SPC_Transform t,SPC_Renderable r, SPC_Collidable c);
+	Fighter(float _size, SPC_Transform t, SPC_Renderable r, SPC_Collidable c, SPC_PhysicsBody b);
 
 	void update(float _dt);
 	void switchState(int _newState){myState=_newState;}
@@ -41,5 +42,6 @@ protected:
 	SPC_Renderable m_Renderable;
 	SPC_Transform m_Transform;
 	SPC_Collidable m_Collidable;
+	SPC_PhysicsBody m_PhysicsBody;
 };
 #endif

@@ -46,6 +46,8 @@
     <ClInclude Include="include\ParticleRenderable.h" />
     <ClInclude Include="include\particleSystem.h" />
     <ClInclude Include="include\particleUpdaters.h" />
+    <ClInclude Include="include\PhysicsBody.h" />
+    <ClInclude Include="include\PhysicsManager.h" />
     <ClInclude Include="include\Renderable.h" />
     <ClInclude Include="include\Renderer.h" />
     <ClInclude Include="include\Scene.h" />
@@ -85,6 +87,8 @@
     <ClCompile Include="src\ParticleRenderable.cpp" />
     <ClCompile Include="src\particleSystem.cpp" />
     <ClCompile Include="src\particleUpdaters.cpp" />
+    <ClCompile Include="src\PhysicsBody.cpp" />
+    <ClCompile Include="src\PhysicsManager.cpp" />
     <ClCompile Include="src\Renderable.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\Scene.cpp" />

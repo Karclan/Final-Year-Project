@@ -8,34 +8,30 @@ void SceneTest::init()
 	m_Renderer.init();
 	m_InputHandler.init();
 	
-	//SPC_Transform  bT(m_TransformManager.createTransform(glm::vec3(0.0f, 15.0f, -15.0f), glm::vec3(0.f, 90.f, 0.f), glm::vec3(0.2f)));
-	//SPC_Collidable bC(m_CollisionManager.createCollidable(bT,5.0,GameObjectType::BLOCK));
-	//SPC_Renderable bR(m_Renderer.createRenderable(bT,"sphere.obj"));
-	//bR->setDiff(glm::vec3(1.f, 0.9f, 0.0f));
-	//m_decorBlocks[0] = new Block(bT, bC, bR);
-	//
-	//bT=(m_TransformManager.createTransform(glm::vec3(0.f, -24.f, 0.f), glm::vec3(0.f, -135.f, 0.f), glm::vec3(2.f)));
-	//bC=(m_CollisionManager.createCollidable(bT, 5.0, GameObjectType::BLOCK));
-	//bR=(m_Renderer.createRenderable(bT, "terrain2.obj"));
-	//
-	//bR->setDiff(glm::vec3(0.8f, 0.4f, 0.f));
-	//bR->setSpec(glm::vec3(0.4f));
-	//bR->setSpecEx(8.f);
-	//m_decorBlocks[1] = new Block(bT, bC, bR);
-	//
-	//bT= (m_TransformManager.createTransform(glm::vec3(0.f, -1.f, -5.f), glm::vec3(0.f, 14.f, 0.f), glm::vec3(0.02f)));
-	//bC=(m_CollisionManager.createCollidable(bT, 5.0, GameObjectType::BLOCK));
-	//bR=(m_Renderer.createRenderable(bT, "PlasmaGen.obj","diffuseflat.jpg","PlasmaGenSpec.jpg"));
-	//m_decorBlocks[2] = new Block(bT, bC, bR);
+	SPC_Transform  bT(m_TransformManager.createTransform(glm::vec3(0.0f, 15.0f, -15.0f), glm::vec3(0.f, 90.f, 0.f), glm::vec3(0.2f)));
+	SPC_Collidable bC(m_CollisionManager.createCollidable(bT,5.0,GameObjectType::BLOCK));
+	SPC_Renderable bR(m_Renderer.createRenderable(bT,"sphere.obj"));
+	bR->setDiff(glm::vec3(1.f, 0.9f, 0.0f));
+	m_decorBlocks[0] = new Block(bT, bC, bR);
+	
+	bT=(m_TransformManager.createTransform(glm::vec3(0.f, -24.f, 0.f), glm::vec3(0.f, -135.f, 0.f), glm::vec3(2.f)));
+	bC=(m_CollisionManager.createCollidable(bT, 5.0, GameObjectType::BLOCK));
+	bR=(m_Renderer.createRenderable(bT, "terrain2.obj"));
+	
+	bR->setDiff(glm::vec3(0.8f, 0.4f, 0.f));
+	bR->setSpec(glm::vec3(0.4f));
+	bR->setSpecEx(8.f);
+	m_decorBlocks[1] = new Block(bT, bC, bR);
+	
+	bT=(m_TransformManager.createTransform(glm::vec3(0.f, -1.f, -5.f), glm::vec3(0.f, 14.f, 0.f), glm::vec3(0.02f)));
+	bC=(m_CollisionManager.createCollidable(bT, 5.0, GameObjectType::BLOCK));
+	bR=(m_Renderer.createRenderable(bT, "PlasmaGen.obj","diffuseflat.jpg","PlasmaGenSpec.jpg"));
+	m_decorBlocks[2] = new Block(bT, bC, bR);
 
 	//Floor
-	//SPC_Transform  ft(m_TransformManager.createTransform	(glm::vec3(0.f, -2.f, 0.f), glm::vec3(0.f), glm::vec3(1.f)));
-	SPC_Transform  ft(m_TransformManager.createTransform	(glm::vec3(0.f, -2.f, 0.f), glm::vec3(0.f), glm::vec3(30.f,1.f,2.f)));
+	SPC_Transform  ft(m_TransformManager.createTransform	(glm::vec3(0.f, -2.f, 0.f), glm::vec3(0.f), glm::vec3(1.f)));
 	SPC_Collidable fc(m_CollisionManager.createCollidable	(ft, 5.0, GameObjectType::BLOCK));
-	//SPC_Renderable fr(m_Renderer.createRenderable			(ft, "testplatform.obj","platform.png"));
-	SPC_Renderable fr(m_Renderer.createRenderable(ft, "cube2.obj", "platform.png"));
-	//fr->setDiff(glm::vec3(0.7f, 0.2f, 0.4f));
-	//fr->setSpec(glm::vec3(0.5f, 0.5f, 0.5f));
+	SPC_Renderable fr(m_Renderer.createRenderable(ft, "testplatform.obj", "platform.png", "platform.png"));
 	fr->setSpecEx(64.f);
 	m_floorPlatform = new Block(ft, fc, fr);
 
@@ -70,7 +66,8 @@ void SceneTest::init()
 	f1r->setDiff(glm::vec3(0.7f, 0.2f, 0.4f));
 	f1r->setSpec(glm::vec3(0.5f, 0.5f, 0.5f));
 	f1r->setSpecEx(64.f);
-	m_player1 = new Fighter(5.f, f1t, f1r, f1c);
+	SPC_PhysicsBody f1pb(m_PhysicsManager.createPhysicsBody(f1t));
+	m_player1 = new Fighter(5.f, f1t, f1r, f1c,f1pb);
 
 	//CAMERA
 	SPC_Transform  st(m_TransformManager.createTransform(glm::vec3(0.f,5.f, 12.f), glm::vec3(0.f), glm::vec3(1.f)));
@@ -102,13 +99,12 @@ void SceneTest::init()
 
 	//SPC_Transform fireworkT(m_TransformManager.createTransform(glm::vec3(0.f, 2.f, 0.f), glm::vec3(0.f), glm::vec3(1.f)));
 	SPC_Transform fireworkT(f1t);
-	SPC_Particle  fireworkP(m_Renderer.createParticle(fireworkT, 100));
+	SPC_Particle  fireworkP(m_Renderer.createParticle(fireworkT, 1000));
 	m_firework = new Firework(fireworkP);
 
 }
 void SceneTest::update()
 {
-	handleInput();
 	//ùØØØØØØØØØØØØØØØØ//
 	//NON-FIXED UPDATE//
 	//________________//
@@ -122,20 +118,18 @@ void SceneTest::update()
 	if (m_FixedFrameTimer >= m_FrameDelay)
 	{
 		m_Renderer.updateParticles((float)Timer::getTime().asSeconds());
-
+		
 		SPC_Camera t = std::dynamic_pointer_cast<Camera>(m_camera->findComponent(ComponentType::CAMERA));
-		//t->orbit(glm::vec3(0, glm::radians(Timer::getTime().asSeconds()*15.f), 0));
-
 		SPC_Transform k = std::dynamic_pointer_cast<Transform>(m_player1->findComponent(ComponentType::TRANSFORM));
 		k->rotate(glm::vec3(0.f, Timer::getTime().asSeconds()*45.f, 0.f));
-
-		//t->setTarget(k->getPosition());
+		
 		m_GameObjectManager.update();
 
 		m_FixedFrameTimer = 0;
 	}
 	
 	m_TransformManager.update();
+	m_PhysicsManager.update((float)Timer::getTime().asSeconds());
 	//ùØØØØØØØØØØØØØØØØ//
 	//  Render Scene  //
 	//________________//
@@ -146,53 +140,69 @@ void SceneTest::update()
 	//________________//
 	std::string fps = "FPS: " + std::to_string(m_Renderer.calculateFrameRate());
 	FTInterface::renderText(fps, 0, GS::SCREENHEIGHT*0.97f, 0.5, glm::vec3(0.f, 1.f, 0.f));
+
+	handleInput();
+	handleController();
 }
+
 void SceneTest::handleInput()
 {
 	if (m_InputHandler.isKeyPressed(sf::Keyboard::W))
 	{
-		SPC_Transform t = std::dynamic_pointer_cast<Transform>(m_player1->findComponent(ComponentType::TRANSFORM));
-		t->translate(glm::vec3(0.f, 0.f, -5.0f*Timer::getTime().asSeconds()));
+		SPC_PhysicsBody t = std::dynamic_pointer_cast<PhysicsBody>(m_player1->findComponent(ComponentType::PHYSICSBODY));
+		t->addImpulse(glm::vec3(0.f, 0.f, -5.0f*Timer::getTime().asSeconds()));
 	}
 	if (m_InputHandler.isKeyPressed(sf::Keyboard::S))
 	{
-		SPC_Transform t = std::dynamic_pointer_cast<Transform>(m_player1->findComponent(ComponentType::TRANSFORM));
-		t->translate(glm::vec3(0.f,0.f, 5.0f*Timer::getTime().asSeconds()));
+		SPC_PhysicsBody t = std::dynamic_pointer_cast<PhysicsBody>(m_player1->findComponent(ComponentType::PHYSICSBODY));
+		t->addImpulse(glm::vec3(0.f, 0.f, 5.0f*Timer::getTime().asSeconds()));
 	}
 	if (m_InputHandler.isKeyPressed(sf::Keyboard::A))
 	{
-		SPC_Transform t = std::dynamic_pointer_cast<Transform>(m_player1->findComponent(ComponentType::TRANSFORM));
-		t->translate(glm::vec3(-5.0f*Timer::getTime().asSeconds(), 0.f, 0.f));
+		SPC_PhysicsBody t = std::dynamic_pointer_cast<PhysicsBody>(m_player1->findComponent(ComponentType::PHYSICSBODY));
+		t->addImpulse(glm::vec3(-5.0f*Timer::getTime().asSeconds(), 0.f, 0.f));
 	}
 	if (m_InputHandler.isKeyPressed(sf::Keyboard::D))
 	{
-		SPC_Transform t = std::dynamic_pointer_cast<Transform>(m_player1->findComponent(ComponentType::TRANSFORM));
-		t->translate(glm::vec3(5.0f*Timer::getTime().asSeconds(), 0.f, 0.f));
+		SPC_PhysicsBody t = std::dynamic_pointer_cast<PhysicsBody>(m_player1->findComponent(ComponentType::PHYSICSBODY));
+		t->addImpulse(glm::vec3(5.0f*Timer::getTime().asSeconds(), 0.f, 0.f));
 	}
 	if (m_InputHandler.isKeyPressed(sf::Keyboard::LShift))
 	{
-		SPC_Transform t = std::dynamic_pointer_cast<Transform>(m_player1->findComponent(ComponentType::TRANSFORM));
-		t->translate(glm::vec3(0.f, -5.0f*Timer::getTime().asSeconds(), 0.f));
+		SPC_PhysicsBody t = std::dynamic_pointer_cast<PhysicsBody>(m_player1->findComponent(ComponentType::PHYSICSBODY));
+		t->addImpulse(glm::vec3(0.f, -5.0f*Timer::getTime().asSeconds(), 0.f));
 	}
 	if (m_InputHandler.isKeyPressed(sf::Keyboard::Space))
 	{
-		SPC_Transform t = std::dynamic_pointer_cast<Transform>(m_player1->findComponent(ComponentType::TRANSFORM));
-		t->translate(glm::vec3(0.f, 5.0f*Timer::getTime().asSeconds(),0.f));
+		SPC_PhysicsBody t = std::dynamic_pointer_cast<PhysicsBody>(m_player1->findComponent(ComponentType::PHYSICSBODY));
+		t->addImpulse(glm::vec3(0.f, 5.0f*Timer::getTime().asSeconds(), 0.f));
 	}
 	if (m_InputHandler.isKeyPressed(sf::Keyboard::Up))
 	{
-		SPC_Transform t = std::dynamic_pointer_cast<Transform>(m_camera->findComponent(ComponentType::TRANSFORM));
-		t->translate(glm::vec3(0.f, 0.f, 5.f*Timer::getTime().asSeconds()));
+		SPC_PhysicsBody t = std::dynamic_pointer_cast<PhysicsBody>(m_camera->findComponent(ComponentType::PHYSICSBODY));
+		t->addImpulse(glm::vec3(0.f, 0.f, 5.f*Timer::getTime().asSeconds()));
 	}
 	if (m_InputHandler.isKeyPressed(sf::Keyboard::Down))
 	{
-		SPC_Transform t = std::dynamic_pointer_cast<Transform>(m_camera->findComponent(ComponentType::TRANSFORM));
-		t->translate(glm::vec3(0.f, 0.f, -5.f*Timer::getTime().asSeconds()));
+		SPC_PhysicsBody t = std::dynamic_pointer_cast<PhysicsBody>(m_camera->findComponent(ComponentType::PHYSICSBODY));
+		t->addImpulse(glm::vec3(0.f, 0.f, -5.f*Timer::getTime().asSeconds()));
 	}
 }
 void SceneTest::handleController()
 {
+	if (m_ControllerInput.checkConnected(0))
+	{
+		m_ControllerInput.update();
 
+		if (m_ControllerInput._buttons[buttons::A])
+		{
+
+		}
+		if (m_ControllerInput._leftStick.x > 10.f || m_ControllerInput._leftStick.x < -10.f)
+		{
+			SPC_Transform t = std::dynamic_pointer_cast<Transform>(m_player1->findComponent(ComponentType::TRANSFORM));
+		}
+	}
 }
 
 

@@ -1,14 +1,16 @@
 #include "Fighter.hpp"
 
-Fighter::Fighter(float _size,SPC_Transform t,SPC_Renderable r, SPC_Collidable c)
+Fighter::Fighter(float _size,SPC_Transform t,SPC_Renderable r, SPC_Collidable c, SPC_PhysicsBody b)
 {
 	myState=fighterStates::idle;
 	m_Transform = t;
 	m_Collidable = c;
 	m_Renderable = r;
+	m_PhysicsBody = b;
 	m_components.push_back(m_Transform);
 	m_components.push_back(m_Collidable);
 	m_components.push_back(m_Renderable);
+	m_components.push_back(m_PhysicsBody);
 	inAir=false;
 	faceLeft=false;
 	takingDamage=false;

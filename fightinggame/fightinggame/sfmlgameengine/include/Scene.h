@@ -21,6 +21,7 @@
 #include "Input.h"
 #include "ControllerInput.h"
 #include "FTInterface.h"
+#include "PhysicsManager.h"
 
 //!< Interface Scene class
 
@@ -48,5 +49,6 @@ protected:
 	GameObjectManager	m_GameObjectManager;
 	Renderer			m_Renderer;
 	TransformManager	m_TransformManager;
+	PhysicsManager		m_PhysicsManager;
 };
 #endif // !SCENE_H

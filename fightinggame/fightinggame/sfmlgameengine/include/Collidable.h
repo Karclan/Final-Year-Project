@@ -14,17 +14,22 @@ using namespace std;
 #include "Transfrom.h"
 #include "GameObject.h"
 
+
 class Collidable;
 typedef	std::shared_ptr<Collidable> SPC_Collidable;
-
 namespace CollisionType
 {
 	enum type{top,botton,left,right, basiccollision,noCollision};
 }
-namespace CollidableType
+
+class CollisionInstance
 {
-	enum type{STATIC,DYNAMIC};
-}
+public:
+	glm::vec3 m_CollisionNormal;
+	float m_PenetrationDepth;
+};
+
+
 class Collidable : public Component
 {
 	
@@ -58,14 +63,14 @@ public:
 
 private:
 
-	GameObjectType::type m_Owner;
-	CollisionType::type  m_currentCollision;
+	GameObjectType::type  m_Owner;
+	CollisionType::type   m_currentCollision;
 	glm::vec2 m_UpperPos, m_LowerPos;
 
 	float m_Size;
 
 	SPC_Collidable m_CollisionTarget;
-	SPC_Transform m_Transform;
+	SPC_Transform  m_Transform;
 };
 
 

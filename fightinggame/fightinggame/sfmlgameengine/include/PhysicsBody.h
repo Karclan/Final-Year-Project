@@ -13,8 +13,8 @@ class PhysicsBody : public Component
 {
 public:
 	PhysicsBody();
-	PhysicsBody(SPC_Transform t);
-	PhysicsBody(SPC_Transform t, glm::vec3 vel, float mass, float drag, float grav);
+	PhysicsBody(SPC_Transform t, SPC_Collidable c);
+	PhysicsBody(SPC_Transform t, SPC_Collidable c, glm::vec3 vel, float mass, float drag, float grav);
 	~PhysicsBody();
 
 	ComponentType::type getType();
@@ -25,11 +25,11 @@ public:
 	void addForce(glm::vec3 f);
 	void addImpulse(glm::vec3 i);
 
-	void	  setVelocity(glm::vec3 vel);
-	glm::vec3 getVelocity();
+	void	  setVelocity(glm::vec3 vel){m_Velocity = vel;}
+	glm::vec3 getVelocity(){ return m_Velocity; }
 
-	void	  setAcceleration(glm::vec3 acc);
-	glm::vec3 getAcceleration();
+	void	  setAcceleration(glm::vec3 acc){ m_Acceleration = acc; }
+	glm::vec3 getAcceleration(){ return m_Acceleration; }
 
 	void  setGravity(float g);
 	float getGravity(){ return m_Gravity; }

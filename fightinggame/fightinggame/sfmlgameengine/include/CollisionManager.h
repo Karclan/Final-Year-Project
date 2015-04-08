@@ -16,7 +16,7 @@ using namespace std;
 class CollisionManager
 {
 public:
-	SPC_Collidable createCollidable	(SPC_Transform t, float size, GameObjectType::type owner);
+	SPC_Collidable createCollidable	(SPC_Transform t, float sizeX,float sizeY, GameObjectType::type owner);
 	void addCollisionObject			(SPC_Collidable newCollidable){ m_lstOfCollidables.push_back(newCollidable); }
 	void addToCheck					(SPC_Collidable);
 	void removeFromCheck			(SPC_Collidable);

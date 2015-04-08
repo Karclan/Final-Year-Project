@@ -30,16 +30,16 @@ void PhysicsManager::setGravity(float g)
 		it->setGravity(m_Gravity);
 	}
 }
-SPC_PhysicsBody PhysicsManager::createPhysicsBody(SPC_Transform t)
+SPC_PhysicsBody PhysicsManager::createPhysicsBody(SPC_Transform t, SPC_Collidable c)
 {
-	SPC_PhysicsBody b(new PhysicsBody(t));
+	SPC_PhysicsBody b(new PhysicsBody(t,c));
 	b->setGravity(m_Gravity);
 	m_PhysicsBodies.push_back(b);
 	return b;
 }
-SPC_PhysicsBody PhysicsManager::createPhysicsBody(SPC_Transform t, glm::vec3 vel, float mass, float drag)
+SPC_PhysicsBody PhysicsManager::createPhysicsBody(SPC_Transform t, SPC_Collidable c, glm::vec3 vel, float mass, float drag)
 {
-	SPC_PhysicsBody b(new PhysicsBody(t,vel,mass,drag,m_Gravity));
+	SPC_PhysicsBody b(new PhysicsBody(t,c,vel,mass,drag,m_Gravity));
 	b->setGravity(m_Gravity);
 	m_PhysicsBodies.push_back(b);
 	return b;

@@ -22,11 +22,11 @@ namespace CollisionType
 	enum type{top,botton,left,right, basiccollision,noCollision};
 }
 
-class CollisionInstance
+struct CollisionInstance
 {
 public:
 	glm::vec3 m_CollisionNormal;
-	float m_PenetrationDepth;
+	glm::vec2 m_PenetrationDepth;
 };
 
 
@@ -36,7 +36,7 @@ class Collidable : public Component
 public:
 
 	Collidable();
-	Collidable(SPC_Transform t, float size, GameObjectType::type owner);
+	Collidable(SPC_Transform t, float sizeX,float sizeY, GameObjectType::type owner);
 
 	ComponentType::type getType();
 	void tearDown();
@@ -50,25 +50,19 @@ public:
 	SPC_Transform getTransform(){ return m_Transform; }
 	glm::vec2 getUpperBounds(){ return m_UpperPos; }
 	glm::vec2 getLowerBounds(){ return m_LowerPos; }
-	float getSize(){return m_Size;}
+	glm::vec2 getSize(){return m_Size;}
 	SPC_Collidable getCollisionTatget(){ return m_CollisionTarget; }
 
-	//Collidable& operator= (Collidable& newC){
-	//	m_Transform->setPosition(newC.m_Transform->getPosition());
-	//	m_Size = newC.m_Size;
-	//	m_UpperPos = glm::vec2(newC.m_Transform->getPosition().x+m_Size/2, newC.m_Transform->getPosition().y+m_Size/2);
-	//	m_LowerPos = glm::vec2(newC.m_Transform->getPosition().x-m_Size/2, newC.m_Transform->getPosition().y-m_Size/2);
-	//	return *this;
-	//};
-
+	CollisionInstance getCollisionInstance(){ return m_colInstance; }
 private:
 
 	GameObjectType::type  m_Owner;
 	CollisionType::type   m_currentCollision;
 	glm::vec2 m_UpperPos, m_LowerPos;
 
-	float m_Size;
+	glm::vec2  m_Size;
 
+	CollisionInstance m_colInstance;
 	SPC_Collidable m_CollisionTarget;
 	SPC_Transform  m_Transform;
 };

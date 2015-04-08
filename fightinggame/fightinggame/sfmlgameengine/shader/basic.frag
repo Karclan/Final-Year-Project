@@ -47,7 +47,6 @@ struct PointLight
 
 struct DirectionLight
 {
- vec3 position;		   //EXPLICITLY USED ONLY FOR SHADOWS
  vec3 direction;
 
  vec3 amb;             //ambient light intensity
@@ -149,9 +148,22 @@ vec3 CalPointLight(PointLight light, vec3 normal, vec3 viewDir, vec3 vertPos, ve
 	return  diffuseCol + specularCol;
 }
 
-vec3 CalDirLight  (vec3 normal, vec3 diff, vec3 spec)
+vec3 CalDirLight  (vec3 normal, vec3 viewDir, vec3 diff, vec3 spec)
 {
-return vec3(0,0,0);
+	vec3 lightDir	  = normalize(dirLight.direction);
+    vec3 reflectDir   = reflect(-lightDir, normal);
+	float diffuse  = max(dot(normal, lightDir), 0.0);
+	float specular = pow(max(dot(viewDir, reflectDir), 0.0), material.specEx);
+    
+	vec3 diffuseCol  = dirLight.diff * diffuse  * diff; 
+	vec3 specularCol = dirLight.spec * specular * spec;
+
+	if(dot(viewDir,normal)<0)
+	{
+	specularCol=vec3(0,0,0);
+	}	
+
+	return  diffuseCol + specularCol;
 }
 
 
@@ -159,6 +171,7 @@ return vec3(0,0,0);
 subroutine(RenderType)
 void shadowPass()
 {
+
 // do nothing, give me the DEPTH!!!!! AHAHAHHAHAHA
 }
 
@@ -169,16 +182,17 @@ void noTexture()
     vec3 viewDir	= normalize(viewPos - o_VertPos);
 	vec3 diffuseCol = vec3(0.0);
 	vec3 ambientCol = vec3(0.0);
+	
+	ambientCol = dirLight.amb * material.diff;
+	diffuseCol += CalDirLight(norm,viewDir,  material.diff, material.spec);
 
 	for(int i=0;i<numOfPointLights;++i)
 	{
 		diffuseCol += CalPointLight(pointLight[i], norm, viewDir,o_VertPos, material.diff, material.spec);
-		ambientCol += pointLight[i].amb * material.diff;
 	}
 	for(int i=0;i<numOfSpotLights;i++)
 	{
 		diffuseCol += CalSpotLight(spotLight[i],norm, viewDir,o_VertPos, material.diff, material.spec);
-		ambientCol += spotLight[i].amb * material.diff;
 	}
 	FragColour= shadeShadows(ambientCol,diffuseCol);
 }
@@ -191,16 +205,16 @@ void diffuse()
 	vec3 diffuseCol = vec3(0.0);
 	vec3 ambientCol = vec3(0.0);
 
-	//ambientCol += 
+	ambientCol = dirLight.amb * material.diff;
+	diffuseCol += CalDirLight(norm,viewDir, texture(u_DiffuseTexture,o_TexCoords).xyz, material.spec);
+
 	for(int i=0;i<numOfPointLights;++i)
 	{
 		diffuseCol += CalPointLight(pointLight[i], norm, viewDir, o_VertPos, texture(u_DiffuseTexture,o_TexCoords).xyz, material.spec);
-		ambientCol += pointLight[i].amb * texture(u_DiffuseTexture,o_TexCoords).xyz;
 	}
 	for(int i=0;i<numOfSpotLights;i++)
 	{
 		diffuseCol += CalSpotLight(spotLight[i], norm, viewDir,	o_VertPos,texture(u_DiffuseTexture,o_TexCoords).xyz,material.spec);
-		ambientCol += spotLight[i].amb * texture(u_DiffuseTexture,o_TexCoords).xyz;
 	}
 	vec4 colour = shadeShadows(ambientCol,diffuseCol);
 	colour.w = texture(u_DiffuseTexture,o_TexCoords).w;
@@ -215,15 +229,18 @@ void diffuseSpecular()
 	vec3 diffuseCol = vec3(0.0);
 	vec3 ambientCol = vec3(0.0);
 
+	ambientCol = dirLight.amb * material.diff;
+	diffuseCol += CalDirLight(norm,viewDir, texture(u_DiffuseTexture,o_TexCoords).xyz, texture(u_SpecularTexture,o_TexCoords).xyz);
+
 	for(int i=0;i<numOfPointLights;++i)
 	{
 		diffuseCol += CalPointLight(pointLight[i], norm, viewDir, o_VertPos, texture(u_DiffuseTexture,o_TexCoords).xyz, texture(u_SpecularTexture,o_TexCoords).xyz);
-		ambientCol += pointLight[i].amb * texture(u_DiffuseTexture,o_TexCoords).xyz;
+		//ambientCol += pointLight[i].amb * texture(u_DiffuseTexture,o_TexCoords).xyz;
 	}
 	for(int i=0;i<numOfSpotLights;i++)
 	{
 		diffuseCol += CalSpotLight(spotLight[i], norm, viewDir,	o_VertPos,texture(u_DiffuseTexture,o_TexCoords).xyz,texture(u_SpecularTexture,o_TexCoords).xyz);
-		ambientCol += spotLight[i].amb * texture(u_DiffuseTexture,o_TexCoords).xyz;
+		//ambientCol += spotLight[i].amb * texture(u_DiffuseTexture,o_TexCoords).xyz;
 	}
 	vec4 colour = shadeShadows(ambientCol,diffuseCol);
 	colour.w = texture(u_DiffuseTexture,o_TexCoords).w;

@@ -31,8 +31,7 @@ void Camera::init(SPC_Transform t)
 	m_Up = glm::vec3(0.0f,1.0f,0.0f);
 
 	m_mView = glm::lookAt(m_Transform->getPosition(),m_Transform->getPosition()-m_Target,m_Up);
-	m_mProj = glm::perspectiveFov(glm::radians(100.f), (float)GS::SCREENWIDTH, (float)GS::SCREENHEIGHT, 0.0001f, 1000.0f);
-
+	m_mProj = glm::perspectiveFov(glm::radians(75.f), (float)GS::SCREENWIDTH, (float)GS::SCREENHEIGHT, 0.1f, 100.0f);
 }
 void Camera::setPostion(glm::vec3 _newPos)
 {

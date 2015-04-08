@@ -17,10 +17,31 @@ Fighter::Fighter(float _size,SPC_Transform t,SPC_Renderable r, SPC_Collidable c,
 }
 void Fighter::update(float _dt)
 {
-	//inCollision();
-	//myTransform += myVelocity*_dt;
-	//myCollidable->move(sf::Vector2f(getTransform().x,getTransform().y));
-	
+	if (m_Collidable->getCurrentCollision() != CollisionType::noCollision)
+	{
+		if (m_Collidable->getCurrentCollision() == CollisionType::top)
+		{
+			std::cout << "top!\n";
+		}
+		if (m_Collidable->getCurrentCollision() == CollisionType::botton)
+		{
+			std::cout << "botton!\n";
+		}
+		if (m_Collidable->getCurrentCollision() == CollisionType::left)
+		{
+			std::cout << "left!\n";
+		}
+		if (m_Collidable->getCurrentCollision() == CollisionType::right)
+		{
+			std::cout << "right!\n";
+		}
+	}
+
+	if (m_Transform->getPosition().y<0)
+	{
+		m_Transform->setPosition(glm::vec3(m_Transform->getPosition().x, 0.f, m_Transform->getPosition().z));
+		m_PhysicsBody->setAcceleration(glm::vec3(0.f));
+	}
 	/*if(myTransform.y > GS::floor.y)
 	{
 		inAir=true;
@@ -117,6 +138,7 @@ void Fighter::attack()
 }
 void Fighter::fighterCollision()
 {
+	std::cout << "In collision!";
 	//switch(myCollidable->getCurrentCollision())
 	//{
 	//case col::top:

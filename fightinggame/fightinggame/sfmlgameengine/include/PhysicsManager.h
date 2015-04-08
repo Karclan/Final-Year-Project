@@ -19,8 +19,8 @@ public:
 	void setGravity(float g);
 	glm::vec3 getGravity();
 
-	SPC_PhysicsBody createPhysicsBody(SPC_Transform t);
-	SPC_PhysicsBody createPhysicsBody(SPC_Transform t, glm::vec3 vel, float mass, float drag);
+	SPC_PhysicsBody createPhysicsBody(SPC_Transform t, SPC_Collidable c);
+	SPC_PhysicsBody createPhysicsBody(SPC_Transform t, SPC_Collidable c, glm::vec3 vel, float mass, float drag);
 private:
 	std::vector<SPC_PhysicsBody> m_PhysicsBodies;
 	float m_Gravity;

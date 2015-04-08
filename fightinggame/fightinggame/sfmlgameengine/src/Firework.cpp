@@ -23,23 +23,23 @@ void Firework::init()
 	m_exploding		= false;
 
 	m_posGenerator.reset(new RoundPosGen());
-	m_posGenerator->setCenter(glm::vec4(0.0, 2.0, 0.0, 1.0));
+	m_posGenerator->setCenter(glm::vec4(0.0, 2.0, 2.0, 1.0));
 	m_posGenerator->setXRadius(0.15f);
 	m_posGenerator->setYRadius(0.15f);
 
 	m_colGenerator.reset(new BasicColourGen());
-	m_colGenerator->setMinStartColour(glm::vec4(0.7, 0.7, 0.7, 1.0));
-	m_colGenerator->setMaxStartColour(glm::vec4(0.8, 0.8, 0.8, 1.0));
+	m_colGenerator->setMinStartColour(glm::vec4(0.4, 0.4, 0.7, 1.0));
+	m_colGenerator->setMaxStartColour(glm::vec4(0.3, 0.3, 0.8, 1.0));
 	m_colGenerator->setMinEndColour	 (glm::vec4(0.1, 0.1, 0.1, 0.0));
 	m_colGenerator->setMaxEndColour	 (glm::vec4(0.2, 0.2, 0.2, 0.0));
 
 	m_velGenerator.reset(new BasicVelGen());
-	m_velGenerator->setMinStartVel(glm::vec4(-5.45f, -5.45f, -5.45f, 0.0f));
-	m_velGenerator->setMaxStartVel(glm::vec4( 5.45f,  5.45f,  5.45f, 0.0f));
+	m_velGenerator->setMinStartVel(glm::vec4(-5.45f,  1.45f,  0.f,   0.0f));
+	m_velGenerator->setMaxStartVel(glm::vec4( 5.45f,  8.45f,  5.45f, 0.0f));
 
 	m_timeGenerator.reset(new BasicTimeGen());
 	m_timeGenerator->setMinTime(0.5f);
-	m_timeGenerator->setMaxTime(3.5f);
+	m_timeGenerator->setMaxTime(2.5f);
 
 	m_emitter.reset(new ParticleEmitter());
 	m_emitter->init(m_particle->getPoolSize(), 0.45f);

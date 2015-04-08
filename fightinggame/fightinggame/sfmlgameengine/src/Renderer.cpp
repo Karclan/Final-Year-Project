@@ -128,7 +128,7 @@ void Renderer::render()
 	}
 
 	particle->useProgram();
-	particle->setUniform("u_PointSize", 15.f);
+	particle->setUniform("u_PointSize", 2.f);
 	particle->setUniform("u_ViewMatrix",	 m_cameras[0]->getViewMatrix());
 	particle->setUniform("u_ProjectionView", m_cameras[0]->getProjectionMatrix());
 	
@@ -241,7 +241,7 @@ void Renderer::setLights(Shader* s)
 	s->useProgram();
 	m_lightPos[0] = glm::vec3(-6.f, 5.0f, 0.0f);
 	m_lightPos[1] = glm::vec3(6.0f, 5.0f, 0.0f);
-	m_lightPos[2] = glm::vec3(0.0f, 15.0f, -15.0f);
+	//m_lightPos[2] = glm::vec3(0.0f, 0.0f, -15.0f);
 
 
 	m_DirectionalLightPosition = glm::vec3(0.f, 5.f, 10.f);
@@ -249,42 +249,39 @@ void Renderer::setLights(Shader* s)
 	s->setUniform("numOfSpotLights", 2);
 	s->setUniform("spotLight[0].position",   m_lightPos[0]);
 	s->setUniform("spotLight[0].spotDir"   , glm::vec3(-0.0f, -1.f, -0.f));
-	s->setUniform("spotLight[0].spotOutCut", glm::cos(glm::radians(14.f)));
-	s->setUniform("spotLight[0].spotInCut" , glm::cos(glm::radians(5.5f)));
+	s->setUniform("spotLight[0].spotOutCut", glm::cos(glm::radians(28.f)));
+	s->setUniform("spotLight[0].spotInCut" , glm::cos(glm::radians(15.5f)));
 	s->setUniform("spotLight[0].constant"  , 1.f);
 	s->setUniform("spotLight[0].linear"    , 0.014f);
 	s->setUniform("spotLight[0].quadratic" , 0.0007f);
-	s->setUniform("spotLight[0].amb"       , 0.2f, 0.2f, 0.2f);
 	s->setUniform("spotLight[0].diff"      , 1.0f, 0.0f, 0.0f);
 	s->setUniform("spotLight[0].spec"      , 1.0f, 0.0f, 0.0f);
 
 	//SpotLight2
 	s->setUniform("spotLight[1].position",   m_lightPos[1]);
 	s->setUniform("spotLight[1].spotDir"   , glm::vec3(-0.0f, -1.f, -0.f));
-	s->setUniform("spotLight[1].spotOutCut", glm::cos(glm::radians(14.f)));
-	s->setUniform("spotLight[1].spotInCut" , glm::cos(glm::radians(5.5f)));
+	s->setUniform("spotLight[1].spotOutCut", glm::cos(glm::radians(28.f)));
+	s->setUniform("spotLight[1].spotInCut" , glm::cos(glm::radians(15.5f)));
 	s->setUniform("spotLight[1].constant"  , 1.f);
 	s->setUniform("spotLight[1].linear"	   , 0.14f);
 	s->setUniform("spotLight[1].quadratic" , 0.007f);
-	s->setUniform("spotLight[1].amb"       , 0.2f, 0.2f, 0.2f);
-	s->setUniform("spotLight[1].diff"      , 0.0f, 1.0f, 0.0f);
-	s->setUniform("spotLight[1].spec"      , 0.0f, 1.0f, 0.0f);
+	s->setUniform("spotLight[1].diff"      , 1.0f, 0.0f, 1.0f);
+	s->setUniform("spotLight[1].spec"      , 1.0f, 0.0f, 1.0f);
 
-	//PointLight1
-	s->setUniform("numOfPointLights", 1);
-	s->setUniform("pointLight[0].position",   m_lightPos[2]);
-	s->setUniform("pointLight[0].constant" , 1.f);
-	s->setUniform("pointLight[0].linear"   , 0.14f);
-	s->setUniform("pointLight[0].quadratic", 0.007f);
-	s->setUniform("pointLight[0].amb"      , 0.2f, 0.2f, 0.2f);
-	s->setUniform("pointLight[0].diff"     , 0.5f, 0.5f, 0.5f);
-	s->setUniform("pointLight[0].spec"     , 0.0f, 1.0f, 0.0f);
+	////PointLight1
+	//s->setUniform("numOfPointLights", 1);
+	//s->setUniform("pointLight[0].position",   m_lightPos[2]);
+	//s->setUniform("pointLight[0].constant" , 1.f);
+	//s->setUniform("pointLight[0].linear"   , 0.14f);
+	//s->setUniform("pointLight[0].quadratic", 0.007f);
+	//s->setUniform("pointLight[0].diff"     , 0.5f, 0.5f, 0.5f);
+	//s->setUniform("pointLight[0].spec"     , 0.0f, 0.0f, 1.0f);
 
 	
 	s->setUniform("dirLight.direction", m_DirectionalLightPosition);
 	s->setUniform("dirLight.amb",  0.2f, 0.2f, 0.2f);
 	s->setUniform("dirLight.diff", 0.5f, 0.5f, 0.5f);
-	s->setUniform("dirLight.spec", 0.0f, 1.0f, 0.0f);
+	s->setUniform("dirLight.spec", 0.0f, 0.8f, 0.8f);
 
 }
 void Renderer::setupShadows()

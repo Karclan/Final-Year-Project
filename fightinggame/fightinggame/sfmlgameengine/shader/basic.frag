@@ -27,7 +27,6 @@ vec3 position;
  float linear;
  float quadratic;
 
- vec3 amb;            //ambient light intensity
  vec3 diff;           // Diffuse light intensity
  vec3 spec;
  };
@@ -40,7 +39,6 @@ struct PointLight
  float linear;
  float quadratic;
 
- vec3 amb;             //ambient light intensity
  vec3 diff;            // Diffuse light intensity
  vec3 spec;
  };

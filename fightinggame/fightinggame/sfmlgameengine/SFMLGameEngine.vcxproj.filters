@@ -78,13 +78,13 @@
     <None Include="shader\textShader.vert">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="ClassDiagram.cd" />
     <None Include="shader\particle.frag">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="shader\particle.vert">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\ControllerInput.h">

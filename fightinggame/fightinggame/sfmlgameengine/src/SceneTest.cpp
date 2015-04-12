@@ -108,7 +108,7 @@ void SceneTest::update()
 	//NON-FIXED UPDATE//
 	//________________//
 	m_CollisionManager.update();
-	m_GameObjectManager.update();
+	//m_GameObjectManager.update();
 	//¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯//
 	//  FIXED UPDATE  //
 	//________________//
@@ -119,8 +119,8 @@ void SceneTest::update()
 		m_Renderer.updateParticles((float)Timer::getTime().asSeconds());
 		
 		SPC_Camera t = std::dynamic_pointer_cast<Camera>(m_camera->findComponent(ComponentType::CAMERA));
-		//SPC_Transform k = std::dynamic_pointer_cast<Transform>(m_player1->findComponent(ComponentType::TRANSFORM));
-		//k->rotate(glm::vec3(0.f, Timer::getTime().asSeconds()*45.f, 0.f));
+		SPC_Transform k = std::dynamic_pointer_cast<Transform>(m_player1->findComponent(ComponentType::TRANSFORM));
+		k->rotate(glm::vec3(0.f, Timer::getTime().asSeconds()*45.f, 0.f));
 		
 		m_GameObjectManager.update();
 

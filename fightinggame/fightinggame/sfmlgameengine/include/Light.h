@@ -6,15 +6,22 @@
 
 #include "Component.h"
 
+/*! \brief  Light Component Class
+
+Light Component Class, currently unused class. Intended to be used with the renderer to manually
+set the lights within the scene.
+
+*/
+
 class Light : public Component
 {
 public:
 	ComponentType::type getType();
 	void tearDown();
 
-	void setAmb (glm::vec3 Ka){m_ambient = Ka;}
-	void setDiff(glm::vec3 Kd){m_diffuse = Kd;}
-	void setSpec(glm::vec3 Ks){m_specular = Ks;}
+	void setAmb (glm::vec3 Ka){m_ambient = Ka;} //!< Sets ambient colour Value
+	void setDiff(glm::vec3 Kd){m_diffuse = Kd;} //!< Sets diffuse colour Value
+	void setSpec(glm::vec3 Ks){m_specular = Ks;}//!< Sets Specular colour value
 	void setSpecEx(float specEx){m_specularExponent = specEx;}
 
 	glm::vec3 getAmb(){return m_ambient;}

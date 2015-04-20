@@ -22,17 +22,21 @@
 #include <cstring>
 #include <vector>
 
+/*! \brief  Mesh
+
+Mesh class. Mesh class which contains all data about a mesh
+
+*/
 class Mesh
 {
 public:
-	//Mesh();
-	Mesh(std::string filename, GLuint myShaderHandle);
+	Mesh(std::string filename, GLuint myShaderHandle); //!< Constructor which loads mesh
 	~Mesh();
-	void genTexture(std::string textFile);
-	void setColour(sf::Vector3f colour);
+	void genTexture(std::string textFile); //!< loads a texture. Old function
+	void setColour(sf::Vector3f colour); //!< Old function left over from old systyem design
 
-	void load(std::string);
-	std::vector<GLuint> *getIndices(){return &indices;}
+	void load(std::string); //!< Uses Assimp to load mesh and put mesh data into vectors
+	std::vector<GLuint> *getIndices(){return &indices;} //!< gets the number of indicies a mesh has. Used for rendering
 
 	GLuint getVAO(){return VAOHandle;}
 	GLuint getTexture(){return myTexture;}

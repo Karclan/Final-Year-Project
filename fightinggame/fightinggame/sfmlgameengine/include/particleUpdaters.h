@@ -6,12 +6,17 @@
 
 #include "particleData.h"
 
-
+//! Enum for types of updaters
 namespace Updaters
 {
 	enum type{EULERUPDATER, FLOORUPDATER, ATTRACTORUPDATER, BASICCOLOURUPDATER, POSITIONCOLOURUPDATER, VELOCITYCOLOURUPDATER, BASICTIMEUPDATER, UPDATERS};
 }
 
+/*! \brief  ParticleUpdater
+
+ParticleUpdater Class. Updates particle data based on a certain singular element
+
+*/
 class ParticleUpdater
 {
 private: 
@@ -22,13 +27,18 @@ public:
 
 	virtual Updaters::type getType()=0;
 
-	virtual void update(float t, ParticleData *p)=0;
+	virtual void update(float t, ParticleData *p)=0; //!<Updates particle data. Pure virtual function which is inherited and defined by child classes
 	virtual bool isActive(){return _active;}
 	virtual void setActiveFlag(bool f){_active = f;}
 };
 
 typedef std::shared_ptr<ParticleUpdater> SP_ParticleUpdater;
 
+/*! \brief  EulerUpdater
+
+EulerUpdater Class. Updates particle velocities using euler method
+
+*/
 class EulerUpdater : public ParticleUpdater
 {
 private:
@@ -50,6 +60,11 @@ public:
 
 typedef std::shared_ptr<EulerUpdater> SP_EulerUpdater;
 
+/*! \brief  FloorUpdater
+
+FloorUpdater Class. Makes paticles bounce when they hit a 'floor'
+
+*/
 class FloorUpdater : public ParticleUpdater
 {
 private:
@@ -63,6 +78,11 @@ public:
 
 typedef std::shared_ptr<FloorUpdater> SP_FloorUpdater;
 
+/*! \brief  AttractorUpdater
+
+AttractorUpdater Class. Makes paticles attract to points in space
+
+*/
 class AttractorUpdater : public ParticleUpdater
 {
 private:
@@ -102,6 +122,11 @@ public:
 
 typedef std::shared_ptr<AttractorUpdater> SP_AttractorUpdater;
 
+/*! \brief  BasicColourUpdater
+
+BasicColourUpdater Class. Updates particle colour over particle lifespan
+
+*/
 class BasicColourUpdater : public ParticleUpdater
 {
 public:
@@ -111,6 +136,11 @@ public:
 
 typedef std::shared_ptr<BasicColourUpdater> SP_BasicColourUpdater;
 
+/*! \brief  PositionColourUpdater
+
+PositionColourUpdater Class. Updates particle colour over particle lifespan and position
+
+*/
 class PositionColourUpdater : public ParticleUpdater
 {
 private:
@@ -140,6 +170,11 @@ public:
 
 typedef std::shared_ptr<PositionColourUpdater> SP_PositionColourUpdater;
 
+/*! \brief  VelocityColourUpdater
+
+VelocityColourUpdater Class. Updates particle colour over particle lifespan and velocity
+
+*/
 class VelocityColourUpdater : public ParticleUpdater
 {
 private:
@@ -158,6 +193,11 @@ public:
 
 typedef std::shared_ptr<VelocityColourUpdater> SP_VelocityColourUpdater;
 
+/*! \brief  BasicTimeUpdater
+
+BasicTimeUpdater Class. Updates particle age
+
+*/
 class BasicTimeUpdater : public ParticleUpdater
 {
 public:

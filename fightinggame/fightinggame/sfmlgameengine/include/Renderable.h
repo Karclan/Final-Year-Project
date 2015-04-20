@@ -11,27 +11,30 @@
 #include "Mesh.h"
 #include "Shader.h"
 
-/*
-	Renderable Component.
-	Game Objects that wish to be rendered will have one of these components
+/*! \brief  Renderable Component Class
+
+Renderable Component.
+Game Objects that wish to be rendered will have one of these components.
+
 */
+
 
 class Renderable : public Component
 {
 public:
 	Renderable();
-	Renderable(SPC_Transform t, Mesh *m, Shader* s);
+	Renderable(SPC_Transform t, Mesh *m, Shader* s); //!<Constructor which determins the mesh and shader the object uses
 
 	ComponentType::type getType();
 	void tearDown();
 
-	void giveMesh(Mesh *mesh);
-	void assignTexture(std::string filename, TextureType::type type);
-	bool textured(TextureType::type type);
-	bool textured();
-	void bindTexture(TextureType::type type);
-	void unbindTextures();
-	void setShader(Shader *shader);
+	void giveMesh(Mesh *mesh); //!<Gives a mesh to the object
+	void assignTexture(std::string filename, TextureType::type type); //!<Assigns a texture to the object
+	bool textured(TextureType::type type);//!<Returns bool if a certain texture type is assigned to object
+	bool textured();//!<returns bool if diffuse texture is assigned
+	void bindTexture(TextureType::type type);//!<Binds texture for rendering
+	void unbindTextures(); //!<unbinds all textures
+	void setShader(Shader *shader); 
 	void setDiff(glm::vec3 diffuseReflection);
 	void setSpec(glm::vec3 specularReflection);
 	void setSpecEx(GLfloat exponent);
@@ -48,16 +51,16 @@ public:
 private:
 	void setShaderHandle();
 
-	GLuint	  m_ShaderHandle;
-	GLuint	  m_ModelMatrixID;
-	glm::vec3 m_ColourTint;
-	glm::vec3 m_DiffuseReflection;
-	glm::vec3 m_SpecularReflection;
-	GLfloat   m_SpecularExponent;
-	Mesh*	  m_Mesh;
-	Shader*	  m_Shader;
-	bool	  m_Textured	 [TextureType::TYPES];
-	Texture	  m_TextureObject[TextureType::TYPES];
+	GLuint	  m_ShaderHandle;	
+	GLuint	  m_ModelMatrixID;  //!<Unused outdated value. Was originally used for location position of model matrix within the shader program
+	glm::vec3 m_ColourTint;		//!<Unused colour value. Was originally used to tint the colour of an object for rendering
+	glm::vec3 m_DiffuseReflection;//!< Material Diffuse value
+	glm::vec3 m_SpecularReflection;//!<Material Specular value 
+	GLfloat   m_SpecularExponent;//!<Material 'shiny' value
+	Mesh*	  m_Mesh;		//!<Mesh pointer, not mesh class but pointer. Saves on space
+	Shader*	  m_Shader;		//!<Pointer to shader
+	bool	  m_Textured	 [TextureType::TYPES]; //!<flags for each texture an renderable can have
+	Texture	  m_TextureObject[TextureType::TYPES]; //!<Texture objects for each texture and renderable can have 
 
 	SPC_Transform m_Transform;
 };

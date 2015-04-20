@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{9EF379F6-2D96-401E-9537-CAC4590EDAC3}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>UnitTest1</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>C:\Users\Matt\Documents\GitHub\Final-Year-Project\fightinggame\fightinggame\sfmlgameengine\Debug;C:\Users\Matt\Documents\GitHub\Final-Year-Project\fightinggame\fightinggame\sfmlgameengine\src;C:\Users\Matt\Documents\GitHub\Final-Year-Project\fightinggame\fightinggame\sfmlgameengine\include;$(SolutionDir)dev\include\;$(SolutionDir)dev\include\freetype;$(SolutionDir)dev\include\freetype\freetype2;$(SolutionDir)dev\assimp;$(SolutionDir)dev\assimp\Compiler;$(VCInstallDir)UnitTest\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <UseFullPaths>true</UseFullPaths>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\Users\Matt\Documents\GitHub\Final-Year-Project\fightinggame\fightinggame\sfmlgameengine\src;$(SolutionDir)dev\lib\sfml;$(SolutionDir)dev\lib\glew;$(SolutionDir)dev\lib\freetype;$(SolutionDir)dev\lib\assimp;$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>freetype.lib;assimp.lib;XInput9_1_0.lib;sfml-window-d.lib;sfml-main-d.lib;sfml-system-d.lib;sfml-graphics-d.lib;sfml-audio.lib;opengl32.lib;glew32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>$(VCInstallDir)UnitTest\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <UseFullPaths>true</UseFullPaths>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\sfmlgameengine\src\Block.cpp" />
+    <ClCompile Include="..\sfmlgameengine\src\Camera.cpp" />
+    <ClCompile Include="..\sfmlgameengine\src\CameraObj.cpp" />
+    <ClCompile Include="..\sfmlgameengine\src\Collidable.cpp" />
+    <ClCompile Include="..\sfmlgameengine\src\CollisionManager.cpp" />
+    <ClCompile Include="..\sfmlgameengine\src\Component.cpp" />
+    <ClCompile Include="..\sfmlgameengine\src\ControllerInput.cpp" />
+    <ClCompile Include="..\sfmlgameengine\src\FallingBlock.cpp" />
+    <ClCompile Include="..\sfmlgameengine\src\Fighter.cpp" />
+    <ClCompile Include="..\sfmlgameengine\src\Firework.cpp" />
+    <ClCompile Include="..\sfmlgameengine\src\FTInterface.cpp" />
+    <ClCompile Include="..\sfmlgameengine\src\GameObject.cpp" />
+    <ClCompile Include="..\sfmlgameengine\src\GameObjectManager.cpp" />
+    <ClCompile Include="..\sfmlgameengine\src\GS.cpp" />
+    <ClCompile Include="..\sfmlgameengine\src\HitBox.cpp" />
+    <ClCompile Include="..\sfmlgameengine\src\Input.cpp" />
+    <ClCompile Include="..\sfmlgameengine\src\Main.cpp" />
+    <ClCompile Include="..\sfmlgameengine\src\Mesh.cpp" />
+    <ClCompile Include="..\sfmlgameengine\src\Particle.cpp" />
+    <ClCompile Include="..\sfmlgameengine\src\ParticleBehaviour.cpp" />
+    <ClCompile Include="..\sfmlgameengine\src\particleData.cpp" />
+    <ClCompile Include="..\sfmlgameengine\src\particleEmitters.cpp" />
+    <ClCompile Include="..\sfmlgameengine\src\particleGenerators.cpp" />
+    <ClCompile Include="..\sfmlgameengine\src\ParticleRenderable.cpp" />
+    <ClCompile Include="..\sfmlgameengine\src\particleSystem.cpp" />
+    <ClCompile Include="..\sfmlgameengine\src\particleUpdaters.cpp" />
+    <ClCompile Include="..\sfmlgameengine\src\PhysicsBody.cpp" />
+    <ClCompile Include="..\sfmlgameengine\src\PhysicsManager.cpp" />
+    <ClCompile Include="..\sfmlgameengine\src\Renderable.cpp" />
+    <ClCompile Include="..\sfmlgameengine\src\Renderer.cpp" />
+    <ClCompile Include="..\sfmlgameengine\src\Scene.cpp" />
+    <ClCompile Include="..\sfmlgameengine\src\SceneTest.cpp" />
+    <ClCompile Include="..\sfmlgameengine\src\Shader.cpp" />
+    <ClCompile Include="..\sfmlgameengine\src\ShaderHandler.cpp" />
+    <ClCompile Include="..\sfmlgameengine\src\Texture.cpp" />
+    <ClCompile Include="..\sfmlgameengine\src\Timer.cpp" />
+    <ClCompile Include="..\sfmlgameengine\src\Transform.cpp" />
+    <ClCompile Include="..\sfmlgameengine\src\TransformManager.cpp" />
+    <ClCompile Include="..\sfmlgameengine\src\X360Controller.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="unittest1.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SFMLGameEngine\SFMLGameEngine.vcxproj">
+      <Project>{968fdcc8-fa1d-4767-8d7d-3f27c9fe8b6b}</Project>
+      <Private>false</Private>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+      <CopyLocalSatelliteAssemblies>false</CopyLocalSatelliteAssemblies>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+      <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

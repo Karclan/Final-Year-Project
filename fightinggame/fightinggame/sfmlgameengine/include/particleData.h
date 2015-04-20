@@ -6,6 +6,12 @@
 #include <vector>
 #include <iostream>
 
+/*! \brief  ParticleData Class
+
+ParticleData Class. A structure of Arrays design. contains all the particle data in arrays based upon size of particle pool
+
+*/
+
 class ParticleData
 {
 public:
@@ -27,10 +33,10 @@ public:
 	ParticleData(size_t maxCount);
 	~ParticleData();
 
-	void generate(size_t maxSize);
-	void kill(size_t id);
-	void wake(size_t id);
-	void swapData(size_t a, size_t b);
+	void generate(size_t maxSize); //!< generates the arrays based on particle size
+	void kill(size_t id); //!< puts a particle to sleep
+	void wake(size_t id);//!< wakes a particle
+	void swapData(size_t a, size_t b);//!< swaps the positions of two particles
 
 	size_t getParticleCount     (){return _particleCount;}
 	size_t getAliveParticleCount(){return _aliveParticleCount;}

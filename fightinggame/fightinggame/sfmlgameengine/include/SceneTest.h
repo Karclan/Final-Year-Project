@@ -6,13 +6,18 @@
 #include "CameraObj.h"
 #include "Firework.h"
 
+/*! \brief  SceneTest
+
+SceneTest  class. Game implementaiton, has all the stuff within the scene.
+
+*/
 class SceneTest : public Scene
 {
 public:
-	void init();
-	void update();
-	void handleInput();
-	void handleController();
+	void init(); //!< function which creates all the scene objets and sets their values
+	void update(); //!< function which updates the game objects and managers
+	void handleInput(); //!< function which handles keyboard input
+	void handleController(); //!< function which handles controller input
 private:
 	Block *m_decorBlocks[10];
 	Block *m_rotatingCube;

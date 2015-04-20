@@ -15,6 +15,11 @@
 #include <map>
 #include <stdexcept>
 
+/*! \brief  ShaderHandler
+
+ShaderHandler class. Unused class, meant to be used as an interface but found to be pointless to use 
+
+*/
 class ShaderHandler
 {
 public:

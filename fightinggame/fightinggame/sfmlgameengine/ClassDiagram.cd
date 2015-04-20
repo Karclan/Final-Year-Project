@@ -1,644 +1,666 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="xb::Joystick" Collapsed="true">
-    <Position X="16.75" Y="1.5" Width="1.5" />
+  <Class Name="xb::Joystick">
+    <Position X="12.75" Y="8" Width="1.5" />
+    <NestedTypes>
+      <Typedef Name="xb::Joystick::t_joyNum" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>include\X360Controller.hpp</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+      <Typedef Name="xb::Joystick::t_buttonNum" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>include\X360Controller.hpp</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+      <Enum Name="xb::Joystick::__unnamed_enum_0027_1" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>include\X360Controller.hpp</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="xb::Joystick::__unnamed_enum_0027_2" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>include\X360Controller.hpp</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
     <TypeIdentifier>
       <HashCode>AAAAQAQAAAAAAAgAAAQAQAIAAAAAAgAAAAAAAAAAAAA=</HashCode>
       <FileName>include\X360Controller.hpp</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="FTInterface" Collapsed="true">
-    <Position X="20.25" Y="0.5" Width="1.5" />
+  <Class Name="FTInterface">
+    <Position X="15.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAgAgAAAUAgCABAAAQEAAQAAAAAIAAAAAAAAUQAA=</HashCode>
       <FileName>include\FTInterface.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Mesh" Collapsed="true">
-    <Position X="18.5" Y="1.5" Width="1.5" />
+  <Class Name="Mesh">
+    <Position X="19.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BBACQAEAIIMAAlASAQAAABACFABQABMQEYAQEAAQgCA=</HashCode>
       <FileName>include\Mesh.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Renderer" Collapsed="true">
-    <Position X="22" Y="2.5" Width="1.5" />
+  <Class Name="Renderer">
+    <Position X="17.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>VAQiAgAQIEAAAICAgAwogIAjCGQIgAMAAICAAABQACA=</HashCode>
       <FileName>include\Renderer.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Shader" Collapsed="true">
-    <Position X="23.75" Y="2.5" Width="1.5" />
+  <Class Name="Shader">
+    <Position X="21" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>IAAJAACAAAAAAAgBAAAAAQAAAAgAAEAAAAAAAIEACAA=</HashCode>
       <FileName>include\Shader.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ShaderHandler" Collapsed="true">
-    <Position X="16.75" Y="3.5" Width="1.5" />
+  <Class Name="ShaderHandler">
+    <Position X="21" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAIACAAAACAAAAAAgAgAAAAAAgAAgAAABAAAAEAIAA=</HashCode>
       <FileName>include\ShaderHandler.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Texture" Collapsed="true">
-    <Position X="18.5" Y="3.5" Width="1.5" />
+  <Class Name="Texture">
+    <Position X="22.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>gAAAAAAAAIAAAAQAAAAAAAAAAAAAAAAIAAIAAAAABAA=</HashCode>
       <FileName>include\Texture.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ParticleBehaviour" Collapsed="true">
-    <Position X="20.25" Y="1.5" Width="1.5" />
+  <Class Name="ParticleBehaviour">
+    <Position X="16.75" Y="12.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAEAQAAAAAAAAAABAAIAAAAIAAAAAAAAEAAA=</HashCode>
       <FileName>include\ParticleBehaviour.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ParticleData" Collapsed="true">
-    <Position X="22" Y="1.5" Width="1.5" />
+  <Class Name="ParticleData">
+    <Position X="16.75" Y="15" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AoCEAAAAAAkACABAAAAAABEYQAAAAAAAQAgAAgBAACA=</HashCode>
       <FileName>include\particleData.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ParticleEmitter" Collapsed="true">
-    <Position X="23.75" Y="1.5" Width="1.5" />
+  <Class Name="ParticleEmitter">
+    <Position X="18.5" Y="12.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AEAAAAABAgAAAAAAECAAAgACAQQAQBIAAAAAAABAEAA=</HashCode>
       <FileName>include\particleEmitters.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ParticleGenerator" Collapsed="true">
-    <Position X="6.25" Y="7.5" Width="1.5" />
+  <Class Name="ParticleGenerator">
+    <Position X="22" Y="15.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAIBAAAEBAAAQAAAAAAQAAQAAAAAAA=</HashCode>
       <FileName>include\particleGenerators.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BoxPosGen" Collapsed="true">
-    <Position X="5.25" Y="8.75" Width="1.5" />
+  <Class Name="BoxPosGen">
+    <Position X="26.5" Y="18.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAEAACBQBAAAAAQAAAgAAAAQA=</HashCode>
       <FileName>include\particleGenerators.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="RoundPosGen" Collapsed="true">
-    <Position X="9.75" Y="8.75" Width="1.5" />
+  <Class Name="RoundPosGen">
+    <Position X="31" Y="18.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAFgAEAAAAAAAAAAAAgAAAAAQACAAAASAAAAAEAAAA=</HashCode>
       <FileName>include\particleGenerators.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BasicColourGen" Collapsed="true">
-    <Position X="12" Y="8.75" Width="1.5" />
+  <Class Name="BasicColourGen">
+    <Position X="33.25" Y="18.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAMACAAAgAQAAAAAAAAACAASMAAgAAQAAIAAAAAAg=</HashCode>
       <FileName>include\particleGenerators.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BasicVelGen" Collapsed="true">
-    <Position X="0.75" Y="8.75" Width="1.5" />
+  <Class Name="BasicVelGen">
+    <Position X="22" Y="18.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AQAAAIABABAAAAAAAIAAAAIAAQAAAAAAQAAAAAAQAAA=</HashCode>
       <FileName>include\particleGenerators.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SphereVelGen" Collapsed="true">
-    <Position X="3" Y="8.75" Width="1.5" />
+  <Class Name="SphereVelGen">
+    <Position X="24.25" Y="18.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAACAAABAAAAEAAQQAAAAAAQAAAAAAQAAAAQAQAAA=</HashCode>
       <FileName>include\particleGenerators.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BasicTimeGen" Collapsed="true">
-    <Position X="7.5" Y="8.75" Width="1.5" />
+  <Class Name="BasicTimeGen">
+    <Position X="28.75" Y="18.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QAAAAAAAAAAABBAAAAAEAAAEAQAAACAAQAAAQAAAAAA=</HashCode>
       <FileName>include\particleGenerators.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ParticleRenderable" Collapsed="true">
-    <Position X="16.75" Y="2.5" Width="1.5" />
+  <Class Name="ParticleRenderable">
+    <Position X="18.5" Y="16.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>CAAACAAAAACAAAAAABAAAAACAAAAAEAAQAAAAAAQAAQ=</HashCode>
       <FileName>include\ParticleRenderable.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ParticleSystem" Collapsed="true">
-    <Position X="18.5" Y="2.5" Width="1.5" />
+  <Class Name="ParticleSystem">
+    <Position X="20.25" Y="12.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AECAACIEAEAAAQACAAEAQIIQQAAAAAAAAAQAAAAEAAA=</HashCode>
       <FileName>include\particleSystem.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ParticleUpdater" Collapsed="true">
-    <Position X="7.5" Y="4.5" Width="1.5" />
+  <Class Name="ParticleUpdater">
+    <Position X="22" Y="12.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAgAQAEBAAAQAAAAAAAAAQAAAEAAA=</HashCode>
       <FileName>include\particleUpdaters.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="EulerUpdater" Collapsed="true">
-    <Position X="3" Y="5.75" Width="1.5" />
+  <Class Name="EulerUpdater">
+    <Position X="26.25" Y="12.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAQEAAAAAAAEAAQAAAAAAAAAQAAAEAAA=</HashCode>
       <FileName>include\particleUpdaters.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="FloorUpdater" Collapsed="true">
-    <Position X="7.5" Y="5.75" Width="1.5" />
+  <Class Name="FloorUpdater">
+    <Position X="30.75" Y="12.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ABAAAAAAAAAAAAAAAAAAQAAAQQAAAAAAAAAAAAAEAAA=</HashCode>
       <FileName>include\particleUpdaters.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="AttractorUpdater" Collapsed="true">
-    <Position X="12" Y="5.75" Width="1.5" />
+  <Class Name="AttractorUpdater">
+    <Position X="35.25" Y="12.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>SAAAAAAAAACAABAAAAAAAAAEAQIAAAAAAAgAAAAEAgA=</HashCode>
       <FileName>include\particleUpdaters.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BasicColourUpdater" Collapsed="true">
-    <Position X="14.25" Y="5.75" Width="1.5" />
+  <Class Name="BasicColourUpdater">
+    <Position X="37.5" Y="12.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAEAAA=</HashCode>
       <FileName>include\particleUpdaters.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="PositionColourUpdater" Collapsed="true">
-    <Position X="0.75" Y="5.75" Width="1.5" />
+  <Class Name="PositionColourUpdater">
+    <Position X="24" Y="12.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAABAAAAAAAAAAAAAAAAAAQAQAAAAAAAACACHACA=</HashCode>
       <FileName>include\particleUpdaters.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="VelocityColourUpdater" Collapsed="true">
-    <Position X="5.25" Y="5.75" Width="1.5" />
+  <Class Name="VelocityColourUpdater">
+    <Position X="28.25" Y="12.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAIgAAAAAiAAAQQAAAAAAQAAAAAAAAAAAAAEAAA=</HashCode>
       <FileName>include\particleUpdaters.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BasicTimeUpdater" Collapsed="true">
-    <Position X="9.75" Y="5.75" Width="1.5" />
+  <Class Name="BasicTimeUpdater">
+    <Position X="33" Y="12.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAEAAA=</HashCode>
       <FileName>include\particleUpdaters.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Camera" Collapsed="true">
-    <Position X="9.75" Y="1.75" Width="1.5" />
+  <Class Name="Camera">
+    <Position X="9.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACJqAqAAEAAAQEQAAQABAAAQRAAQIgAAAAAAAFAAA=</HashCode>
       <FileName>include\Camera.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Collidable" Collapsed="true">
-    <Position X="0.75" Y="1.75" Width="1.5" />
+  <Class Name="Collidable">
+    <Position X="0.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EAAAgMAoAIAAAEAAgACAACAAAQQAAAAQgCAAAAKGgAE=</HashCode>
       <FileName>include\Collidable.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Component" Collapsed="true">
+  <Class Name="Component">
     <Position X="7.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QAAgIAAAAAABAAAAAAAAAAAAAQQAAAAAAABAAAAAAAQ=</HashCode>
       <FileName>include\Component.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Light" Collapsed="true">
-    <Position X="5.25" Y="1.75" Width="1.5" />
+  <Class Name="Light">
+    <Position X="5.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAQQAAAAAAAAACEBAABQAAQQAgACIAAAAgAAACAA=</HashCode>
       <FileName>include\Light.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="HitBox" Collapsed="true">
-    <Position X="0.75" Y="3.25" Width="1.5" />
+  <Class Name="HitBox">
+    <Position X="0.75" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAABAAAAAABAAAAAQAAAAAAAAAAAAAAAAEAEA=</HashCode>
       <FileName>include\HitBox.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Particle" Collapsed="true">
-    <Position X="7.5" Y="1.75" Width="1.5" />
+  <Class Name="Particle">
+    <Position X="7.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>gEggACIoAAACCEAEAAAEAAAAgYUMQAIAQCAAAgBQAEA=</HashCode>
       <FileName>include\Particle.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="PhysicsBody" Collapsed="true">
-    <Position X="12" Y="1.75" Width="1.5" />
+  <Class Name="PhysicsBody">
+    <Position X="11.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BAACgQgICAAAhBAAhAACAAAEASwCgAQIBABQAAJAAAE=</HashCode>
       <FileName>include\PhysicsBody.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Renderable" Collapsed="true">
-    <Position X="14.25" Y="1.75" Width="1.5" />
+  <Class Name="Renderable">
+    <Position X="13.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ABAAAUAMAAQAIEIACUBAAEQAIQQAgAQIACAAgARgSII=</HashCode>
       <FileName>include\Renderable.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Transform" Collapsed="true">
-    <Position X="3" Y="1.75" Width="1.5" />
+  <Class Name="Transform">
+    <Position X="3" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAIIAAACAAACAIAAAQAAQCAQQgAAAAAAAAAAEEBAA=</HashCode>
       <FileName>include\Transfrom.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ControllerInput" Collapsed="true">
-    <Position X="18.5" Y="0.5" Width="1.5" />
+  <Class Name="ControllerInput">
+    <Position X="11" Y="8" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAgEEAAAAAAAQAAAAgAAIAAABAAoAAAQAAAAEAAA=</HashCode>
       <FileName>include\ControllerInput.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Input" Collapsed="true">
-    <Position X="23.75" Y="0.5" Width="1.5" />
+  <Class Name="Input">
+    <Position X="9.25" Y="8" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EAIAAAAAAAAAAAAAAAAAAAAAABAAIAIAAEAAAAAEAAA=</HashCode>
       <FileName>include\Input.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Scene" Collapsed="true">
-    <Position X="10.25" Y="10.5" Width="1.5" />
+  <Class Name="Scene">
+    <Position X="3.25" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIIqAAAAAAAACAAAgIAAAIAAQCCAAAIAAAAAARAEACA=</HashCode>
       <FileName>include\Scene.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Timer" Collapsed="true">
-    <Position X="20.25" Y="3.5" Width="1.5" />
+  <Class Name="Timer">
+    <Position X="15.75" Y="9" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ABAAAAABAAAAAAAAAAAAQAAAAAAAAAIAAAAAAEEEAAA=</HashCode>
       <FileName>include\Timer.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="CollisionManager" Collapsed="true">
-    <Position X="16.75" Y="0.5" Width="1.5" />
+  <Class Name="CollisionManager">
+    <Position X="17.5" Y="9" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAABAAAAAAgAAAAAIAAgAAAAAAAAABEQAA=</HashCode>
       <FileName>include\CollisionManager.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="GameObject" Collapsed="true">
-    <Position X="3.75" Y="10.5" Width="1.5" />
+  <Class Name="GameObject">
+    <Position X="0.75" Y="9.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACAQAAAAAAAAAAEAAA=</HashCode>
       <FileName>include\GameObject.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="GameObjectManager" Collapsed="true">
-    <Position X="22" Y="0.5" Width="1.5" />
+  <Class Name="GameObjectManager">
+    <Position X="22.75" Y="9" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAQQAAAAAEQIAIAAAAAAAIAAAAAAAAAACAAAAEAAA=</HashCode>
       <FileName>include\GameObjectManager.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="TransformManager" Collapsed="true">
-    <Position X="22" Y="3.5" Width="1.5" />
+  <Class Name="TransformManager">
+    <Position X="21" Y="9" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAEAAAAAAAAAAAAAAAAAQAAAAAAQAAEAAA=</HashCode>
       <FileName>include\TransformManager.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="PhysicsManager" Collapsed="true">
-    <Position X="20.25" Y="2.5" Width="1.5" />
+  <Class Name="PhysicsManager">
+    <Position X="19.25" Y="9" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAgAAQABgAAAAAAAAAAAAAAAABIIBAAAAAAEAAA=</HashCode>
       <FileName>include\PhysicsManager.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Block" Collapsed="true">
-    <Position X="0.5" Y="11.75" Width="1.5" />
+  <Class Name="Block">
+    <Position X="0.75" Y="11.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAEAAAIABAAAAAABAAAAAAAAAAAAAAAABAAAAAEAAE=</HashCode>
       <FileName>include\Block.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="CameraObj" Collapsed="true">
-    <Position X="2.75" Y="11.75" Width="1.5" />
+  <Class Name="CameraObj">
+    <Position X="3" Y="11.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAIAQAAAIAAAAAAAAAAAAAAAAAAABAAAAAEAAA=</HashCode>
       <FileName>include\CameraObj.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="FallingBlock" Collapsed="true">
-    <Position X="0.5" Y="13.25" Width="1.5" />
+  <Class Name="FallingBlock">
+    <Position X="0.75" Y="14.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAACAAAACAAAAAAEAAA=</HashCode>
       <FileName>include\FallingBlock.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Fighter" Collapsed="true">
-    <Position X="5" Y="11.75" Width="1.5" />
+  <Class Name="Fighter">
+    <Position X="5.25" Y="11.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAgAIABAkUgAABAAAIAAQYEAAAACAACAACAAEAAI=</HashCode>
       <FileName>include\Fighter.hpp</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Firework" Collapsed="true">
-    <Position X="7.25" Y="11.75" Width="1.5" />
+  <Class Name="Firework">
+    <Position X="7.5" Y="11.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ABAAAAAMACgQgAAABAAQAAAAAIAAAAIABAAARAQEAAA=</HashCode>
       <FileName>include\Firework.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SceneTest" Collapsed="true">
-    <Position X="10.25" Y="11.75" Width="1.5" />
+  <Class Name="SceneTest">
+    <Position X="5.25" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>gIAAAAAAAAAAAIBAAAAEACEACCgAAAIAAAAACAAEAAA=</HashCode>
       <FileName>include\SceneTest.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Struct Name="Character" Collapsed="true">
-    <Position X="16.75" Y="4.75" Width="1.5" />
+  <Struct Name="Character">
+    <Position X="9.5" Y="12.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAIIAAAAgAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>include\FTInterface.h</FileName>
     </TypeIdentifier>
   </Struct>
-  <Struct Name="CollisionInstance" Collapsed="true">
-    <Position X="18.5" Y="4.75" Width="1.5" />
+  <Struct Name="CollisionInstance">
+    <Position X="11.25" Y="12.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAEAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>include\Collidable.h</FileName>
     </TypeIdentifier>
   </Struct>
-  <Struct Name="Face" Collapsed="true">
-    <Position X="20.25" Y="4.75" Width="1.5" />
+  <Struct Name="Face">
+    <Position X="13" Y="12.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAQAAEAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
       <FileName>src\Mesh.cpp</FileName>
     </TypeIdentifier>
   </Struct>
-  <Struct Name="VertexIndex" Collapsed="true">
-    <Position X="22" Y="4.75" Width="1.5" />
+  <Struct Name="VertexIndex">
+    <Position X="14.75" Y="12.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAgAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>src\Mesh.cpp</FileName>
     </TypeIdentifier>
   </Struct>
   <Typedef Name="SP_ParticleEmitter" Collapsed="true">
-    <Position X="23.75" Y="9.25" Width="1.5" />
+    <Position X="7.75" Y="18" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>include\particleEmitters.h</FileName>
     </TypeIdentifier>
   </Typedef>
   <Typedef Name="SP_ParticleGenerator" Collapsed="true">
-    <Position X="16.75" Y="10" Width="1.5" />
+    <Position X="0.75" Y="18.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>include\particleGenerators.h</FileName>
     </TypeIdentifier>
   </Typedef>
   <Typedef Name="SP_BoxPosGen" Collapsed="true">
-    <Position X="18.5" Y="9.25" Width="1.5" />
+    <Position X="2.5" Y="18" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>include\particleGenerators.h</FileName>
     </TypeIdentifier>
   </Typedef>
   <Typedef Name="SP_RoundPosGen" Collapsed="true">
-    <Position X="16.75" Y="10.75" Width="1.5" />
+    <Position X="0.75" Y="19.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>include\particleGenerators.h</FileName>
     </TypeIdentifier>
   </Typedef>
   <Typedef Name="SP_BasicColourGen" Collapsed="true">
-    <Position X="18.5" Y="8.5" Width="1.5" />
+    <Position X="2.5" Y="17.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>include\particleGenerators.h</FileName>
     </TypeIdentifier>
   </Typedef>
   <Typedef Name="SP_BasicVelGen" Collapsed="true">
-    <Position X="16.75" Y="9.25" Width="1.5" />
+    <Position X="0.75" Y="18" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>include\particleGenerators.h</FileName>
     </TypeIdentifier>
   </Typedef>
   <Typedef Name="SP_SphereVelGen" Collapsed="true">
-    <Position X="18.5" Y="10.75" Width="1.5" />
+    <Position X="2.5" Y="19.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>include\particleGenerators.h</FileName>
     </TypeIdentifier>
   </Typedef>
   <Typedef Name="SP_BasicTimeGen" Collapsed="true">
-    <Position X="22" Y="8.5" Width="1.5" />
+    <Position X="6" Y="17.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>include\particleGenerators.h</FileName>
     </TypeIdentifier>
   </Typedef>
   <Typedef Name="SP_ParticleRenderable" Collapsed="true">
-    <Position X="18.5" Y="10" Width="1.5" />
+    <Position X="2.5" Y="18.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>include\ParticleRenderable.h</FileName>
     </TypeIdentifier>
   </Typedef>
   <Typedef Name="SP_ParticleSystem" Collapsed="true">
-    <Position X="20.25" Y="10" Width="1.5" />
+    <Position X="4.25" Y="18.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>include\particleSystem.h</FileName>
     </TypeIdentifier>
   </Typedef>
   <Typedef Name="SP_ParticleUpdater" Collapsed="true">
-    <Position X="22" Y="10" Width="1.5" />
+    <Position X="6" Y="18.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>include\particleUpdaters.h</FileName>
     </TypeIdentifier>
   </Typedef>
   <Typedef Name="SP_EulerUpdater" Collapsed="true">
-    <Position X="20.25" Y="9.25" Width="1.5" />
+    <Position X="4.25" Y="18" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>include\particleUpdaters.h</FileName>
     </TypeIdentifier>
   </Typedef>
   <Typedef Name="SP_FloorUpdater" Collapsed="true">
-    <Position X="22" Y="9.25" Width="1.5" />
+    <Position X="6" Y="18" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>include\particleUpdaters.h</FileName>
     </TypeIdentifier>
   </Typedef>
   <Typedef Name="SP_AttractorUpdater" Collapsed="true">
-    <Position X="16.75" Y="8.5" Width="1.5" />
+    <Position X="0.75" Y="17.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>include\particleUpdaters.h</FileName>
     </TypeIdentifier>
   </Typedef>
   <Typedef Name="SP_BasicColourUpdater" Collapsed="true">
-    <Position X="20.25" Y="8.5" Width="1.5" />
+    <Position X="4.25" Y="17.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>include\particleUpdaters.h</FileName>
     </TypeIdentifier>
   </Typedef>
   <Typedef Name="SP_PositionColourUpdater" Collapsed="true">
-    <Position X="23.75" Y="10" Width="1.5" />
+    <Position X="7.75" Y="18.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>include\particleUpdaters.h</FileName>
     </TypeIdentifier>
   </Typedef>
   <Typedef Name="SP_VelocityColourUpdater" Collapsed="true">
-    <Position X="20.25" Y="10.75" Width="1.5" />
+    <Position X="4.25" Y="19.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>include\particleUpdaters.h</FileName>
     </TypeIdentifier>
   </Typedef>
   <Typedef Name="SP_BasicTimeUpdater" Collapsed="true">
-    <Position X="23.75" Y="8.5" Width="1.5" />
+    <Position X="7.75" Y="17.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>include\particleUpdaters.h</FileName>
     </TypeIdentifier>
   </Typedef>
   <Typedef Name="SPC_Camera" Collapsed="true">
-    <Position X="22" Y="10.75" Width="1.5" />
+    <Position X="6" Y="19.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>include\Camera.h</FileName>
     </TypeIdentifier>
   </Typedef>
   <Typedef Name="SPC_Collidable" Collapsed="true">
-    <Position X="23.75" Y="10.75" Width="1.5" />
+    <Position X="7.75" Y="19.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>include\Collidable.h</FileName>
     </TypeIdentifier>
   </Typedef>
   <Typedef Name="SPC_Component" Collapsed="true">
-    <Position X="16.75" Y="11.5" Width="1.5" />
+    <Position X="0.75" Y="20.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>include\Component.h</FileName>
     </TypeIdentifier>
   </Typedef>
   <Typedef Name="SPC_Particle" Collapsed="true">
-    <Position X="18.5" Y="11.5" Width="1.5" />
+    <Position X="2.5" Y="20.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>include\Particle.h</FileName>
     </TypeIdentifier>
   </Typedef>
   <Typedef Name="SPC_PhysicsBody" Collapsed="true">
-    <Position X="20.25" Y="11.5" Width="1.5" />
+    <Position X="4.25" Y="20.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>include\PhysicsBody.h</FileName>
     </TypeIdentifier>
   </Typedef>
   <Typedef Name="SPC_Renderable" Collapsed="true">
-    <Position X="22" Y="11.5" Width="1.5" />
+    <Position X="6" Y="20.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>include\Renderable.h</FileName>
     </TypeIdentifier>
   </Typedef>
   <Typedef Name="SPC_Transform" Collapsed="true">
-    <Position X="23.75" Y="11.5" Width="1.5" />
+    <Position X="7.75" Y="20.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>include\Transfrom.h</FileName>
     </TypeIdentifier>
   </Typedef>
-  <Enum Name="buttons" Collapsed="true">
-    <Position X="16.75" Y="6" Width="1.5" />
+  <Enum Name="buttons">
+    <Position X="14.75" Y="16" Width="1.5" />
     <TypeIdentifier>
       <HashCode>IAAAAAAAAAAAAgAAAAAAAAEAAAICAAAgAAAAIEkA8AA=</HashCode>
       <FileName>include\ControllerInput.h</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="ShaderTypes::type" Collapsed="true">
-    <Position X="23.75" Y="6" Width="1.5" />
+  <Enum Name="ShaderTypes::type">
+    <Position X="11.25" Y="16.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
       <FileName>include\Shader.h</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="TextureType::type" Collapsed="true">
-    <Position X="16.75" Y="6.75" Width="1.5" />
+  <Enum Name="TextureType::type">
+    <Position X="9.5" Y="17" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>include\Texture.h</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="Emitters::type" Collapsed="true">
-    <Position X="18.5" Y="6.75" Width="1.5" />
+  <Enum Name="Emitters::type">
+    <Position X="9.5" Y="14.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAACAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>include\particleEmitters.h</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="Generators::type" Collapsed="true">
-    <Position X="20.25" Y="6.75" Width="1.5" />
+  <Enum Name="Generators::type">
+    <Position X="11.25" Y="14.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAiAAAQAAACYAAAAAAAAAABA=</HashCode>
       <FileName>include\particleGenerators.h</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="Updaters::type" Collapsed="true">
-    <Position X="22" Y="6.75" Width="1.5" />
+  <Enum Name="Updaters::type">
+    <Position X="11.25" Y="17.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>gAAAAAAIQAAAAAAAAIAAAAAAAAAAAAEgAAAAAAAAAAE=</HashCode>
       <FileName>include\particleUpdaters.h</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="CollisionType::type" Collapsed="true">
-    <Position X="23.75" Y="6.75" Width="1.5" />
+  <Enum Name="CollisionType::type">
+    <Position X="13" Y="14.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAABAAAAAgAAgAAAAIAIAAAAAAAAAAgAA=</HashCode>
       <FileName>include\Collidable.h</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="ComponentType::type" Collapsed="true">
-    <Position X="16.75" Y="7.5" Width="1.5" />
+  <Enum Name="ComponentType::type">
+    <Position X="9.5" Y="18.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAgAAAAAAAAAAAABABAAgAACECAAAAIAAAAAQAAA=</HashCode>
       <FileName>include\Component.h</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="ComponentState::state" Collapsed="true">
-    <Position X="20.25" Y="6" Width="1.5" />
+  <Enum Name="ComponentState::state">
+    <Position X="14.75" Y="14.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAQAAAAAAAAAAgAAAAAiAAAAAAAAAAAAAQA=</HashCode>
       <FileName>include\Component.h</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="GS::KEYS" Collapsed="true">
-    <Position X="18.5" Y="6" Width="1.5" />
+  <Enum Name="GS::KEYS">
+    <Position X="13" Y="18.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJACIIAA=</HashCode>
       <FileName>include\GS.h</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="GameObjectType::type" Collapsed="true">
-    <Position X="18.5" Y="7.5" Width="1.5" />
+  <Enum Name="GameObjectType::type">
+    <Position X="9.5" Y="15.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAgAAAEAAAAAAAAAA=</HashCode>
       <FileName>include\GameObject.h</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="fighterStates::states" Collapsed="true">
-    <Position X="22" Y="6" Width="1.5" />
+  <Enum Name="fighterStates::states">
+    <Position X="13" Y="16.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAgAAAAAAQgIAAAAAAAAAAAAAAACAACAAAAAAAAQ=</HashCode>
       <FileName>include\Fighter.hpp</FileName>

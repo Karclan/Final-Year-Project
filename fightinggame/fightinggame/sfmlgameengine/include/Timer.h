@@ -3,6 +3,13 @@
 
 #include <SFML\System.hpp>
 
+/*! \brief  Time Class
+
+Time class, class used to get the current time between frames used in updates to scale values around delta time
+
+*/
+
+
 class Timer
 {
 public:

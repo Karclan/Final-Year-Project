@@ -6,6 +6,11 @@
 #include "Renderable.h"
 #include "Transfrom.h"
 
+/*! \brief  Block
+
+Block class. Generic block within a level. Has collidable, renderable and transform components
+
+*/
 class Block : public GameObject
 {
 public:
@@ -13,9 +18,8 @@ public:
 	Block();
 	~Block();
 	
-	void update(float dt);
-	void renderUpdate();
-	//void updateCycle();
+	void update(float dt); //!< empty function
+	void renderUpdate(); //!< empty function
 protected:
 
 	SPC_Collidable m_Collidable;

@@ -11,26 +11,39 @@
 #define _USE_MATH_DEFINES
 #include <math.h>
 
+
+//! Enum for types of generators
 namespace Generators
 {
 	enum type{BOXPOSGEN, ROUNDPOSGEN, BASICCOLOURGEN, BASICVELGEN, SPHEREVELGEN, BASICTIMEGEN, GENERATORS};
 }
 
+/*! \brief  ParticleGenerator Class
+
+ParticleGenerator Class. Abstract generator class for classes to inherit from.
+
+*/
+
 class ParticleGenerator
 {
 private:
-	bool _active;
+	bool _active; //!< Bool to toggle a generator being active or not
 public:
 	ParticleGenerator();
 	virtual ~ParticleGenerator();
-	virtual void generate(float dt, ParticleData *p, size_t startId, size_t endId)=0;
-	virtual Generators::type getType()=0;
-	bool isActive(){return _active;}
+	virtual void generate(float dt, ParticleData *p, size_t startId, size_t endId)=0; //!< Generates data of what ever subtype of generator is inheriting and defining this function
+	virtual Generators::type getType()=0; //!< Returns the generator type of whatever subtype of generator is inheriting and defining this function
+	bool isActive(){return _active;} 
 	void setActiveFlag(bool f){_active=f;}
 };
 
 typedef std::shared_ptr<ParticleGenerator> SP_ParticleGenerator;
 
+/*! \brief  BoxPosGen Class
+
+BoxPosGen Class. BoxPosGen generator class whichs generates position values within a defined area.
+
+*/
 class BoxPosGen :public ParticleGenerator
 {
 private:
@@ -48,6 +61,11 @@ public:
 
 typedef std::shared_ptr<BoxPosGen> SP_BoxPosGen;
 
+/*! \brief  RoundPosGen Class
+
+RoundPosGen Class. RoundPosGen generator class whichs generates position values within a defined area, a circle.
+
+*/
 class RoundPosGen : public ParticleGenerator
 {
 private:
@@ -69,6 +87,11 @@ public:
 
 typedef std::shared_ptr<RoundPosGen> SP_RoundPosGen;
 
+/*! \brief  BasicColourGen Class
+
+BasicColourGen Class. BasicColourGen generator class whichs generates colour values within defined maximums and minimums for the start and end of a particle's alive time
+
+*/
 class BasicColourGen : public ParticleGenerator
 {
 private:
@@ -94,6 +117,12 @@ public:
 
 typedef std::shared_ptr<BasicColourGen> SP_BasicColourGen;
 
+
+/*! \brief  BasicVelGen Class
+
+BasicVelGen Class. BasicVelGen generator class whichs generates velocity values within defined maximums and minimums
+
+*/
 class BasicVelGen : public ParticleGenerator
 {
 private:
@@ -112,6 +141,11 @@ public:
 
 typedef std::shared_ptr<BasicVelGen> SP_BasicVelGen;
 
+/*! \brief  SphereVelGen Class
+
+SphereVelGen Class. SphereVelGen generator class whichs generates velocity values within defined maximums and minimums in a sphere
+
+*/
 class SphereVelGen : public ParticleGenerator
 {
 private:
@@ -130,6 +164,11 @@ public:
 
 typedef std::shared_ptr<SphereVelGen> SP_SphereVelGen;
 
+/*! \brief  BasicTimeGen Class
+
+BasicTimeGen Class. BasicTimeGen generator class whichs generates time values within defined maximums and minimums
+
+*/
 class BasicTimeGen : public ParticleGenerator
 {
 private:

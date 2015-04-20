@@ -1,4 +1,4 @@
-//From http://en.sfml-dev.org/forums/index.php?topic=12155.0
+//Code and design from http://en.sfml-dev.org/forums/index.php?topic=12155.0
 
 #ifndef X360_CONTROLLER_HPP
 #define X360_CONTROLLER_HPP

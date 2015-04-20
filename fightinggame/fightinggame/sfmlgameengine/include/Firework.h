@@ -4,13 +4,18 @@
 #include "GameObject.h"
 #include "Particle.h"
 
+/*! \brief  Firework
+
+Firework  class. Particle class, less firework more fountain. Emits a fountain of particles at a position. Has a particle and transform component
+
+*/
 class Firework : public GameObject
 {
 public:
 	Firework();
-	Firework(SPC_Particle p);
-	void init();
-	void update(float t);
+	Firework(SPC_Particle p); 
+	void init(); //!< sets all the particle behaviour data. Makes all generators, updaters, and the emitter
+	void update(float t); //!< empty function
 
 private:
 	float m_fireworkTime;

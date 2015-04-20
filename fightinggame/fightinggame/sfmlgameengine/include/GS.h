@@ -2,7 +2,7 @@
 #define GS_H
 
 #include <glm\gtx\transform.hpp>
-
+//! Global Name space for some values, kinda old and not really used as much. Artifact from old system design
 namespace GS
 {
 	extern enum KEYS{W,S,A,D, 

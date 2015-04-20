@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="ProjectSourceFiles">
+      <UniqueIdentifier>{f8837051-6a2c-4097-9952-e64557600b35}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="unittest1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sfmlgameengine\src\Block.cpp">
+      <Filter>ProjectSourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sfmlgameengine\src\Camera.cpp">
+      <Filter>ProjectSourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sfmlgameengine\src\CameraObj.cpp">
+      <Filter>ProjectSourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sfmlgameengine\src\Collidable.cpp">
+      <Filter>ProjectSourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sfmlgameengine\src\CollisionManager.cpp">
+      <Filter>ProjectSourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sfmlgameengine\src\Component.cpp">
+      <Filter>ProjectSourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sfmlgameengine\src\ControllerInput.cpp">
+      <Filter>ProjectSourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sfmlgameengine\src\FallingBlock.cpp">
+      <Filter>ProjectSourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sfmlgameengine\src\Fighter.cpp">
+      <Filter>ProjectSourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sfmlgameengine\src\Firework.cpp">
+      <Filter>ProjectSourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sfmlgameengine\src\FTInterface.cpp">
+      <Filter>ProjectSourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sfmlgameengine\src\GameObject.cpp">
+      <Filter>ProjectSourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sfmlgameengine\src\GameObjectManager.cpp">
+      <Filter>ProjectSourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sfmlgameengine\src\GS.cpp">
+      <Filter>ProjectSourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sfmlgameengine\src\HitBox.cpp">
+      <Filter>ProjectSourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sfmlgameengine\src\Input.cpp">
+      <Filter>ProjectSourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sfmlgameengine\src\Main.cpp">
+      <Filter>ProjectSourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sfmlgameengine\src\Mesh.cpp">
+      <Filter>ProjectSourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sfmlgameengine\src\Particle.cpp">
+      <Filter>ProjectSourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sfmlgameengine\src\ParticleBehaviour.cpp">
+      <Filter>ProjectSourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sfmlgameengine\src\particleData.cpp">
+      <Filter>ProjectSourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sfmlgameengine\src\particleEmitters.cpp">
+      <Filter>ProjectSourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sfmlgameengine\src\particleGenerators.cpp">
+      <Filter>ProjectSourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sfmlgameengine\src\ParticleRenderable.cpp">
+      <Filter>ProjectSourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sfmlgameengine\src\particleSystem.cpp">
+      <Filter>ProjectSourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sfmlgameengine\src\particleUpdaters.cpp">
+      <Filter>ProjectSourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sfmlgameengine\src\PhysicsBody.cpp">
+      <Filter>ProjectSourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sfmlgameengine\src\PhysicsManager.cpp">
+      <Filter>ProjectSourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sfmlgameengine\src\Renderable.cpp">
+      <Filter>ProjectSourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sfmlgameengine\src\Renderer.cpp">
+      <Filter>ProjectSourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sfmlgameengine\src\Scene.cpp">
+      <Filter>ProjectSourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sfmlgameengine\src\SceneTest.cpp">
+      <Filter>ProjectSourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sfmlgameengine\src\Shader.cpp">
+      <Filter>ProjectSourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sfmlgameengine\src\ShaderHandler.cpp">
+      <Filter>ProjectSourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sfmlgameengine\src\Texture.cpp">
+      <Filter>ProjectSourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sfmlgameengine\src\Timer.cpp">
+      <Filter>ProjectSourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sfmlgameengine\src\Transform.cpp">
+      <Filter>ProjectSourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sfmlgameengine\src\TransformManager.cpp">
+      <Filter>ProjectSourceFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sfmlgameengine\src\X360Controller.cpp">
+      <Filter>ProjectSourceFiles</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -5,13 +5,19 @@
 
 #include "Particle.h"
 
+/*! \brief  ParticleBehaviour Class
+
+ParticleBehaviour Class. A class to be used to define particle system behaviour. Used in game implementation
+
+*/
+
 class ParticleBehaviour 
 {
 public:
 	ParticleBehaviour();
 
-	virtual void init()			 = 0;
-	virtual void update(float t) = 0;
+	virtual void init()			 = 0;  //!< Pure virtaul function
+	virtual void update(float t) = 0;  //!< Pure virtual function
 	
 	SP_ParticleEmitter  getEmitter();
 protected:

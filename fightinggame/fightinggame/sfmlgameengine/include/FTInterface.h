@@ -18,6 +18,8 @@
 
 #include "Shader.h"
 #include "GS.h"
+
+//! Character struct used for glyphing
 struct Character
 {
 	GLuint		TextureID;
@@ -26,23 +28,28 @@ struct Character
 	GLuint		Advance;
 };
 
+/*! \brief  FTInterface
+
+FTInterface Singleton. The Freetype interface used to render text onto screen in openGL retained mode. Uses a glyphing technique
+
+*/
 class FTInterface
 {
 public:
 
-	static void init();
-	static void renderText(std::string, GLfloat x,GLfloat y,GLfloat scale, glm::vec3 colour);
+	static void init(); //!< Inits freetype, loads text, creates glyphs, generates vertex buffer objects
+	static void renderText(std::string, GLfloat x,GLfloat y,GLfloat scale, glm::vec3 colour); //!< Renders text on screen based on x and y positions, scale, and colour
 
 private:
 
 	 FTInterface();
 	~FTInterface();
 
-	static FTInterface* get();
+	static FTInterface* get(); //!< Private static function to get singleton
 
-	void genChars();
-	void genVBO();
-	void genShader();
+	void genChars(); //!< Generates glyphs of characters within TTF file
+	void genVBO();	 //!< Generates vertex buffer object
+	void genShader();//!<Creates shader
 
 	Shader textShader;
 	GLuint VAO, VBO;

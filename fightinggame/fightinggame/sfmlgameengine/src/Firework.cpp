@@ -68,31 +68,5 @@ void Firework::init()
 void Firework::update(float t)
 {
 
-	//if (Input::getKeyPressed(sf::Keyboard::Num1))
-	//{
-	//	_particleRenderer->setParticlePointSize(10.f);
-	//	_explode = true;
-	//}
-	//if (m_explode)
-	//{
-	//	m_exploding = true;
-	//}
-	////do the explode
-	//if (m_exploding)
-	//{
-	//	m_time += t;
-	//	if (m_time >= m_fireworkTime)
-	//	{
-	//		m_time = 0.f;
-	//		m_exploding = false;
-	//		m_explode = false;
-	//		//_particleRenderer->setEmitFlag(false);
-	//	}
-	//	else
-	//	{
-	//		//_particleRenderer->setEmitFlag(true);
-	//	}
-	//}
-
 }
 

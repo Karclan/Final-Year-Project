@@ -23,7 +23,12 @@
 #include "FTInterface.h"
 #include "PhysicsManager.h"
 
-//!< Interface Scene class
+/*! \brief  Scene Class
+
+Interface Scene Class. All game implementation scenes inherit from this. Purely abstract class used to interface with
+and game implementation scenes. Has all the objects a scene will always have such as input managers and renderer
+
+*/
 
 class Scene
 {

@@ -16,17 +16,22 @@
 #include "shader.h"
 #include "transfrom.h"
 
+/*! \brief  ParticleRenderable Class
+
+ParticleRenderable Class. Renders all the alive particles and manages the particle buffers which are sent to the shader
+
+*/
 class ParticleRenderable
 { 
 public:
 	ParticleRenderable();
 	~ParticleRenderable();
 
-	void generate	  (SP_ParticleSystem s, size_t particlePool);
-	void render		  (SP_ParticleSystem s);
-	void updateBuffers(SP_ParticleSystem s);
+	void generate	  (SP_ParticleSystem s, size_t particlePool); //!< generates the vertex array object and vertex position buffers for position and colour values
+	void render		  (SP_ParticleSystem s); //!< Renders all alive particles
+	void updateBuffers(SP_ParticleSystem s); //!< Updates the buffers based upon the alive particles which exist within the particle system
 
-	bool _generatedFlag;
+	bool _generatedFlag; //!< Flag to determin if the vertex array objects and vertex buffers are generated or not
 
 private:
 
